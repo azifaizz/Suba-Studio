@@ -51,7 +51,7 @@ const CategoryPage = () => {
             {/* Hero Section */}
             <section className={`relative flex items-center justify-center overflow-hidden ${(isShortStoriesVideo || isOutdoorVideo) ? 'h-[75vh] md:h-[85vh]' : (isFullVisibilityCategory ? 'h-[60vh] md:h-[75vh] bg-black' : (isPortraitOrRitual ? 'h-[80vh] md:h-[90vh]' : 'h-[70vh] md:h-[85vh]'))}`}>
                 <div className="absolute inset-0">
-                    {content.heroImage.endsWith('.mp4') ? (
+                    {content.heroImage?.endsWith('.mp4') ? (
                         <video
                             src={content.heroImage}
                             autoPlay
@@ -158,7 +158,7 @@ const CategoryPage = () => {
                                             <div className={content.collageImages.length === 1 ? "col-span-2" : "col-span-2"}>
                                                 <Reveal delay={100}>
                                                     <div className="rounded-[20px] overflow-hidden shadow-lg h-[500px] md:h-[650px]">
-                                                        {content.collageImages[0].endsWith('.mp4') ? (
+                                                        {content.collageImages[0]?.endsWith('.mp4') ? (
                                                             <video
                                                                 src={content.collageImages[0]}
                                                                 autoPlay
@@ -183,7 +183,7 @@ const CategoryPage = () => {
                                                 <div className="col-span-1">
                                                     <Reveal delay={200}>
                                                         <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
-                                                            {content.collageImages[1].endsWith('.mp4') ? (
+                                                            {content.collageImages[1]?.endsWith('.mp4') ? (
                                                                 <video
                                                                     src={content.collageImages[1]}
                                                                     autoPlay
@@ -209,7 +209,7 @@ const CategoryPage = () => {
                                                 <div className="col-span-1">
                                                     <Reveal delay={300}>
                                                         <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
-                                                            {content.collageImages[2].endsWith('.mp4') ? (
+                                                            {content.collageImages[2]?.endsWith('.mp4') ? (
                                                                 <video
                                                                     src={content.collageImages[2]}
                                                                     autoPlay
@@ -236,7 +236,7 @@ const CategoryPage = () => {
                                             <div className="col-span-2">
                                                 <Reveal delay={100}>
                                                     <div className="rounded-[20px] overflow-hidden shadow-lg h-[400px]">
-                                                        {content.albums[0]?.image.endsWith('.mp4') ? (
+                                                        {content.albums[0]?.image?.endsWith('.mp4') ? (
                                                             <video src={content.albums[0]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
                                                             <img src={content.albums[0]?.image} alt="Album 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
@@ -247,7 +247,7 @@ const CategoryPage = () => {
                                             <div className="col-span-1">
                                                 <Reveal delay={200}>
                                                     <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
-                                                        {content.albums[1]?.image.endsWith('.mp4') ? (
+                                                        {content.albums[1]?.image?.endsWith('.mp4') ? (
                                                             <video src={content.albums[1]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
                                                             <img src={content.albums[1]?.image} alt="Album 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
@@ -258,7 +258,7 @@ const CategoryPage = () => {
                                             <div className="col-span-1">
                                                 <Reveal delay={300}>
                                                     <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
-                                                        {content.albums[2]?.image.endsWith('.mp4') ? (
+                                                        {content.albums[2]?.image?.endsWith('.mp4') ? (
                                                             <video src={content.albums[2]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
                                                             <img src={content.albums[2]?.image} alt="Album 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
@@ -369,7 +369,7 @@ const CategoryPage = () => {
                                 <Reveal key={album.id} delay={index * 100} className={subcategory === 'baby' || subcategory === 'maternity' ? "break-inside-avoid mb-2" : ""}>
                                     <div className={`group cursor-pointer bg-white overflow-hidden ${subcategory === 'baby' || subcategory === 'maternity' ? '' : 'rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300'}`}>
                                         <div className={subcategory === 'baby' || subcategory === 'maternity' ? "w-full" : `overflow-hidden ${isVideoRoute ? 'aspect-video' : 'aspect-[4/5]'}`}>
-                                            {album.image.endsWith('.mp4') ? (
+                                            {album.image?.endsWith('.mp4') ? (
                                                 <video
                                                     src={album.image}
                                                     autoPlay={subcategory === 'candid'}

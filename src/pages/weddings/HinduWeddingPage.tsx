@@ -17,6 +17,10 @@ export default function HinduWeddingPage() {
     const mainRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, []);
+
+    useEffect(() => {
         const ctx = gsap.context(() => {
             if (!mainRef.current) return;
             
@@ -44,40 +48,48 @@ export default function HinduWeddingPage() {
                     const currentTexts = section.querySelectorAll('.cinematic-text');
                     
                     if (currentWrapper) {
-                        gsap.to(currentWrapper, {
-                            scale: 1.02,
-                            yPercent: -15,
-                            opacity: 0.95,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: nextSection,
-                                start: "top bottom", // Starts when next section's top enters from bottom
-                                end: "top top",      // Ends when next section docks at top
-                                scrub: true
+                        gsap.fromTo(currentWrapper, 
+                            { scale: 1, yPercent: 0, opacity: 1 },
+                            {
+                                scale: 1.02,
+                                yPercent: -15,
+                                opacity: 0.95,
+                                ease: "none",
+                                immediateRender: false,
+                                scrollTrigger: {
+                                    trigger: nextSection,
+                                    start: "top bottom", // Starts when next section's top enters from bottom
+                                    end: "top top",      // Ends when next section docks at top
+                                    scrub: true
+                                }
                             }
-                        });
+                        );
                     }
 
                     if (currentTexts.length > 0) {
-                        gsap.to(currentTexts, {
-                            y: -30,
-                            opacity: 0,
-                            filter: "blur(10px)",
-                            ease: "power2.in",
-                            scrollTrigger: {
-                                trigger: nextSection,
-                                start: "top bottom",
-                                end: "top 50%", // Fades out fully by the time next section is halfway up
-                                scrub: true
+                        gsap.fromTo(currentTexts, 
+                            { y: 0, opacity: 1, filter: "blur(0px)" },
+                            {
+                                y: -30,
+                                opacity: 0,
+                                filter: "blur(10px)",
+                                ease: "power2.in",
+                                immediateRender: false,
+                                scrollTrigger: {
+                                    trigger: nextSection,
+                                    start: "top bottom",
+                                    end: "top 50%", // Fades out fully by the time next section is halfway up
+                                    scrub: true
+                                }
                             }
-                        });
+                        );
                     }
                 }
 
                 // --- INCOMING ANIMATION ---
                 // As THIS section slides up into view, its contents animate.
                 if (i > 0) {
-                    const incomingWrapper = section.querySelector('.parallax-wrapper');
+                    const incomingWrapper = section.querySelector('.incoming-wrapper');
                     if (incomingWrapper) {
                         gsap.fromTo(incomingWrapper, 
                             { opacity: 0, scale: 1.05 },
@@ -148,7 +160,7 @@ export default function HinduWeddingPage() {
         <SmoothScroll>
             <div className="bg-black min-h-screen text-white font-sans selection:bg-white/30">
                 {/* Intro Section */}
-                <section className="h-[60vh] md:h-[80vh] flex flex-col items-center justify-center text-center px-4 md:px-8 relative z-20 bg-black">
+                <section className="h-[70vh] md:h-[80vh] flex flex-col items-center justify-center text-center px-4 md:px-8 relative z-20 bg-black pt-20 md:pt-24">
                     <p className="text-white/50 tracking-[0.3em] uppercase text-xs md:text-sm mb-6 font-poppins">The Sacred Union</p>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair mb-6 leading-tight">
                         A Journey of <br className="md:hidden" />
@@ -175,15 +187,17 @@ export default function HinduWeddingPage() {
                                 style={{ zIndex: index + 1 }}
                                 onClick={() => setLightboxIndex(index)}
                             >
-                                <div className="parallax-wrapper w-full h-full relative">
-                                    <CinematicFrame
-                                        src={img.src}
-                                        alt={`Sacred Moment ${index + 1}`}
-                                        index={index}
-                                        quote={quote}
-                                        orientation={img.orientation}
-                                        priority={index < 3}
-                                    />
+                                <div className="incoming-wrapper w-full h-full relative">
+                                    <div className="parallax-wrapper w-full h-full relative">
+                                        <CinematicFrame
+                                            src={img.src}
+                                            alt={`Sacred Moment ${index + 1}`}
+                                            index={index}
+                                            quote={quote}
+                                            orientation={img.orientation}
+                                            priority={index < 3}
+                                        />
+                                    </div>
                                 </div>
                             </section>
                         );
