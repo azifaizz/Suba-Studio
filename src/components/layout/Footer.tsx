@@ -1,15 +1,42 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Instagram, Facebook, Twitter, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+    const footerRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo('.footer-col', 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.15,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: footerRef.current,
+                        start: 'top 85%'
+                    }
+                }
+            );
+        }, footerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <footer className="bg-black text-white pt-24 pb-12 border-t border-white/10">
+        <footer ref={footerRef} className="bg-black text-white pt-24 pb-12 border-t border-white/10">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
 
                     {/* Brand */}
-                    <div className="space-y-6">
+                    <div className="footer-col space-y-6">
                         <div className="flex items-center gap-2">
                             <div className="bg-[#102f76] p-2 rounded text-white font-black text-xs">
                                 SS
@@ -28,7 +55,7 @@ const Footer = () => {
                     </div>
 
                     {/* Our Work */}
-                    <div>
+                    <div className="footer-col">
                         <h3 className="text-lg font-bold mb-6 border-b border-zg-blue pb-2 inline-block uppercase">OUR WORK</h3>
                         <ul className="space-y-3 text-white/60 text-sm">
                             <li className="hover:text-zg-blue cursor-pointer transition-colors"><a href="/weddings/hindu">Hindu Wedding Photography</a></li>
@@ -42,7 +69,7 @@ const Footer = () => {
                     </div>
 
                     {/* Contact Info */}
-                    <div>
+                    <div className="footer-col">
                         <h3 className="text-lg font-bold mb-6 border-b border-zg-blue pb-2 inline-block">GET IN TOUCH</h3>
                         <ul className="space-y-6 text-white/60 text-sm">
                             <li className="flex items-start gap-4">
@@ -61,7 +88,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-white/40">
+                <div className="footer-col border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-white/40">
                     <p>&copy; 2025 Suba Studios. All Rights Reserved.</p>
                     <div className="flex gap-8">
                         <span className="hover:text-white cursor-pointer transition-colors">Terms and Conditions</span>

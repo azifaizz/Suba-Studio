@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { categoryData, defaultContent, CategoryContent } from '@/data/categoryContent';
 import { ArrowRight } from 'lucide-react';
 import HinduWeddingPage from './weddings/HinduWeddingPage';
-
+import ChristianWeddingPage from './weddings/ChristianWeddingPage';
 const CategoryPage = () => {
     const { subcategory } = useParams();
     const { pathname } = useLocation();
@@ -16,6 +16,9 @@ const CategoryPage = () => {
     // Custom Page Routing for Awwwards-winning galleries
     if (subcategory === 'hindu' && !isVideoRoute) {
         return <HinduWeddingPage />;
+    }
+    if (subcategory === 'christian' && !isVideoRoute) {
+        return <ChristianWeddingPage />;
     }
 
     const isOutdoorVideo = isVideoRoute && subcategory === 'outdoor';

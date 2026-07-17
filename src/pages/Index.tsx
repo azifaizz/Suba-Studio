@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { FlowButton } from "@/components/ui/flow-button";
 import { HeroQuote } from "@/components/home/HeroQuote";
+import { StickyServicesScroll } from "@/components/home/StickyServicesScroll";
 
 // Mock Data for Portfolio
 const portfolioItems = [
@@ -182,32 +183,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <Reveal>
-            <div className="text-center mb-16">
-              <span className="text-zg-blue font-serif font-bold tracking-widest text-xs uppercase mb-2 block">What We Do?</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-12">Expertise In Every Frame</h2>
-            </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {specializations.map((item, i) => (
-              <Reveal key={i} delay={i * 50}>
-                <div className="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 group text-center flex flex-col items-center justify-center">
-                  <div className="text-zg-blue mb-6 group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <h4 className="text-xl font-serif font-bold text-gray-800 leading-tight">
-                    {item.name}
-                  </h4>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Premium Sticky Card Stack Scroll Services Section */}
+      <StickyServicesScroll />
 
       {/* WhatsApp Floating Button */}
       <a
