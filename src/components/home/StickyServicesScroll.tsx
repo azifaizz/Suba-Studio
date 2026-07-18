@@ -10,9 +10,11 @@ import {
   Users,
   Sparkles,
   Smile,
-  Gift,
-  ArrowUpRight
+  Gift
 } from 'lucide-react';
+import { StandaloneArrowCTA } from '@/components/ui/standalone-arrow-cta';
+import { SmartCardImage } from '@/components/ui/smart-card-image';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -189,18 +191,18 @@ export const StickyServicesScroll: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1500px] w-full h-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-14 relative z-20">
         
         {/* LEFT COLUMN: Section Title, Story Paragraph & Chapter Progress */}
-        <div className="w-full lg:w-[38%] xl:w-[36%] flex flex-col justify-center text-center lg:text-left shrink-0 z-30 py-2 lg:py-6">
+        <div className="w-full lg:w-[38%] xl:w-[36%] flex flex-col justify-center text-center lg:text-left shrink-0 z-30 py-1 lg:py-6">
           <div className="inline-block self-center lg:self-start">
-            <span className="text-zg-blue font-serif font-bold tracking-[0.28em] text-xs md:text-sm uppercase mb-2 sm:mb-3 block">
+            <span className="text-zg-blue font-serif font-bold tracking-[0.28em] text-[10px] md:text-sm uppercase mb-1 sm:mb-3 block">
               What We Do
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4rem] font-serif font-bold text-gray-950 tracking-tight leading-[1.08] mb-3 sm:mb-5">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4rem] font-serif font-bold text-gray-950 tracking-tight leading-[1.08] mb-1 sm:mb-5">
             Expertise In Every Frame
           </h2>
 
-          <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+          <p className="hidden sm:block text-sm sm:text-base text-gray-600 font-light leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
             Each service is its own chapter. Turn the scroll wheel to slide through our signature editorial experiences, crafted with cinematic luxury and timeless devotion.
           </p>
 
@@ -224,35 +226,35 @@ export const StickyServicesScroll: React.FC = () => {
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Breathable, Crisp Sticky Card Stack with Clean Soft Shadow */}
-        <div className="w-full lg:w-[58%] xl:w-[56%] h-[64vh] sm:h-[68vh] lg:h-[70vh] relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
+        {/* RIGHT COLUMN: Breathable, Crisp Sticky Card Stack with Adaptive Smart Image Presentation */}
+        <div className="w-full lg:w-[58%] xl:w-[56%] h-[68vh] sm:h-[68vh] lg:h-[70vh] min-h-[430px] sm:min-h-0 relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
           {servicesData.map((service, index) => (
             <div
               key={service.id}
               ref={(el) => (cardRefs.current[index] = el)}
               onClick={() => navigate(service.link)}
-              className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[580px] sm:max-h-[620px] bg-white rounded-[28px] sm:rounded-[32px] lg:rounded-[36px] p-6 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.12)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-6 sm:gap-8 overflow-hidden"
+              className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] sm:max-h-[620px] bg-white rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.12)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
             >
               {/* Left Side Inside Card (48% on Desktop): Icon, Chapter Pill, Title, Description */}
-              <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 h-full">
+              <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 sm:h-full shrink-0">
                 <div>
                   {/* Card Header: Icon + Chapter Pill */}
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <div className="p-3 sm:p-3.5 bg-zg-blue/10 rounded-2xl border border-zg-blue/20 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                  <div className="flex items-center justify-between mb-2 sm:mb-6">
+                    <div className="p-2 sm:p-3.5 bg-zg-blue/10 rounded-xl sm:rounded-2xl border border-zg-blue/20 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                       {service.icon}
                     </div>
-                    <span className="font-serif text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase bg-gray-100/80 px-3 py-1 rounded-full border border-gray-200/60">
+                    <span className="font-serif text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase bg-gray-100/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-gray-200/60">
                       0{index + 1} / 0{servicesData.length}
                     </span>
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-2xl sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-gray-950 leading-[1.14] mb-3 group-hover:text-zg-blue transition-colors duration-300">
+                  <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-gray-950 leading-[1.14] mb-1 sm:mb-3 group-hover:text-zg-blue transition-colors duration-300">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-gray-600 font-normal leading-relaxed line-clamp-3 sm:line-clamp-4">
+                  <p className="text-[11px] sm:text-sm text-gray-600 font-normal leading-relaxed line-clamp-2 sm:line-clamp-4">
                     {service.description}
                   </p>
                 </div>
@@ -264,20 +266,12 @@ export const StickyServicesScroll: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Side Inside Card (52% on Desktop): Sharp Representative Image with Glass Button */}
-              <div className="w-full sm:w-[52%] h-[180px] sm:h-full relative rounded-2xl sm:rounded-[26px] overflow-hidden bg-gray-50 border border-gray-100 shrink-0">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-106 group-hover:brightness-[1.05] transition-all duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-500" />
-
-                {/* Glassmorphism Circular Arrow Button */}
-                <div className="absolute bottom-4 right-4 z-20 w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-white/95 backdrop-blur-md border border-white shadow-xl flex items-center justify-center text-gray-950 group-hover:bg-zg-blue group-hover:text-white group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
-                  <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                </div>
-              </div>
+              {/* Right Side Inside Card (52% on Desktop): Smart Adaptive Photography Presentation */}
+              <SmartCardImage
+                src={service.image}
+                alt={service.title}
+                link={service.link}
+              />
             </div>
           ))}
         </div>

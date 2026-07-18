@@ -26,6 +26,8 @@ import {
 import { FlowButton } from "@/components/ui/flow-button";
 import { HeroQuote } from "@/components/home/HeroQuote";
 import { StickyServicesScroll } from "@/components/home/StickyServicesScroll";
+import { AnimatedStatsSection } from "@/components/home/AnimatedStatsSection";
+import { StandaloneArrowCTA } from "@/components/ui/standalone-arrow-cta";
 
 // Mock Data for Portfolio
 const portfolioItems = [
@@ -125,25 +127,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            {facts.map((fact, index) => (
-              <Reveal key={fact.id} delay={index * 100}>
-                <div className="space-y-2">
-                  <h3 className="text-xl md:text-4xl font-bodoni font-black text-zg-blue tracking-tighter">
-                    {fact.number}
-                  </h3>
-                  <p className="text-sm md:text-base font-bold text-gray-500 tracking-wider uppercase whitespace-nowrap">
-                    {fact.label}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Premium Animated Stats Section */}
+      <AnimatedStatsSection />
 
       {/* Timeless Celebrations Section */}
       <section className="py-24 bg-white overflow-hidden">
@@ -160,6 +145,8 @@ const Index = () => {
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
                   <img src="/portfolio_wedding.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hindu Wedding" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <StandaloneArrowCTA to="/weddings/hindu" darkBackground={true} />
                 </div>
               </div>
             </Reveal>
@@ -168,6 +155,8 @@ const Index = () => {
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
                   <img src="/portfolio_romantic.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Engagement Photography" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <StandaloneArrowCTA to="/weddings/engagement" darkBackground={true} />
                 </div>
               </div>
             </Reveal>
@@ -176,6 +165,8 @@ const Index = () => {
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
                   <img src="/portfolio_romantic.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Christian Wedding" />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <StandaloneArrowCTA to="/weddings/christian" darkBackground={true} />
                 </div>
               </div>
             </Reveal>
