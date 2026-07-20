@@ -188,7 +188,7 @@ export const StickyServicesScroll: React.FC = () => {
       <div className="absolute bottom-[10%] right-10 w-[500px] h-[500px] bg-blue-100/35 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Main Split-Screen Container */}
-      <div className="container mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1500px] w-full h-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-14 relative z-20">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1500px] w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-2 md:gap-8 lg:gap-14 relative z-20">
         
         {/* LEFT COLUMN: Section Title, Story Paragraph & Chapter Progress */}
         <div className="w-full lg:w-[38%] xl:w-[36%] flex flex-col justify-center text-center lg:text-left shrink-0 z-30 py-1 lg:py-6">
@@ -227,7 +227,7 @@ export const StickyServicesScroll: React.FC = () => {
         </div>
 
         {/* RIGHT COLUMN: Breathable, Crisp Sticky Card Stack with Adaptive Smart Image Presentation */}
-        <div className="w-full lg:w-[58%] xl:w-[56%] h-[68vh] sm:h-[68vh] lg:h-[70vh] min-h-[430px] sm:min-h-0 relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
+        <div className="w-full lg:w-[58%] xl:w-[56%] h-[55vh] sm:h-[68vh] lg:h-[70vh] min-h-[380px] sm:min-h-[430px] relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
           {servicesData.map((service, index) => (
             <div
               key={service.id}

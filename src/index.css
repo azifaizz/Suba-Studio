@@ -78,6 +78,10 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent text resizing on orientation change */
+    -webkit-text-size-adjust: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -88,6 +92,22 @@
 @layer utilities {
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Mobile Safe Areas and Touch Targets */
+  .safe-pt { padding-top: env(safe-area-inset-top); }
+  .safe-pb { padding-bottom: env(safe-area-inset-bottom); }
+  
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Prevent hover effects sticking on mobile */
+  @media (hover: none) {
+    .hover-none-mobile:hover {
+      background-color: transparent !important;
+      transform: none !important;
+    }
   }
 }
 

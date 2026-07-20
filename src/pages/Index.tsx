@@ -95,8 +95,8 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 container mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
+      <section id="about" className="py-16 md:py-24 container mx-auto px-6">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
           <div className="w-full md:w-[30%]">
             <Reveal>
               <div className="relative group max-w-xs mx-auto md:max-w-none">
@@ -107,18 +107,18 @@ const Index = () => {
           </div>
           <div className="w-full md:w-[70%] space-y-6">
             <Reveal>
-              <span className="text-zg-blue font-serif font-bold tracking-widest text-xs uppercase mb-2 block">About Us</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold">Welcome to Suba Studios!</h2>
+              <span className="text-zg-blue font-serif font-bold tracking-widest text-xs uppercase mb-2 block text-center md:text-left">About Us</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-center md:text-left">Welcome to Suba Studios!</h2>
             </Reveal>
             <Reveal delay={200}>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed text-center md:text-left">
                 Suba Studios is considered to be the best place for visual storytelling and is among the top wedding photography studios in the country. Our team of wedding photographers is here to assist you in having a meaningful, stress-free, and real event while uniquely documenting your love.
               </p>
-              <p className="text-gray-600 leading-relaxed mt-4">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mt-4 text-center md:text-left">
                 We want to be available for you all day long and that includes from the get go. During the wedding photoshoot, we give our best to help the couple with different wedding poses. We have written hundreds of original love stories using our expertise in photography all around the world.
               </p>
-              <div className="pt-6">
-                <Button variant="link" className="p-0 text-zg-blue font-bold text-lg group" onClick={() => navigate('/about')}>
+              <div className="pt-6 flex justify-center md:justify-start">
+                <Button variant="link" className="p-0 text-zg-blue font-bold text-lg group touch-target" onClick={() => navigate('/about')}>
                   Learn More About Us <ArrowRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform" />
                 </Button>
               </div>
@@ -131,15 +131,15 @@ const Index = () => {
       <AnimatedStatsSection />
 
       {/* Timeless Celebrations Section */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-16 md:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
           <Reveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-6xl font-serif font-bold uppercase tracking-widest">TIMELESS CELEBRATIONS</h2>
+            <div className="text-center mb-10 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif font-bold uppercase tracking-widest">TIMELESS CELEBRATIONS</h2>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
             <Reveal delay={100}>
               <div className="group cursor-pointer" onClick={() => navigate('/weddings/hindu')}>
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">

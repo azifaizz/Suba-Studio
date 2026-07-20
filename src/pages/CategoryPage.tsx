@@ -4,8 +4,9 @@ import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { categoryData, defaultContent, CategoryContent } from '@/data/categoryContent';
 import { ArrowRight } from 'lucide-react';
-import HinduWeddingPage from './weddings/HinduWeddingPage';
-import ChristianWeddingPage from './weddings/ChristianWeddingPage';
+import CinematicStoryboardPage from '@/components/layout/CinematicStoryboardPage';
+import BridalPortraitsPage from '@/pages/BridalPortraitsPage';
+
 const CategoryPage = () => {
     const { subcategory } = useParams();
     const { pathname } = useLocation();
@@ -14,11 +15,13 @@ const CategoryPage = () => {
     const isVideoRoute = pathname.includes('/video/');
     
     // Custom Page Routing for Awwwards-winning galleries
-    if (subcategory === 'hindu' && !isVideoRoute) {
-        return <HinduWeddingPage />;
+    const storyboardCategories = ['hindu', 'christian', 'engagement', 'pre-wedding', 'post-wedding', 'maternity'];
+    if (subcategory && storyboardCategories.includes(subcategory) && !isVideoRoute) {
+        return <CinematicStoryboardPage subcategory={subcategory} />;
     }
-    if (subcategory === 'christian' && !isVideoRoute) {
-        return <ChristianWeddingPage />;
+
+    if (subcategory === 'bridal-portraits' && !isVideoRoute) {
+        return <BridalPortraitsPage subcategory={subcategory} />;
     }
 
     const isOutdoorVideo = isVideoRoute && subcategory === 'outdoor';

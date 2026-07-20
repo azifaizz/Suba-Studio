@@ -379,7 +379,7 @@ const Navbar = () => {
                         <button
                             type="button"
                             aria-label="Open navigation menu"
-                            className={`lg:hidden z-50 shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 active:scale-95 ${
+                            className={`lg:hidden z-50 shrink-0 flex items-center justify-center w-12 h-12 touch-target rounded-full transition-all duration-300 active:scale-95 ${
                                 isScrolled || !isHome ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10'
                             }`}
                             onClick={() => setIsMobileMenuOpen(true)}
@@ -413,7 +413,7 @@ const Navbar = () => {
                             animate={{ x: '0%' }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[380px] bg-white text-black shadow-[0_0_80px_rgba(0,0,0,0.35)] z-[60] lg:hidden overflow-y-auto flex flex-col justify-between [padding-left:max(20px,env(safe-area-inset-left))] [padding-right:max(20px,env(safe-area-inset-right))]"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[380px] bg-white text-black shadow-[0_0_80px_rgba(0,0,0,0.35)] z-[60] lg:hidden overflow-y-auto flex flex-col justify-between [padding-left:max(20px,env(safe-area-inset-left))] [padding-right:max(20px,env(safe-area-inset-right))] safe-pt"
                         >
                             {/* Drawer Header (Logo + Close X Button) */}
                             <div className="pt-6 sm:pt-7 pb-4 px-4 sm:px-6 flex items-center justify-between border-b border-gray-100/80 shrink-0">
@@ -424,7 +424,7 @@ const Navbar = () => {
                                     type="button"
                                     aria-label="Close navigation drawer"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center justify-center transition-all active:scale-90 shrink-0 shadow-sm"
+                                    className="w-12 h-12 touch-target rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center justify-center transition-all active:scale-90 shrink-0 shadow-sm"
                                 >
                                     <X size={22} strokeWidth={2.5} />
                                 </button>
