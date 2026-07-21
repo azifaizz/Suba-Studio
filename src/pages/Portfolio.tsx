@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
+import { AdaptiveImage } from '@/components/ui/adaptive-image';
 
 const categories = ["All", "Weddings", "Outdoor", "Video", "Events"];
 
@@ -50,18 +51,19 @@ const Portfolio = () => {
                     </div>
                 </Reveal>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Masonry Layout */}
+                <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
                     {filteredData.map((item, index) => (
                         <Reveal key={item.id} delay={index * 100}>
-                            <div className="group relative overflow-hidden rounded-xl aspect-[3/4] cursor-pointer">
-                                <img
+                            <div className="group relative overflow-hidden rounded-xl cursor-pointer break-inside-avoid">
+                                <AdaptiveImage
                                     src={item.image}
                                     alt={item.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    imageClassName="transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                                    <span className="text-zg-blue text-xs font-bold uppercase mb-2">{item.category}</span>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 pointer-events-none">
+                                    <span className="text-zg-blue text-xs font-bold uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{item.category}</span>
+                                    <h3 className="text-white text-lg font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{item.title}</h3>
                                 </div>
                             </div>
                         </Reveal>

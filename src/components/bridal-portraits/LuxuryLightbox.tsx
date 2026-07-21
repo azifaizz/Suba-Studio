@@ -22,8 +22,8 @@ const LuxuryLightbox: React.FC<Props> = ({ images }) => {
         setIsOpen(true);
       }
     };
-    window.addEventListener('open-lightbox' as any, handleOpenLightbox);
-    return () => window.removeEventListener('open-lightbox' as any, handleOpenLightbox);
+    window.addEventListener('open-lightbox', handleOpenLightbox as EventListener);
+    return () => window.removeEventListener('open-lightbox', handleOpenLightbox as EventListener);
   }, [images]);
 
   // Handle keyboard navigation
@@ -36,6 +36,7 @@ const LuxuryLightbox: React.FC<Props> = ({ images }) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {

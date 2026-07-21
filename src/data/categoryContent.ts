@@ -1,4 +1,14 @@
 
+export interface VideoItem {
+    id: number;
+    title: string;
+    subtitle?: string;
+    location?: string;
+    date?: string;
+    description?: string;
+    url: string;
+}
+
 export interface CategoryContent {
     title: string;
     tagline: string;
@@ -8,6 +18,7 @@ export interface CategoryContent {
     heroImage: string;
     collageImages?: string[];
     albums: { id: number; title: string; image: string }[];
+    videoList?: VideoItem[];
 }
 
 export const categoryData: Record<string, CategoryContent> = {
@@ -17,11 +28,11 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Imagine a magical wedding… under the warm glow of the setting sun, surrounded by breathtaking scenery. Now, witness your love story, as the birds sing their blessings. Yes, outdoor weddings offer a beautiful ceremonial stage that enhances the romance and joy of your special day. We understand the significance of these timeless traditions and the importance of preserving them for future generations.",
         whyChooseTitle: "Why choose our service for your outdoor wedding photography?",
         whyChooseText: "A keen eye for detail is what our skilled photographers are adept at; every natural element will be captured to create images that evoke emotion and tell your unique love story. We ensure that every picture of your love story is beautifully documented, understanding your vision, desired theme and aesthetics.",
-        heroImage: "/landscape.png.png",
+        heroImage: "/landscape.png",
         albums: [
             { id: 1, title: "Reshma R.R + Gowri Shanker G", image: "/landscape.png" },
-            { id: 2, title: "Ahila S + Keerthivasan S", image: "/portfolio_romantic.png" },
-            { id: 3, title: "M.Subasri + S.Arun Kumar", image: "/hero.png" },
+            { id: 2, title: "Sushma + Praveen", image: "/portrait.png" },
+            { id: 3, title: "M.Subasri + S.Arun Kumar", image: "/landscape.png" },
         ]
     },
     "christian": {
@@ -51,18 +62,25 @@ export const categoryData: Record<string, CategoryContent> = {
         heroImage: "/hindu/11.jpg",
         collageImages: ["/hindu/4.jpg", "/hindu/2.jpg", "/hindu/1.png"],
         albums: [
-            { id: 1, title: "", image: "/hindu/5.jpg" },
-            { id: 2, title: "", image: "/hindu/6.jpg" },
-            { id: 3, title: "", image: "/hindu/7.jpg" },
-            { id: 4, title: "", image: "/hindu/8.jpg" },
-            { id: 5, title: "", image: "/hindu/9.jpg" },
-            { id: 6, title: "", image: "/hindu/10.jpg" },
-            { id: 7, title: "", image: "/hindu/11.jpg" },
-            { id: 8, title: "", image: "/hindu/12.jpg" },
-            { id: 9, title: "", image: "/hindu/13.jpg" },
-            { id: 10, title: "", image: "/hindu/14.jpg" },
-            { id: 11, title: "", image: "/hindu/15.jpg" },
-            { id: 12, title: "", image: "/hindu/16.jpg" },
+            { id: 1, title: "", image: "/hindu/1.png" },
+            { id: 2, title: "", image: "/hindu/2.jpg" },
+            { id: 3, title: "", image: "/hindu/3.jpg" },
+            { id: 4, title: "", image: "/hindu/4.jpg" },
+            { id: 5, title: "", image: "/hindu/5.jpg" },
+            { id: 6, title: "", image: "/hindu/6.jpg" },
+            { id: 7, title: "", image: "/hindu/7.jpg" },
+            { id: 8, title: "", image: "/hindu/8.jpg" },
+            { id: 9, title: "", image: "/hindu/9.jpg" },
+            { id: 10, title: "", image: "/hindu/10.jpg" },
+            { id: 11, title: "", image: "/hindu/11.jpg" },
+            { id: 12, title: "", image: "/hindu/12.jpg" },
+            { id: 13, title: "", image: "/hindu/13.jpg" },
+            { id: 14, title: "", image: "/hindu/14.jpg" },
+            { id: 15, title: "", image: "/hindu/15.jpg" },
+            { id: 16, title: "", image: "/hindu/16.jpg" },
+            { id: 17, title: "", image: "/hindu/17.jpg" },
+            { id: 18, title: "", image: "/hindu/18.jpg" },
+            { id: 19, title: "", image: "/hindu/19.jpg" },
         ]
     },
     "engagement": {
@@ -86,18 +104,22 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "A bride on her wedding day is a vision of beauty. We focus on capturing the intricacies of her attire, the details of her jewelry, and the emotions that play on her face. Our bridal portraits are artistic, timeless, and designed to make you look your absolute best.",
         whyChooseTitle: "Why choose us for your bridal portraits?",
         whyChooseText: "We know how to make you feel comfortable in front of the camera, guiding you through poses that highlight your best features. We play with light and shadow to create dramatic, editorial-style images that belong in a magazine.",
-        heroImage: "/SUBA6489 copy 2.jpg",
-        collageImages: ["/10.JPG", "/18.JPG", "/14.JPG"],
+        heroImage: "/Bridal/14.JPG",
+        collageImages: [
+            "/Bridal/16.jpg", // Hero Image
+            "/Bridal/19.jpg", // Supporting Portrait
+            "/Bridal/8.JPG",  // Detail Image
+            "/Bridal/18.JPG", // Supporting Landscape
+            "/Bridal/4.JPG",  // Portrait Accent
+            "/Bridal/10.JPG"  // Detail Portrait
+        ],
         albums: [
-            { id: 1, title: "", image: "/1.jpg" },
-            { id: 2, title: "", image: "/2.jpg" },
-            { id: 3, title: "", image: "/3.jpg" },
-            { id: 4, title: "", image: "/4.JPG" },
-            { id: 5, title: "", image: "/5.JPG" },
-            { id: 6, title: "", image: "/8.JPG" },
-            { id: 7, title: "", image: "/14.JPG" },
-            { id: 8, title: "", image: "/15.JPG" },
-            { id: 9, title: "", image: "/16.jpg" },
+            { id: 1, title: "", image: "/Bridal/1.jpg" },
+            { id: 2, title: "", image: "/Bridal/2.jpg" },
+            { id: 3, title: "", image: "/Bridal/3.jpg" },
+            { id: 4, title: "", image: "/Bridal/5.JPG" },
+            { id: 5, title: "", image: "/Bridal/15.JPG" },
+            { id: 6, title: "", image: "/Bridal/20.jpg" }
         ]
     },
     "couple-portraits": {
@@ -106,18 +128,22 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "The connection between a couple is the heart of any wedding. We create intimate, romantic, and fun portraits that reflect your unique chemistry. Whether it's a stolen glance or a hearty laugh, we capture it all.",
         whyChooseTitle: "Why choose us for your couple portraits?",
         whyChooseText: "We move beyond stiff poses to capture genuine interactions. Our goal is to create images that feel natural and unforced, allowing your love to shine through.",
-        heroImage: "/b8.jpg",
-        collageImages: ["/b12.JPG", "/b4.JPG", "/b3.JPG"],
+        heroImage: "/couple_portrait/b2.JPG",
+        collageImages: ["/couple_portrait/pp2.jpg", "/couple_portrait/pp3.jpg", "/couple_portrait/pp4.jpg"],
         albums: [
-            { id: 1, title: "", image: "/b2.JPG" },
-            { id: 2, title: "", image: "/b1.JPG" },
-            { id: 3, title: "", image: "/b6.JPG" },
-            { id: 4, title: "", image: "/b7.JPG" },
-            { id: 5, title: "", image: "/b9.jpg" },
-            { id: 6, title: "", image: "/b10.JPG" },
-            { id: 7, title: "", image: "/b11.JPG" },
-            { id: 8, title: "", image: "/b14.JPG" },
-            { id: 9, title: "", image: "/b15.JPG" },
+            { id: 1, title: "", image: "/couple_portrait/b1.JPG" },
+            { id: 2, title: "", image: "/couple_portrait/b3.JPG" },
+            { id: 3, title: "", image: "/couple_portrait/b4.JPG" },
+            { id: 4, title: "", image: "/couple_portrait/b6.JPG" },
+            { id: 5, title: "", image: "/couple_portrait/b7.JPG" },
+            { id: 6, title: "", image: "/couple_portrait/b8.jpg" },
+            { id: 7, title: "", image: "/couple_portrait/b9.jpg" },
+            { id: 8, title: "", image: "/couple_portrait/b10.JPG" },
+            { id: 9, title: "", image: "/couple_portrait/b2.JPG" },
+            { id: 10, title: "", image: "/couple_portrait/b11.JPG" },
+            { id: 11, title: "", image: "/couple_portrait/b12.JPG" },
+            { id: 12, title: "", image: "/couple_portrait/b14.JPG" },
+            { id: 13, title: "", image: "/couple_portrait/b15.JPG" },
         ]
     },
     "groom-portraits": {
@@ -126,18 +152,18 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Why should brides have all the fun? We ensure the groom gets his moment in the spotlight too. From getting ready shots to stylish solo portraits, we capture the groom's personality and style.",
         whyChooseTitle: "Expert Groom Photography",
         whyChooseText: "We bring a fashion-forward approach to groom photography, ensuring you look sharp, confident, and dashing on your big day.",
-        heroImage: "/g14.JPG",
-        collageImages: ["/g3.JPG", "/g16.JPG", "/g25.JPG"],
+        heroImage: "/groom/7.JPG",
+        collageImages: ["/groom/2.JPG", "/groom/3.JPG", "/groom/4.JPG"],
         albums: [
-            { id: 1, title: "", image: "/g17.JPG" },
-            { id: 2, title: "", image: "/g11.JPG" },
-            { id: 3, title: "", image: "/g24.JPG" },
-            { id: 4, title: "", image: "/g34.jpg" },
-            { id: 5, title: "", image: "/g28.JPG" },
-            { id: 6, title: "", image: "/g31.JPG" },
-            { id: 7, title: "", image: "/g19.JPG" },
-            { id: 8, title: "", image: "/g20.JPG" },
-            { id: 9, title: "", image: "/g27.JPG" },
+            { id: 1, title: "", image: "/groom/5.JPG" },
+            { id: 2, title: "", image: "/groom/6.JPG" },
+            { id: 3, title: "", image: "/groom/1.JPG" },
+            { id: 4, title: "", image: "/groom/8.JPG" },
+            { id: 5, title: "", image: "/groom/9.JPG" },
+            { id: 6, title: "", image: "/groom/10.JPG" },
+            { id: 7, title: "", image: "/groom/11.JPG" },
+            { id: 8, title: "", image: "/groom/12.JPG" },
+            { id: 9, title: "", image: "/groom/13.jpg" },
         ]
     },
     "candid-moments": {
@@ -149,7 +175,7 @@ export const categoryData: Record<string, CategoryContent> = {
         heroImage: "/landscape.png",
         albums: [
             { id: 1, title: "Laughter & Tears", image: "/landscape.png" },
-            { id: 2, title: "Dance Floor Action", image: "/hero.png" },
+            { id: 2, title: "Dance Floor Action", image: "/landscape.png" },
         ]
     },
     "jewellery": {
@@ -170,14 +196,14 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "From the fire ceremony to the exchange of garlands, rituals are the soul of an Indian wedding. We document these sacred moments with respect and artistry, preserving the cultural significance of your union.",
         whyChooseTitle: "respectful Documentation",
         whyChooseText: "We understand the importance of each ritual and ensure we are in the perfect position to capture it without disrupting the ceremony.",
-        heroImage: "/r4.JPG",
-        collageImages: ["/r2.JPG", "/r3.JPG", "/r4.JPG"],
+        heroImage: "/Rituals/r4.JPG",
+        collageImages: ["/Rituals/r2.JPG", "/Rituals/r3.JPG", "/Rituals/r4.JPG"],
         albums: [
-            { id: 1, title: "", image: "/r1.JPG" },
-            { id: 2, title: "", image: "/r2.JPG" },
-            { id: 3, title: "", image: "/r3.JPG" },
-            { id: 4, title: "", image: "/r4.JPG" },
-            { id: 5, title: "", image: "/r5.JPG" },
+            { id: 1, title: "", image: "/Rituals/r1.JPG" },
+            { id: 2, title: "", image: "/Rituals/r2.JPG" },
+            { id: 3, title: "", image: "/Rituals/r3.JPG" },
+            { id: 4, title: "", image: "/Rituals/r4.JPG" },
+            { id: 5, title: "", image: "/Rituals/r5.JPG" },
         ]
     },
     "pre-wedding": {
@@ -187,15 +213,15 @@ export const categoryData: Record<string, CategoryContent> = {
         whyChooseTitle: "Why choose our pre-wedding photography?",
         whyChooseText: "We focus on natural interactions and beautiful locations to create sets of photos that reflect your personalities. Our team ensures a relaxed atmosphere where your love can truly shine through.",
         heroImage: "/pp6.JPG",
-        collageImages: ["/pp5.jpg", "/p1.JPG", "/pp2.jpg"],
+        collageImages: ["/pp5.jpg", "/p1.JPG", "/couple_portrait/pp2.jpg"],
         albums: [
-            { id: 1, title: "", image: "/pp3.jpg" },
-            { id: 2, title: "", image: "/pp4.jpg" },
-            { id: 3, title: "", image: "/pp7.jpg" },
-            { id: 4, title: "", image: "/pp8.jpg" },
-            { id: 5, title: "", image: "/pp9.jpg" },
+            { id: 1, title: "", image: "/couple_portrait/pp3.jpg" },
+            { id: 2, title: "", image: "/couple_portrait/pp4.jpg" },
+            { id: 3, title: "", image: "/couple_portrait/pp7.jpg" },
+            { id: 4, title: "", image: "/couple_portrait/pp8.jpg" },
+            { id: 5, title: "", image: "/couple_portrait/pp9.jpg" },
             { id: 6, title: "", image: "/pp10.jpg" },
-            { id: 7, title: "", image: "/pp11.jpg" },
+            { id: 7, title: "", image: "/couple_portrait/pp11.jpg" },
         ]
     },
     "post-wedding": {
@@ -274,12 +300,65 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Experience your wedding day through our cinematic lens. Our candid films focus on the unscripted moments, the laughter, the tears, and the genuine connections that make your story unique. We tell your story just as it happened, preserving the essence of your most precious day.",
         whyChooseTitle: "Why choose our candid wedding films?",
         whyChooseText: "We specialize in cinematic storytelling that goes beyond traditional videography. Our team uses state-of-the-art equipment and creative editing techniques to create films that are emotionally resonant and visually stunning.",
-        heroImage: "/4Z5A8479.JPG",
-        collageImages: ["/08 copy.jpg"],
-        albums: [
-            { id: 1, title: "", image: "/Bs.mp4" },
-            { id: 2, title: "", image: "/Ma.mp4" },
-            { id: 3, title: "", image: "/Mk.mp4" },
+        heroImage: "/4Z5A4700.jpg",
+        albums: [],
+        videoList: [
+            {
+                id: 1,
+                title: "A Love Like This",
+                subtitle: "An epic celebration of love set against the stunning backdrop of Chennai. A story of two souls becoming one.",
+                location: "Chennai, India",
+                date: "Dec 2024",
+                url: "/Bs.mp4"
+            },
+            {
+                id: 2,
+                title: "The Vows",
+                subtitle: "Sneha & Arjun",
+                location: "Kerala",
+                url: "/Ma.mp4"
+            },
+            {
+                id: 3,
+                title: "Under The Stars",
+                subtitle: "Priya & Vikram",
+                location: "Bangalore",
+                url: "/Mk.mp4"
+            },
+            {
+                id: 4,
+                title: "Eternal Promise",
+                subtitle: "Divya & Karthik",
+                location: "Coimbatore",
+                url: "/Aa.mp4"
+            },
+            {
+                id: 5,
+                title: "Midnight Joy",
+                subtitle: "Aisha & Rohan",
+                location: "Goa",
+                url: "/Ss.mp4"
+            },
+            {
+                id: 6,
+                title: "Sunlit Whispers",
+                location: "Ooty",
+                url: "/Od.mp4"
+            },
+            {
+                id: 7,
+                title: "A New Beginning",
+                location: "Chennai",
+                url: "/Bby.mp4"
+            },
+            {
+                id: 8,
+                title: "The Grand Affair",
+                subtitle: "A luxury celebration spanning three days of joy, color, and tradition.",
+                location: "Udaipur",
+                date: "Oct 2024",
+                url: "/Mk1.mp4"
+            }
         ]
     },
     "outdoor-video": {
@@ -289,10 +368,11 @@ export const categoryData: Record<string, CategoryContent> = {
         whyChooseTitle: "Expert Outdoor Cinematography",
         whyChooseText: "We are experts at working with natural light and outdoor environments. Our team ensures that your outdoor wedding film is perfectly exposed and beautifully framed.",
         heroImage: "/landscape.png",
-        albums: [
-            { id: 1, title: "", image: "/Mk1.mp4" },
-            { id: 2, title: "", image: "/Aa.mp4" },
-            { id: 3, title: "", image: "/Ss.mp4" },
+        albums: [],
+        videoList: [
+            { id: 1, title: "The Grand Affair", url: "/Mk1.mp4" },
+            { id: 2, title: "Eternal Promise", url: "/Aa.mp4" },
+            { id: 3, title: "Midnight Joy", url: "/Ss.mp4" }
         ]
     },
     "short-stories-video": {
@@ -301,9 +381,12 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Our short stories are high-impact, emotional highlights of your special day. We distill the absolute best moments into a cinematic experience that lets you relive the magic in just a few minutes.",
         whyChooseTitle: "Professional Cinematic Storytelling",
         whyChooseText: "We focus on the narrative arc of your day, ensuring every cut, transition, and musical choice enhances the emotional journey of your wedding story.",
-        heroImage: "/SUBA6537 copy 2.jpg",
-        collageImages: ["/Od.mp4", "/Bby.mp4"],
-        albums: []
+        heroImage: "/suba.jpg",
+        albums: [],
+        videoList: [
+            { id: 1, title: "A Day in the Sun", url: "/Od.mp4" },
+            { id: 2, title: "Baby Shower Joy", url: "/Bby.mp4" }
+        ]
     }
 };
 
@@ -313,10 +396,10 @@ export const defaultContent: CategoryContent = {
     description: "At Suba Studios, we believe in telling your story through our lens. Whether it's a wedding, a pre-wedding shoot, or a special event, we bring our artistic vision and technical expertise to create stunning visuals that you will treasure forever.",
     whyChooseTitle: "Why Choose Suba Studios?",
     whyChooseText: "With over a decade of experience and a passion for storytelling, we are the preferred choice for couples who want nothing but the best. Our team of expert photographers and cinematographers work tirelessly to ensure every frame is a masterpiece.",
-    heroImage: "/hero.png",
+    heroImage: "/landscape.png",
     albums: [
         { id: 1, title: "Latest Wedding Collection", image: "/portfolio_wedding.png" },
-        { id: 2, title: "Cinematic Highlights", image: "/hero.png" },
+        { id: 2, title: "Cinematic Highlights", image: "/landscape.png" },
         { id: 3, title: "Portrait Session", image: "/portrait.png" },
     ]
 };

@@ -42,6 +42,6 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 // Add global type for typescript
 declare global {
   interface Window {
-    lenis: any;
+    lenis: Lenis;
   }
 }

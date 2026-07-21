@@ -82,7 +82,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           ref={imageRef}
-          src="/hero.png" 
+          src="/suba.jpg" 
           alt="Cinematic Founder Photograph" 
           className="w-full h-full object-cover transform origin-center"
         />

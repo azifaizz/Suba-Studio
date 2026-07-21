@@ -18,10 +18,14 @@ const ValuesSection = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from('.value-card', {
+    gsap.fromTo('.value-card', {
       y: 100,
       opacity: 0,
-      rotationX: 45,
+      rotationX: 45
+    }, {
+      y: 0,
+      opacity: 1,
+      rotationX: 0,
       duration: 1,
       stagger: 0.1,
       ease: "back.out(1.7)",

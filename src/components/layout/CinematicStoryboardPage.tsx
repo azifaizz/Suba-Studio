@@ -5,8 +5,17 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { categoryData } from '@/data/categoryContent';
 import { useParams, useLocation } from 'react-router-dom';
+import imageMetadata from '@/data/imageMetadata.json';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const getOrientationAspect = (src: string, defaultClass: string) => {
+    const meta = (imageMetadata as any)[src];
+    if (meta?.orientation === 'landscape') {
+        return "aspect-[4/3] md:aspect-[3/2]";
+    }
+    return defaultClass;
+};
 
 const premiumQuotes = [
   "Every ritual is a <span class='text-[#D4AF37]'>blessing</span>.<br/>Every blessing becomes a memory.",
@@ -17,27 +26,29 @@ const premiumQuotes = [
 ];
 
 // Helper to chunk array
-const chunkArray = (arr: any[], size: number) => {
+const chunkArray = <T,>(arr: T[], size: number) => {
   return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
     arr.slice(i * size, i * size + size)
   );
 };
 
 export default function CinematicStoryboardPage({ subcategory }: { subcategory: string }) {
+    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+    const mainRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }, [subcategory]); // Scroll to top when subcategory changes
+
     // 1. Fetch data for this specific category
     const content = categoryData[subcategory];
     
-    // Fallback if content isn't found
-    if (!content) {
-        return <div className="min-h-screen bg-black text-white flex items-center justify-center">Category not found</div>;
-    }
-
     // Combine hero, collage, and album images into a single flat list for the storyboard
     // We map them to the format the Lightbox expects { src: string }
     const allImages = [
-        ...(content.heroImage && !content.heroImage.endsWith('.mp4') ? [{ src: content.heroImage }] : []),
-        ...(content.collageImages ? content.collageImages.filter(img => !img.endsWith('.mp4')).map(img => ({ src: img })) : []),
-        ...(content.albums ? content.albums.filter(album => album.image && !album.image.endsWith('.mp4')).map(album => ({ src: album.image })) : [])
+        ...(content?.heroImage && !content.heroImage.endsWith('.mp4') ? [{ src: content.heroImage }] : []),
+        ...(content?.collageImages ? content.collageImages.filter(img => !img.endsWith('.mp4')).map(img => ({ src: img })) : []),
+        ...(content?.albums ? content.albums.filter(album => album.image && !album.image.endsWith('.mp4')).map(album => ({ src: album.image })) : [])
     ];
 
     // Remove duplicates just in case
@@ -45,13 +56,6 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
 
     // Chunk images into groups of 3
     const chapters = chunkArray(uniqueImages, 3);
-    
-    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-    const mainRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, [subcategory]); // Scroll to top when subcategory changes
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -173,6 +177,11 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
         return () => ctx.revert();
     }, [chapters.length, subcategory]); // Re-run GSAP when subcategory changes
 
+    // Fallback if content isn't found
+    if (!content) {
+        return <div className="min-h-screen bg-black text-white flex items-center justify-center">Category not found</div>;
+    }
+
     return (
         <SmoothScroll>
             <div className="bg-[#0a0a0a] min-h-screen text-white font-sans selection:bg-[#D4AF37]/30 selection:text-white overflow-hidden">
@@ -208,7 +217,7 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
                                         {/* Image 1 (Left Desktop, Top Mobile) */}
                                         {chunk[0] && (
                                             <div 
-                                                className="story-img-1 w-[85%] mr-auto md:w-full md:col-span-1 lg:col-span-3 lg:col-start-2 relative aspect-[4/5] md:aspect-[3/4] rounded-[16px] md:rounded-[24px] overflow-hidden cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.4)] group will-change-transform z-10"
+                                                className={`story-img-1 w-[85%] mr-auto md:w-full md:col-span-1 lg:col-span-3 lg:col-start-2 relative ${getOrientationAspect(chunk[0].src, 'aspect-[4/5] md:aspect-[3/4]')} rounded-[16px] md:rounded-[24px] overflow-hidden cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.4)] group will-change-transform z-10`}
                                                 onClick={() => {
                                                     const imgIdx = uniqueImages.findIndex(i => i.src === chunk[0].src);
                                                     setLightboxIndex(imgIdx);
@@ -225,7 +234,7 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
                                         {/* Image 2 (Center Hero Desktop, Middle Mobile) */}
                                         {chunk[1] && (
                                             <div 
-                                                className="story-img-2 w-[95%] mx-auto -mt-16 md:mt-0 md:w-full col-span-1 lg:col-span-4 relative aspect-[3/4] md:aspect-[4/5] rounded-[16px] md:rounded-[28px] overflow-hidden cursor-pointer shadow-[0_30px_60px_rgba(0,0,0,0.7)] group will-change-transform z-20"
+                                                className={`story-img-2 w-[95%] mx-auto -mt-16 md:mt-0 md:w-full col-span-1 lg:col-span-4 relative ${getOrientationAspect(chunk[1].src, 'aspect-[3/4] md:aspect-[4/5]')} rounded-[16px] md:rounded-[28px] overflow-hidden cursor-pointer shadow-[0_30px_60px_rgba(0,0,0,0.7)] group will-change-transform z-20`}
                                                 onClick={() => {
                                                     const imgIdx = uniqueImages.findIndex(i => i.src === chunk[1].src);
                                                     setLightboxIndex(imgIdx);
@@ -242,7 +251,7 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
                                         {/* Image 3 (Right Desktop, Bottom Mobile) */}
                                         {chunk[2] && (
                                             <div 
-                                                className="story-img-3 w-[85%] ml-auto -mt-16 md:mt-0 md:w-full lg:col-span-3 relative aspect-[4/5] md:aspect-[3/4] rounded-[16px] md:rounded-[24px] overflow-hidden cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.4)] group will-change-transform z-10"
+                                                className={`story-img-3 w-[85%] ml-auto -mt-16 md:mt-0 md:w-full lg:col-span-3 relative ${getOrientationAspect(chunk[2].src, 'aspect-[4/5] md:aspect-[3/4]')} rounded-[16px] md:rounded-[24px] overflow-hidden cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.4)] group will-change-transform z-10`}
                                                 onClick={() => {
                                                     const imgIdx = uniqueImages.findIndex(i => i.src === chunk[2].src);
                                                     setLightboxIndex(imgIdx);
@@ -303,7 +312,7 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
 
                 {/* Lightbox Overlay */}
                 <CinematicLightbox 
-                    images={uniqueImages as any}
+                    images={uniqueImages}
                     currentIndex={lightboxIndex}
                     onClose={() => setLightboxIndex(null)}
                     onNavigate={setLightboxIndex}

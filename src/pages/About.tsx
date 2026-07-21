@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 
 import HeroSection from '@/components/about/HeroSection';
-import VisualStorytellingSection from '@/components/about/VisualStorytellingSection';
-import TheJourneySection from '@/components/about/TheJourneySection';
-import FounderSpotlightSection from '@/components/about/FounderSpotlightSection';
+import FounderShowcaseSection from '@/components/about/FounderShowcaseSection';
 import PhilosophySection from '@/components/about/PhilosophySection';
 import AwardsSection from '@/components/about/AwardsSection';
 import ValuesSection from '@/components/about/ValuesSection';
@@ -14,6 +12,8 @@ import BookStorySection from '@/components/about/BookStorySection';
 
 const About = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       duration: 1.2,
@@ -41,9 +41,7 @@ const About = () => {
     <div className="bg-black min-h-screen text-white overflow-hidden">
       <main>
         <HeroSection />
-        <VisualStorytellingSection />
-        <TheJourneySection />
-        <FounderSpotlightSection />
+        <FounderShowcaseSection />
         <PhilosophySection />
         <AwardsSection />
         <ValuesSection />

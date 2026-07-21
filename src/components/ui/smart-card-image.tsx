@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { StandaloneArrowCTA } from '@/components/ui/standalone-arrow-cta';
+import imageMetadata from '@/data/imageMetadata.json';
 
 interface SmartCardImageProps {
   src: string;
@@ -9,56 +10,30 @@ interface SmartCardImageProps {
   className?: string;
 }
 
-type Orientation = 'portrait' | 'landscape' | 'square' | 'panoramic';
-
 export const SmartCardImage: React.FC<SmartCardImageProps> = ({
   src,
   alt,
   link,
   className = "",
 }) => {
-  const [orientation, setOrientation] = useState<Orientation>('landscape');
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [useContain, setUseContain] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Check orientation once image is loaded either via DOM or new Image()
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
-      const ratio = img.naturalWidth / img.naturalHeight;
-      let detectedOrientation: Orientation = 'landscape';
+  // Look up pre-calculated metadata
+  const metadata = imageMetadata[src as keyof typeof imageMetadata] || 
+                   imageMetadata[src.replace(/^\//, '') as keyof typeof imageMetadata];
 
-      if (ratio < 0.82) {
-        detectedOrientation = 'portrait';
-      } else if (ratio <= 1.18) {
-        detectedOrientation = 'square';
-      } else if (ratio <= 1.85) {
-        detectedOrientation = 'landscape';
-      } else {
-        detectedOrientation = 'panoramic';
-      }
+  const orientation = metadata ? metadata.orientation : 'landscape';
+  const ratio = metadata ? metadata.aspectRatio : 1.5;
 
-      setOrientation(detectedOrientation);
-
-      // Smart Focal Point Strategy:
-      // If portrait or panoramic image is placed in a mismatched slot where cropping would lose heads/bodies,
-      // intelligently switch to contain + ambient blurred backdrop so 100% of the couple is sharp and visible.
-      if (detectedOrientation === 'panoramic' || (detectedOrientation === 'portrait' && ratio < 0.72)) {
-        setUseContain(true);
-      } else {
-        setUseContain(false);
-      }
-
-      setIsLoaded(true);
-    };
-  }, [src]);
+  // Smart Focal Point Strategy:
+  // If portrait or panoramic image is placed in a mismatched slot where cropping would lose heads/bodies,
+  // intelligently switch to contain + ambient blurred backdrop so 100% of the couple is sharp and visible.
+  const useContain = orientation === 'panoramic' || (orientation === 'portrait' && ratio < 0.72);
 
   // Image Reveal Animation (Duration 700ms, Power4.Out: fade in, scale 1.03 -> 1, slight blur removal)
   useEffect(() => {
-    if (isLoaded && imageRef.current) {
+    if (imageRef.current) {
       gsap.fromTo(
         imageRef.current,
         {
@@ -76,10 +51,9 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
         }
       );
     }
-  }, [isLoaded]);
+  }, []); // Run once on mount
 
   // Adaptive Predefined Heights on Mobile based on detected orientation
-  // Landscape: 200px-240px | Square: 230px-260px | Portrait: 270px-300px
   const getAdaptiveHeightClass = () => {
     switch (orientation) {
       case 'portrait':
@@ -107,6 +81,7 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
     <div
       ref={containerRef}
       className={`w-full sm:w-[52%] flex-1 relative rounded-xl sm:rounded-[26px] overflow-hidden bg-[#10141D] border border-gray-100 shrink-0 flex items-center justify-center shadow-md group-hover:shadow-2xl transition-shadow duration-500 ${getAdaptiveHeightClass()} ${className}`}
+      style={metadata ? { aspectRatio: ratio } : {}}
     >
       {/* 
         Dual-Layer Ambient Backdrop:
@@ -127,11 +102,6 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
         alt={alt}
         loading="lazy"
         style={getObjectPositionStyle()}
-        /* 
-          Smart Image Quality & Hover Specifications:
-          - Sharp, high resolution, no stretching/distortion (`object-cover` with smart focal position or `object-contain` when needed).
-          - Desktop Hover (`group-hover:`): subtle zoom `1 -> 1.03` (`scale-[1.03]`), brightness +5% (`brightness-[1.05]`), no extra crop.
-        */
         className={`relative z-10 w-full h-full transition-all duration-700 ease-out will-change-transform ${
           useContain ? 'object-contain p-1 sm:p-2' : 'object-cover'
         } group-hover:scale-[1.03] group-hover:brightness-[1.05]`}

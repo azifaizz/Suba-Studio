@@ -125,58 +125,69 @@ const Navbar = () => {
 
     const handleHomeClick = (e?: React.MouseEvent) => {
         if (e) e.preventDefault();
-        setIsMobileMenuOpen(false);
-        setIsHomeClickAnimating(true);
         
         if (location.pathname !== '/') {
             navigate('/');
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        if (isHomeClickAnimating) return;
 
-        if (logoRef.current) {
-            gsap.killTweensOf(logoRef.current);
-            gsap.fromTo(
-                logoRef.current,
-                {
-                    x: window.innerWidth / 2 + 150,
-                    scale: 0.86,
-                    opacity: 0,
-                },
-                {
-                    x: 0,
-                    scale: 1,
-                    opacity: 1,
-                    duration: 1.1,
-                    ease: 'power4.out',
-                    onComplete: () => {
-                        setIsHomeClickAnimating(false);
-                    }
-                }
-            );
-        }
+        setIsMobileMenuOpen(false);
+        setIsHomeClickAnimating(true);
 
-        // Also smoothly animate mobile logo if on mobile view
-        if (logoMobRef.current && window.innerWidth < 1024) {
-            gsap.killTweensOf(logoMobRef.current);
-            gsap.fromTo(
-                logoMobRef.current,
-                {
-                    x: window.innerWidth / 2 + 150,
-                    scale: 0.86,
-                    opacity: 0,
-                },
-                {
-                    x: mobCenterDelta,
-                    scale: 1,
-                    opacity: 1,
-                    duration: 1.1,
-                    ease: 'power4.out',
-                    onComplete: () => {
-                        setIsHomeClickAnimating(false);
-                    }
+        setTimeout(() => {
+            let animationsCompleted = 0;
+            const checkCompletion = () => {
+                animationsCompleted++;
+                if (animationsCompleted >= (window.innerWidth < 1024 ? 1 : 1)) {
+                    setIsHomeClickAnimating(false);
                 }
-            );
-        }
+            };
+
+            if (logoRef.current) {
+                gsap.killTweensOf(logoRef.current);
+                gsap.fromTo(
+                    logoRef.current,
+                    {
+                        x: window.innerWidth / 2 + 150,
+                        scale: 0.86,
+                        opacity: 0,
+                    },
+                    {
+                        x: 0,
+                        scale: 1,
+                        opacity: 1,
+                        duration: 1.1,
+                        ease: 'power4.out',
+                        onComplete: checkCompletion
+                    }
+                );
+            } else {
+                setIsHomeClickAnimating(false);
+            }
+
+            // Also smoothly animate mobile logo if on mobile view
+            if (logoMobRef.current && window.innerWidth < 1024) {
+                gsap.killTweensOf(logoMobRef.current);
+                gsap.fromTo(
+                    logoMobRef.current,
+                    {
+                        x: window.innerWidth / 2 + 150,
+                        scale: 0.86,
+                        opacity: 0,
+                    },
+                    {
+                        x: mobCenterDelta,
+                        scale: 1,
+                        opacity: 1,
+                        duration: 1.1,
+                        ease: 'power4.out',
+                        onComplete: checkCompletion
+                    }
+                );
+            }
+        }, 50);
     };
 
     const handleNavClick = (path: string) => {
@@ -204,13 +215,15 @@ const Navbar = () => {
     const leftNavItems = navData.slice(0, 3);
     const rightNavItems = navData.slice(3);
 
-    const renderDesktopNavItem = (item: typeof navData[0]) => (
+    const renderDesktopNavItem = (item: typeof navData[0]) => {
+        const isLeftItem = leftNavItems.some(nav => nav.name === item.name);
+        return (
         <motion.div
             key={item.name}
             layout
-            layoutId={`desktop-nav-item-${item.name}`}
+            layoutId={isLeftItem ? `desktop-nav-item-${item.name}` : undefined}
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-            className="relative group px-2 xl:px-3 py-2"
+            className="relative group px-2 xl:px-3 py-2 hover:z-[60]"
             onMouseEnter={() => !item.noDropdown && setActiveSubMenu(item.name)}
             onMouseLeave={() => setActiveSubMenu(null)}
         >
@@ -265,15 +278,16 @@ const Navbar = () => {
                 </div>
             )}
         </motion.div>
-    );
+        );
+    };
 
     return (
         <>
             <nav
-                className={`fixed top-0 w-full z-50 transition-all duration-400 ease-out ${
+                className={`fixed top-0 w-full z-[100] transition-all duration-400 ease-out ${
                     isScrolled || !isHome
-                        ? 'bg-white/95 backdrop-blur-md shadow-sm py-3 border-b border-gray-100/50'
-                        : 'bg-transparent py-4 sm:py-6'
+                        ? 'bg-white/95 backdrop-blur-md shadow-sm py-3 border-b border-gray-100/50 text-black'
+                        : 'bg-transparent py-4 sm:py-6 text-white'
                 }`}
             >
                 <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between relative h-14 md:h-16 [padding-left:max(16px,env(safe-area-inset-left))] [padding-right:max(16px,env(safe-area-inset-right))]">
@@ -281,9 +295,9 @@ const Navbar = () => {
                     {/* Left Section (Desktop Split vs Scrolled Logo Slot) */}
                     <div className={`hidden lg:flex items-center justify-start z-40 ${isSplitLayout ? 'flex-1' : 'shrink-0'}`}>
                         {isSplitLayout ? (
-                            <motion.div layout className="flex items-center gap-1 xl:gap-4">
+                            <div className="flex items-center gap-1 xl:gap-4">
                                 {leftNavItems.map(renderDesktopNavItem)}
-                            </motion.div>
+                            </div>
                         ) : isHomeClickAnimating ? null : (
                             <motion.div
                                 layout

@@ -2,34 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { AdaptiveImage } from "@/components/ui/adaptive-image";
+import { MasonryGallery } from "@/components/ui/masonry-gallery";
 import { categoryData, defaultContent, CategoryContent } from '@/data/categoryContent';
 import { ArrowRight } from 'lucide-react';
 import CinematicStoryboardPage from '@/components/layout/CinematicStoryboardPage';
 import BridalPortraitsPage from '@/pages/BridalPortraitsPage';
-
+import CouplePortraitsPage from '@/pages/CouplePortraitsPage';
+import GroomPortraitsPage from '@/pages/GroomPortraitsPage';
+import WeddingRitualsPage from '@/pages/WeddingRitualsPage';
+import CandidMomentsPage from '@/pages/CandidMomentsPage';
 const CategoryPage = () => {
     const { subcategory } = useParams();
     const { pathname } = useLocation();
     const [content, setContent] = useState<CategoryContent>(defaultContent);
 
     const isVideoRoute = pathname.includes('/video/');
-    
-    // Custom Page Routing for Awwwards-winning galleries
-    const storyboardCategories = ['hindu', 'christian', 'engagement', 'pre-wedding', 'post-wedding', 'maternity'];
-    if (subcategory && storyboardCategories.includes(subcategory) && !isVideoRoute) {
-        return <CinematicStoryboardPage subcategory={subcategory} />;
-    }
-
-    if (subcategory === 'bridal-portraits' && !isVideoRoute) {
-        return <BridalPortraitsPage subcategory={subcategory} />;
-    }
-
-    const isOutdoorVideo = isVideoRoute && subcategory === 'outdoor';
-    const isShortStoriesVideo = isVideoRoute && subcategory === 'short-stories';
-    const isPortraitOrRitual = subcategory === 'couple-portraits' || subcategory === 'rituals' || subcategory === 'maternity' || subcategory === 'baby';
-    const isFullVisibilityCategory = subcategory === 'bridal-portraits' || subcategory === 'groom-portraits' || subcategory === 'christian';
-    const isBridalPortraits = subcategory === 'bridal-portraits';
-    const isMaternity = subcategory === 'maternity';
 
     useEffect(() => {
         if (subcategory) {
@@ -51,11 +39,42 @@ const CategoryPage = () => {
         }
         window.scrollTo(0, 0);
     }, [subcategory, isVideoRoute]);
+    
+    // Custom Page Routing for Awwwards-winning galleries
+    const storyboardCategories = ['hindu', 'christian', 'engagement', 'pre-wedding', 'post-wedding', 'maternity', 'baby'];
+    if (subcategory && storyboardCategories.includes(subcategory) && !isVideoRoute) {
+        return <CinematicStoryboardPage subcategory={subcategory} />;
+    }
+
+    if (subcategory === 'bridal-portraits' && !isVideoRoute) {
+        return <BridalPortraitsPage subcategory={subcategory} />;
+    }
+
+    if (subcategory === 'couple-portraits' && !isVideoRoute) {
+        return <CouplePortraitsPage subcategory={subcategory} />;
+    }
+
+    if (subcategory === 'groom-portraits' && !isVideoRoute) {
+        return <GroomPortraitsPage subcategory={subcategory} />;
+    }
+
+    if (subcategory === 'rituals' && !isVideoRoute) {
+        return <WeddingRitualsPage subcategory={subcategory} />;
+    }
+
+    if (subcategory === 'candid-moments' && !isVideoRoute) {
+        return <CandidMomentsPage subcategory={subcategory} />;
+    }
+
+    const isPortraitOrRitual = subcategory === 'couple-portraits' || subcategory === 'rituals' || subcategory === 'maternity' || subcategory === 'baby';
+    const isFullVisibilityCategory = subcategory === 'bridal-portraits' || subcategory === 'groom-portraits' || subcategory === 'christian';
+    const isBridalPortraits = subcategory === 'bridal-portraits';
+    const isMaternity = subcategory === 'maternity';
 
     return (
         <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className={`relative flex items-center justify-center overflow-hidden ${(isShortStoriesVideo || isOutdoorVideo) ? 'h-[75vh] md:h-[85vh]' : (isFullVisibilityCategory ? 'h-[60vh] md:h-[75vh] bg-black' : (isPortraitOrRitual ? 'h-[80vh] md:h-[90vh]' : 'h-[70vh] md:h-[85vh]'))}`}>
+            <section className={`relative flex items-center justify-center overflow-hidden ${isVideoRoute ? 'h-screen' : (isFullVisibilityCategory ? 'h-[60vh] md:h-[75vh] bg-black' : (isPortraitOrRitual ? 'h-[80vh] md:h-[90vh]' : 'h-[70vh] md:h-[85vh]'))}`}>
                 <div className="absolute inset-0">
                     {content.heroImage?.endsWith('.mp4') ? (
                         <video
@@ -64,31 +83,49 @@ const CategoryPage = () => {
                             loop
                             muted
                             playsInline
-                            className="w-full h-full object-cover"
+                            className={`w-full h-full object-cover ${isVideoRoute ? 'animate-ken-burns' : ''}`}
                         />
                     ) : (
                         <img
                             src={content.heroImage}
                             alt={content.title}
-                            className={`w-full h-full ${isFullVisibilityCategory ? 'object-contain' : 'object-cover'} ${isShortStoriesVideo ? 'object-[center_15%]' : (isPortraitOrRitual ? 'object-[center_10%]' : (isOutdoorVideo ? 'object-center' : 'object-top'))}`}
+                            className={`w-full h-full ${isFullVisibilityCategory ? 'object-contain' : 'object-cover'} ${isPortraitOrRitual ? 'object-[center_10%]' : 'object-top'} ${isVideoRoute ? 'animate-ken-burns' : ''}`}
                         />
                     )}
-                    <div className="absolute inset-0 bg-black/30" />
+                    <div className={`absolute inset-0 ${isVideoRoute ? 'bg-gradient-to-b from-black/20 via-black/40 to-black/60' : 'bg-black/30'}`} />
                 </div>
-                <div className="relative z-10 container mx-auto px-6 text-center text-white">
+                <div className="relative z-10 container mx-auto px-6 flex flex-col items-center justify-center text-center text-white h-full">
                     <Reveal>
-                        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-black mb-4 text-transparent [-webkit-text-stroke:1px_white] sm:[-webkit-text-stroke:1.5px_white] tracking-tight whitespace-nowrap px-4 overflow-hidden text-ellipsis">
+                        {isVideoRoute && (
+                            <span className="block text-[10px] md:text-xs font-medium tracking-[0.4em] uppercase text-white/70 mb-8">
+                                FILMS
+                            </span>
+                        )}
+                        <h1 className={isVideoRoute 
+                            ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light mb-6 tracking-wide" 
+                            : "text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-black mb-4 text-transparent [-webkit-text-stroke:1px_white] sm:[-webkit-text-stroke:1.5px_white] tracking-tight whitespace-nowrap px-4 overflow-hidden text-ellipsis"}>
                             {content.title}
                         </h1>
-                        <p className="text-lg md:text-2xl font-light tracking-wider italic text-white/90">
-                            "{content.tagline}"
+                        <p className={isVideoRoute
+                            ? "text-lg md:text-xl font-light tracking-[0.05em] text-white/80 max-w-2xl mx-auto"
+                            : "text-lg md:text-2xl font-light tracking-wider italic text-white/90"}>
+                            {isVideoRoute ? content.tagline : `"${content.tagline}"`}
                         </p>
                     </Reveal>
                 </div>
+
+                {isVideoRoute && (
+                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-70 z-20">
+                        <span className="text-[9px] tracking-[0.3em] uppercase text-white font-medium">Scroll</span>
+                        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-[float_2s_ease-in-out_infinite]" />
+                        </div>
+                    </div>
+                )}
             </section>
 
             {/* Content Section */}
-            {!isOutdoorVideo && !isShortStoriesVideo && (
+            {!isVideoRoute && (
                 <section className="py-24 bg-[#f3f3f3]">
                     <div className="container mx-auto px-6">
                         <div className={`flex flex-col lg:flex-row gap-16 items-start`}>
@@ -163,7 +200,7 @@ const CategoryPage = () => {
                                             {/* Main Large Slot */}
                                             <div className={content.collageImages.length === 1 ? "col-span-2" : "col-span-2"}>
                                                 <Reveal delay={100}>
-                                                    <div className="rounded-[20px] overflow-hidden shadow-lg h-[500px] md:h-[650px]">
+                                                    <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                         {content.collageImages[0]?.endsWith('.mp4') ? (
                                                             <video
                                                                 src={content.collageImages[0]}
@@ -171,13 +208,13 @@ const CategoryPage = () => {
                                                                 loop
                                                                 muted
                                                                 playsInline
-                                                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                className="w-full h-auto object-cover rounded-[20px] hover:scale-105 transition-transform duration-700"
                                                             />
                                                         ) : (
-                                                            <img
+                                                            <AdaptiveImage
                                                                 src={content.collageImages[0]}
                                                                 alt="Highlight"
-                                                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                imageClassName="hover:scale-105 transition-transform duration-700"
                                                             />
                                                         )}
                                                     </div>
@@ -188,7 +225,7 @@ const CategoryPage = () => {
                                             {content.collageImages.length > 1 && (
                                                 <div className="col-span-1">
                                                     <Reveal delay={200}>
-                                                        <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
+                                                        <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                             {content.collageImages[1]?.endsWith('.mp4') ? (
                                                                 <video
                                                                     src={content.collageImages[1]}
@@ -196,13 +233,13 @@ const CategoryPage = () => {
                                                                     loop
                                                                     muted
                                                                     playsInline
-                                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                    className="w-full h-auto object-cover rounded-[20px] hover:scale-105 transition-transform duration-700"
                                                                 />
                                                             ) : (
-                                                                <img
+                                                                <AdaptiveImage
                                                                     src={content.collageImages[1]}
                                                                     alt="Detail"
-                                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                    imageClassName="hover:scale-105 transition-transform duration-700"
                                                                 />
                                                             )}
                                                         </div>
@@ -214,7 +251,7 @@ const CategoryPage = () => {
                                             {content.collageImages.length > 2 && (
                                                 <div className="col-span-1">
                                                     <Reveal delay={300}>
-                                                        <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
+                                                        <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                             {content.collageImages[2]?.endsWith('.mp4') ? (
                                                                 <video
                                                                     src={content.collageImages[2]}
@@ -222,13 +259,13 @@ const CategoryPage = () => {
                                                                     loop
                                                                     muted
                                                                     playsInline
-                                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                    className="w-full h-auto object-cover rounded-[20px] hover:scale-105 transition-transform duration-700"
                                                                 />
                                                             ) : (
-                                                                <img
+                                                                <AdaptiveImage
                                                                     src={content.collageImages[2]}
                                                                     alt="Portrait"
-                                                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                                                    imageClassName="hover:scale-105 transition-transform duration-700"
                                                                 />
                                                             )}
                                                         </div>
@@ -241,33 +278,33 @@ const CategoryPage = () => {
                                         <>
                                             <div className="col-span-2">
                                                 <Reveal delay={100}>
-                                                    <div className="rounded-[20px] overflow-hidden shadow-lg h-[400px]">
+                                                    <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                         {content.albums[0]?.image?.endsWith('.mp4') ? (
-                                                            <video src={content.albums[0]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <video src={content.albums[0]?.image} autoPlay loop muted playsInline className="w-full h-auto rounded-[20px] object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
-                                                            <img src={content.albums[0]?.image} alt="Album 1" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <AdaptiveImage src={content.albums[0]?.image} alt="Album 1" imageClassName="hover:scale-105 transition-transform duration-700" />
                                                         )}
                                                     </div>
                                                 </Reveal>
                                             </div>
                                             <div className="col-span-1">
                                                 <Reveal delay={200}>
-                                                    <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
+                                                    <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                         {content.albums[1]?.image?.endsWith('.mp4') ? (
-                                                            <video src={content.albums[1]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <video src={content.albums[1]?.image} autoPlay loop muted playsInline className="w-full h-auto rounded-[20px] object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
-                                                            <img src={content.albums[1]?.image} alt="Album 2" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <AdaptiveImage src={content.albums[1]?.image} alt="Album 2" imageClassName="hover:scale-105 transition-transform duration-700" />
                                                         )}
                                                     </div>
                                                 </Reveal>
                                             </div>
                                             <div className="col-span-1">
                                                 <Reveal delay={300}>
-                                                    <div className="rounded-[20px] overflow-hidden shadow-lg h-[250px]">
+                                                    <div className="rounded-[20px] overflow-hidden shadow-lg">
                                                         {content.albums[2]?.image?.endsWith('.mp4') ? (
-                                                            <video src={content.albums[2]?.image} autoPlay loop muted playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <video src={content.albums[2]?.image} autoPlay loop muted playsInline className="w-full h-auto rounded-[20px] object-cover hover:scale-105 transition-transform duration-700" />
                                                         ) : (
-                                                            <img src={content.albums[2]?.image} alt="Album 3" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                                                            <AdaptiveImage src={content.albums[2]?.image} alt="Album 3" imageClassName="hover:scale-105 transition-transform duration-700" />
                                                         )}
                                                     </div>
                                                 </Reveal>
@@ -281,82 +318,56 @@ const CategoryPage = () => {
                 </section>
             )}
 
-            {isShortStoriesVideo && (
-                <section className="py-12 md:py-24 bg-white">
-                    <div className="container mx-auto px-6 space-y-8 md:space-y-12">
-                        {/* First Pair: About This Style + Baby Shower Reel */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
-                            <div className="w-full rounded-[32px] overflow-hidden p-8 md:p-16 lg:p-20 flex flex-col justify-center bg-[#f3f3f3]">
-                                <Reveal>
-                                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0f3d2e] leading-tight mb-8">About This Style</h2>
-                                    <p className="text-gray-600 leading-relaxed text-lg md:text-xl font-light max-w-2xl">
-                                        {content.description}
-                                    </p>
+            {isVideoRoute && content.videoList && (
+                <section className="py-24 bg-white">
+                    <div className="container mx-auto px-6 max-w-6xl space-y-32">
+                        {content.videoList.map((video, index) => (
+                            <div key={video.id} className="w-full flex flex-col items-center">
+                                <Reveal delay={100} className="w-full mb-12">
+                                    <div className="w-full aspect-video bg-black relative">
+                                        <video
+                                            src={video.url}
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            controls
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                </Reveal>
+                                
+                                <Reveal delay={200} className="w-full text-center max-w-3xl">
+                                    <h2 className="text-3xl md:text-4xl font-serif font-medium text-gray-900 mb-3">{video.title}</h2>
+                                    {video.subtitle && (
+                                        <p className="text-lg md:text-xl font-light text-gray-500 mb-4">{video.subtitle}</p>
+                                    )}
+                                    
+                                    {(video.location || video.date) && (
+                                        <div className="flex items-center justify-center gap-3 text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-gray-400 mb-6">
+                                            {video.location && <span>{video.location}</span>}
+                                            {video.location && video.date && <span>•</span>}
+                                            {video.date && <span>{video.date}</span>}
+                                        </div>
+                                    )}
+                                    
+                                    {video.description && (
+                                        <p className="text-gray-600 leading-relaxed font-light mb-8 max-w-2xl mx-auto">{video.description}</p>
+                                    )}
+                                    
+                                    {index !== content.videoList.length - 1 && (
+                                        <div className="w-24 h-px bg-gray-200 mx-auto mt-24" />
+                                    )}
                                 </Reveal>
                             </div>
-                            <div className="w-full relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-black rounded-[32px] overflow-hidden shadow-xl">
-                                <video
-                                    src={content.collageImages?.[0] || "/BABY SHOWER REEL.mp4"}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Second Pair: Why Choose + Outdoor.mp4 */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-stretch">
-                            <div className="w-full lg:order-2 rounded-[32px] overflow-hidden p-8 md:p-16 lg:p-20 flex flex-col justify-center bg-[#f3f3f3]">
-                                <Reveal delay={200}>
-                                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#0f3d2e] leading-tight mb-8">
-                                        {content.whyChooseTitle}
-                                    </h3>
-                                    <p className="text-gray-600 leading-relaxed text-lg md:text-xl font-light max-w-2xl">
-                                        {content.whyChooseText}
-                                    </p>
-                                </Reveal>
-                            </div>
-                            <div className="w-full lg:order-1 relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-black rounded-[32px] overflow-hidden shadow-xl">
-                                <video
-                                    src={content.collageImages?.[1] || "/Outdoor.mp4"}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            )}
-
-            {isOutdoorVideo && (
-                <section className="py-2 px-2 bg-white">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {content.albums.map((album, index) => (
-                            <Reveal key={album.id} delay={index * 100} className={index === content.albums.length - 1 && content.albums.length % 2 !== 0 ? "md:col-span-2" : ""}>
-                                <div className="w-full aspect-video relative bg-black overflow-hidden group">
-                                    <video
-                                        src={album.image}
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                </div>
-                            </Reveal>
                         ))}
                     </div>
                 </section>
             )}
 
             {/* Featured Albums */}
-            {!isShortStoriesVideo && !isOutdoorVideo && (
-                <section className={`${isOutdoorVideo ? 'py-12' : 'py-24'} ${subcategory === 'baby' || subcategory === 'maternity' ? 'bg-white' : 'bg-gray-50'} overflow-hidden`}>
+            {!isVideoRoute && (
+                <section className={`py-24 ${subcategory === 'baby' || subcategory === 'maternity' ? 'bg-white' : 'bg-gray-50'} overflow-hidden`}>
                     <div className={`${isVideoRoute ? 'w-full px-2' : 'container mx-auto px-6'}`}>
                         {!isVideoRoute && (
                             <Reveal>
@@ -367,43 +378,42 @@ const CategoryPage = () => {
                             </Reveal>
                         )}
 
-                        <div className={subcategory === 'baby' || subcategory === 'maternity'
-                            ? "columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-2 space-y-2"
-                            : `grid grid-cols-1 ${isVideoRoute ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-3'} ${isVideoRoute ? 'gap-2' : 'gap-10'}`
-                        }>
-                            {content.albums.map((album, index) => (
-                                <Reveal key={album.id} delay={index * 100} className={subcategory === 'baby' || subcategory === 'maternity' ? "break-inside-avoid mb-2" : ""}>
-                                    <div className={`group cursor-pointer bg-white overflow-hidden ${subcategory === 'baby' || subcategory === 'maternity' ? '' : 'rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300'}`}>
-                                        <div className={subcategory === 'baby' || subcategory === 'maternity' ? "w-full" : `overflow-hidden ${isVideoRoute ? 'aspect-video' : 'aspect-[4/5]'}`}>
-                                            {album.image?.endsWith('.mp4') ? (
-                                                <video
-                                                    src={album.image}
-                                                    autoPlay={subcategory === 'candid'}
-                                                    loop={subcategory === 'candid'}
-                                                    muted={subcategory === 'candid'}
-                                                    playsInline={subcategory === 'candid'}
-                                                    controls={subcategory !== 'candid'}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            ) : (
-                                                <img
-                                                    src={album.image}
-                                                    alt={album.title}
-                                                    className={`w-full ${['christian', 'engagement', 'post-wedding'].includes(subcategory || '') ? 'h-full' : 'h-auto'} object-cover ${subcategory === 'baby' || subcategory === 'maternity' ? '' : 'transition-transform duration-700 group-hover:scale-110'}`}
-                                                />
-                                            )}
-                                        </div>
-                                        {album.title && subcategory !== 'candid' && (
-                                            <div className="p-6 text-center bg-white border-t border-gray-100">
-                                                <h3 className="text-xl font-serif font-bold text-[#0f3d2e] tracking-tight">{album.title}</h3>
-                                            </div>
-                                        )}
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </div>
+                        <MasonryGallery
+                            images={content.albums}
+                            columns={{
+                                default: 1,
+                                sm: 2,
+                                md: 3,
+                                lg: 3,
+                                xl: (subcategory === 'baby' || subcategory === 'maternity') ? 4 : 3
+                            }}
+                            gap="gap-10 space-y-10"
+                        />
                     </div>
                 </section>
+            )}
+
+            {/* Pagination Controls */}
+            {categoryData.length > 1 && (
+                <div className="flex justify-between items-center py-12 px-6 border-t border-gray-100 max-w-4xl mx-auto">
+                    {prevCategory ? (
+                        <Link to={`/category/${prevCategory.id}`} className="group flex flex-col items-start gap-2">
+                            <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Previous</span>
+                            <span className="text-xl font-serif text-gray-900 group-hover:text-zg-blue transition-colors flex items-center gap-2">
+                                <ArrowRight className="w-5 h-5 rotate-180" /> {prevCategory.title}
+                            </span>
+                        </Link>
+                    ) : <div />}
+
+                    {nextCategory ? (
+                        <Link to={`/category/${nextCategory.id}`} className="group flex flex-col items-end gap-2 text-right">
+                            <span className="text-xs font-bold tracking-widest text-gray-400 uppercase">Next Category</span>
+                            <span className="text-xl font-serif text-gray-900 group-hover:text-zg-blue transition-colors flex items-center gap-2">
+                                {nextCategory.title} <ArrowRight className="w-5 h-5" />
+                            </span>
+                        </Link>
+                    ) : <div />}
+                </div>
             )}
         </div>
     );

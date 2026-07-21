@@ -1,37 +1,11 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Instagram, Facebook, Twitter, Youtube, MapPin, Phone, Mail } from 'lucide-react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
-    const footerRef = useRef<HTMLElement>(null);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.fromTo('.footer-col', 
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    stagger: 0.15,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: footerRef.current,
-                        start: 'top 85%'
-                    }
-                }
-            );
-        }, footerRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
-        <footer ref={footerRef} className="bg-black text-white pt-24 pb-12 border-t border-white/10">
+        <footer className="bg-black text-white pt-24 pb-12 border-t border-white/10 relative z-20">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
 

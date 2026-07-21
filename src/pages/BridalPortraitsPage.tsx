@@ -4,7 +4,6 @@ import BridalHero from '@/components/bridal-portraits/BridalHero';
 import EditorialIntro from '@/components/bridal-portraits/EditorialIntro';
 import EditorialStory from '@/components/bridal-portraits/EditorialStory';
 import EditorialQuotes from '@/components/bridal-portraits/EditorialQuotes';
-import DetailShowcase from '@/components/bridal-portraits/DetailShowcase';
 import FeaturedCollection from '@/components/bridal-portraits/FeaturedCollection';
 import BookYourStory from '@/components/bridal-portraits/BookYourStory';
 import LuxuryLightbox from '@/components/bridal-portraits/LuxuryLightbox';
@@ -62,11 +61,9 @@ const BridalPortraitsPage: React.FC<Props> = ({ subcategory }) => {
       <LuxuryLightbox images={[content.heroImage, ...(content.collageImages || []), ...content.albums.map(a => a.image)]} />
       
       <BridalHero image={content.heroImage} />
-      <EditorialIntro image1={content.collageImages?.[0]} image2={content.collageImages?.[1]} />
+      <EditorialIntro images={content.collageImages} />
       <EditorialQuotes quote="Beauty begins the moment confidence meets timeless elegance." />
       <EditorialStory collageImages={content.collageImages} albums={content.albums} />
-      <EditorialQuotes quote="The finest details become tomorrow's greatest memories." />
-      <DetailShowcase albums={content.albums} />
       <EditorialQuotes quote="Every bride deserves portraits worthy of generations." />
       <FeaturedCollection albums={content.albums} />
       <BookYourStory image={content.heroImage} />

@@ -63,8 +63,8 @@ const FounderSpotlightSection = () => {
       <div className="absolute inset-0 z-0">
         <img 
           ref={imageRef}
-          src="/hero.png" 
-          alt="Ajay Benjamin" 
+          src="/suba.jpg" 
+          alt="Suba - Founder" 
           className="w-full h-full object-cover transform origin-center"
         />
         {/* Soft Dark Overlay with Light Rays effect */}
@@ -104,13 +104,13 @@ const FounderSpotlightSection = () => {
         <div className="flex flex-col space-y-2">
           {/* Handwritten Signature Font Simulation */}
           <div className="text-3xl md:text-4xl font-serif text-[#D4AF37] mb-2 transform -rotate-2">
-            Ajay Benjamin
+            Suba
           </div>
           <div className="h-[1px] w-12 bg-[#D4AF37] mb-2"></div>
-          <h4 className="text-white text-lg tracking-widest font-sans uppercase">Ajay Benjamin</h4>
+          <h4 className="text-white text-lg tracking-widest font-sans uppercase">Suba</h4>
           <p className="text-white/60 font-sans text-sm uppercase tracking-wider">Founder & Lead Photographer</p>
-          <a href="mailto:ajay@subastudios.com" className="text-white/80 hover:text-white font-sans text-sm mt-4 transition-colors">
-            ajay@subastudios.com
+          <a href="mailto:suba@subhastudios.com" className="text-white/80 hover:text-white font-sans text-sm mt-4 transition-colors">
+            suba@subhastudios.com
           </a>
         </div>
       </div>
