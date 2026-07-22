@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -17,25 +16,18 @@ const HeroSection = () => {
     const tl = gsap.timeline();
 
     // Initial state
-    gsap.set(imageRef.current, { scale: 1.2, filter: 'blur(10px)' });
     gsap.set(titleRef.current, { y: 100, opacity: 0, clipPath: 'inset(100% 0 0 0)' });
     gsap.set(subtitleRef.current, { y: 20, opacity: 0 });
     gsap.set(buttonRef.current, { y: 20, opacity: 0 });
 
     // Entrance Animation
-    tl.to(imageRef.current, {
-      scale: 1,
-      filter: 'blur(0px)',
-      duration: 2,
-      ease: 'power3.out',
-    })
-    .to(titleRef.current, {
+    tl.to(titleRef.current, {
       y: 0,
       opacity: 1,
       clipPath: 'inset(0% 0 0 0)',
       duration: 1.5,
       ease: 'power4.out',
-    }, '-=1.5')
+    })
     .to(subtitleRef.current, {
       y: 0,
       opacity: 1,
@@ -49,19 +41,7 @@ const HeroSection = () => {
       ease: 'power2.out',
     }, '-=0.8');
 
-    // Scroll Parallax & Zoom
-    gsap.to(imageRef.current, {
-      yPercent: 30,
-      scale: 1.1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      }
-    });
-    
+    // Scroll Parallax
     gsap.to(textRef.current, {
       yPercent: 50,
       opacity: 0,
@@ -78,18 +58,6 @@ const HeroSection = () => {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white flex items-center justify-center">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          ref={imageRef}
-          src="/suba.jpg" 
-          alt="Cinematic Founder Photograph" 
-          className="w-full h-full object-cover transform origin-center"
-        />
-        {/* Soft Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
-      </div>
-
       {/* Content */}
       <div ref={textRef} className="relative z-10 flex flex-col items-center justify-center px-6 text-center mt-20">
         <span className="text-sm tracking-[0.3em] uppercase text-white/70 mb-6 font-sans">

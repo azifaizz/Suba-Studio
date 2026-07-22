@@ -34,7 +34,12 @@ const Counter = ({ end, duration = 2 }: { end: number, duration?: number }) => {
     });
   }, []);
 
-  return <span ref={countRef}>{count}</span>;
+  return (
+    <>
+      <span ref={countRef} aria-hidden="true">{count}</span>
+      <span className="sr-only">{end}</span>
+    </>
+  );
 };
 
 const TrustSection = () => {
@@ -70,7 +75,7 @@ const TrustSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-32 bg-[#ECECEC] overflow-hidden relative">
+    <section ref={containerRef} className="py-16 lg:py-32 bg-[#ECECEC] overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-6xl font-serif text-[#111111]">Why People Trust Us</h2>

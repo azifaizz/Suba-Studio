@@ -9,8 +9,7 @@ import {
   Heart,
   Users,
   Sparkles,
-  Smile,
-  Gift
+  Smile
 } from 'lucide-react';
 import { StandaloneArrowCTA } from '@/components/ui/standalone-arrow-cta';
 import { SmartCardImage } from '@/components/ui/smart-card-image';
@@ -32,7 +31,7 @@ const servicesData: ServiceCardData[] = [
     id: 1,
     title: "Wedding Photography",
     description: "Capturing every emotion, blessing, and celebration through timeless storytelling.",
-    image: "/portfolio_wedding.png",
+    image: "/hindu/14.jpg",
     link: "/weddings/hindu",
     icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
@@ -40,7 +39,7 @@ const servicesData: ServiceCardData[] = [
     id: 2,
     title: "Pre Wedding",
     description: "Creating cinematic memories before your forever begins.",
-    image: "/pp6.JPG",
+    image: "/couple_portrait/pp8.jpg",
     link: "/weddings/pre-wedding",
     icon: <ImageIcon className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
@@ -48,7 +47,7 @@ const servicesData: ServiceCardData[] = [
     id: 3,
     title: "Post Wedding",
     description: "Celebrating your journey with timeless portraits.",
-    image: "/p4.JPG",
+    image: "/candid/p4.JPG",
     link: "/weddings/post-wedding",
     icon: <Aperture className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
@@ -56,7 +55,7 @@ const servicesData: ServiceCardData[] = [
     id: 4,
     title: "Romantic Couple Shoot",
     description: "Authentic moments captured with artistic elegance.",
-    image: "/portfolio_romantic.png",
+    image: "/Christian/4Z5A8768.JPG",
     link: "/weddings/christian",
     icon: <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
@@ -83,14 +82,6 @@ const servicesData: ServiceCardData[] = [
     image: "/Baby/bby.jpg",
     link: "/weddings/baby",
     icon: <Smile className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
-  },
-  {
-    id: 8,
-    title: "Birthday Photography",
-    description: "Every celebration deserves a timeless story.",
-    image: "/b1.JPG",
-    link: "/weddings/rituals",
-    icon: <Gift className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   }
 ];
 
@@ -101,80 +92,87 @@ export const StickyServicesScroll: React.FC = () => {
   const [activeChapter, setActiveChapter] = useState(0);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!containerRef.current || cardRefs.current.length === 0) return;
+    const mm = gsap.matchMedia();
 
-      const totalCards = servicesData.length;
-      const scrollDistance = (totalCards - 1) * 900;
+    mm.add(
+      {
+        isMobile: "(max-width: 767px)",
+        isDesktop: "(min-width: 768px)",
+      },
+      (context) => {
+        const { isMobile } = context.conditions as { isMobile: boolean };
+        if (!containerRef.current || cardRefs.current.length === 0) return;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          pin: true,
-          start: 'top top',
-          end: `+=${scrollDistance}px`,
-          scrub: 1.0,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const currentIdx = Math.min(
-              totalCards - 1,
-              Math.floor(self.progress * totalCards)
-            );
-            setActiveChapter(currentIdx);
+        const totalCards = servicesData.length;
+        const cardScrollDistance = isMobile ? 400 : 700;
+        const scrollDistance = (totalCards - 1) * cardScrollDistance;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            pin: true,
+            start: 'top top',
+            end: `+=${scrollDistance}px`,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const currentIdx = Math.min(
+                totalCards - 1,
+                Math.floor(self.progress * totalCards)
+              );
+              setActiveChapter(currentIdx);
+            },
           },
-        },
-      });
+        });
 
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return;
-        if (index === 0) {
-          gsap.set(card, { y: '0%', scale: 1, opacity: 1, zIndex: 10 });
-        } else {
-          gsap.set(card, { y: '115%', scale: 0.95, opacity: 1, zIndex: index + 10 });
+        cardRefs.current.forEach((card, index) => {
+          if (!card) return;
+          if (index === 0) {
+            gsap.set(card, { y: '0%', scale: 1, opacity: 1, zIndex: 10 });
+          } else {
+            gsap.set(card, { y: '100%', scale: 0.96, opacity: 1, zIndex: index + 10 });
+          }
+        });
+
+        for (let i = 1; i < totalCards; i++) {
+          const prevCard = cardRefs.current[i - 1];
+          const currentCard = cardRefs.current[i];
+          if (!prevCard || !currentCard) continue;
+
+          const stepLabel = `step_${i}`;
+          tl.addLabel(stepLabel);
+
+          tl.fromTo(
+            currentCard,
+            {
+              y: '100%',
+              scale: 0.96,
+            },
+            {
+              y: '0%',
+              scale: 1,
+              duration: 1,
+              ease: 'power2.out',
+            },
+            stepLabel
+          );
+
+          tl.to(
+            prevCard,
+            {
+              scale: 0.92,
+              y: '-5%',
+              opacity: 0,
+              duration: 0.9,
+              ease: 'power1.in',
+            },
+            `${stepLabel}+=0.1`
+          );
         }
-      });
-
-      for (let i = 1; i < totalCards; i++) {
-        const prevCard = cardRefs.current[i - 1];
-        const currentCard = cardRefs.current[i];
-        if (!prevCard || !currentCard) continue;
-
-        const stepLabel = `step_${i}`;
-        tl.addLabel(stepLabel);
-
-        // When previous card steps back, fade to opacity 0 so no underlying shadows accumulate
-        tl.to(
-          prevCard,
-          {
-            scale: 0.88,
-            y: '-10%',
-            opacity: 0,
-            duration: 1,
-            ease: 'power2.inOut',
-          },
-          stepLabel
-        );
-
-        tl.fromTo(
-          currentCard,
-          {
-            y: '115%',
-            scale: 0.95,
-          },
-          {
-            y: '0%',
-            scale: 1,
-            duration: 1,
-            ease: 'power2.inOut',
-          },
-          stepLabel
-        );
-
-        tl.to({}, { duration: 0.15 });
       }
-    }, containerRef);
+    );
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

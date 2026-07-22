@@ -43,6 +43,7 @@ const JoinTeamSection = () => {
 
   // Magnetic Button Effect
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (window.matchMedia('(hover: none)').matches) return;
     const btn = buttonRef.current;
     if (!btn) return;
     
@@ -59,6 +60,7 @@ const JoinTeamSection = () => {
   };
 
   const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: none)').matches) return;
     const btn = buttonRef.current;
     if (!btn) return;
     
@@ -71,7 +73,7 @@ const JoinTeamSection = () => {
   };
 
   return (
-    <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[100dvh] lg:h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 

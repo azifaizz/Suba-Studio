@@ -89,13 +89,13 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Engagements are the first step towards a lifelong commitment. We capture the excitement, the love, and the joy of this special milestone. From intimate close-ups of the ring to candid moments of celebration, we preserve every detail of your engagement.",
         whyChooseTitle: "Why choose our service for your engagement photography?",
         whyChooseText: "We specialize in capturing the raw emotions and genuine connections that make your engagement unique. Our photographers create a relaxed and comfortable environment, allowing your natural love story to unfold beautifully before the lens.",
-        heroImage: "/4Z5A4700.jpg",
-        collageImages: ["/4Z5A2029.JPG", "/4Z5A2046.JPG", "/4Z5A2060.JPG"],
+        heroImage: "/engagement/4Z5A4700.jpg",
+        collageImages: ["/engagement/1.JPG", "/engagement/4Z5A2046.JPG", "/engagement/4Z5A2060.JPG"],
         albums: [
-            { id: 1, title: "", image: "/4Z5A4691.jpg" },
-            { id: 2, title: "", image: "/4Z5A4696.jpg" },
-            { id: 3, title: "", image: "/039.jpg" },
-            { id: 4, title: "", image: "/040.jpg" },
+            { id: 1, title: "", image: "/engagement/2.jpg" },
+            { id: 2, title: "", image: "/engagement/4Z5A4696.jpg" },
+            { id: 3, title: "", image: "/engagement/039.jpg" },
+            { id: 4, title: "", image: "/engagement/040.jpg" },
         ]
     },
     "bridal-portraits": {
@@ -230,15 +230,24 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Post-wedding shoots allow for a more relaxed session without the time constraints of the wedding day. We can visit beautiful locations and capture stunning portraits of you as a newly married couple.",
         whyChooseTitle: "Why choose our post-wedding photography?",
         whyChooseText: "Without the wedding day jitters, we can focus on creating more artistic and diverse shots. We work with you to find the perfect backdrop for your first official portraits as husband and wife.",
-        heroImage: "/p4.JPG",
-        collageImages: ["/p1.JPG", "/p6.JPG", "/p7.JPG"],
+        heroImage: "/postwed/p4.JPG",
+        collageImages: [
+            "/postwed/p1.JPG",
+            "/postwed/p3.JPG",
+            "/postwed/p2.JPG"
+        ],
         albums: [
-            { id: 1, title: "", image: "/p2.JPG" },
-            { id: 2, title: "", image: "/p3.JPG" },
-            { id: 3, title: "", image: "/p5.JPG" },
-            { id: 4, title: "", image: "/p8.JPG" },
-            { id: 5, title: "", image: "/p9.JPG" },
-            { id: 6, title: "", image: "/p10.JPG" },
+            { id: 1, title: "", image: "/postwed/p5.JPG" },
+            { id: 2, title: "", image: "/postwed/p6.JPG" },
+            { id: 3, title: "", image: "/postwed/p7.JPG" },
+            { id: 4, title: "", image: "/postwed/p8.JPG" },
+            { id: 5, title: "", image: "/postwed/p9.JPG" },
+            { id: 6, title: "", image: "/postwed/p10.JPG" },
+            { id: 7, title: "", image: "/postwed/p11.png" },
+            { id: 8, title: "", image: "/postwed/p12.png" },
+            { id: 9, title: "", image: "/postwed/p13.jpg" },
+            { id: 10, title: "", image: "/postwed/p14.JPG" },
+            { id: 11, title: "", image: "/postwed/p15.jpg" }
         ]
     },
     "maternity": {

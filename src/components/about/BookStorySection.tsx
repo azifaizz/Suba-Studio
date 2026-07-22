@@ -41,13 +41,14 @@ const BookStorySection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-[100dvh] lg:h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
           ref={bgRef}
           src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" 
           alt="Wedding Couple" 
+          loading="lazy"
           className="w-full h-full object-cover origin-center"
         />
         {/* Soft dark overlay */}

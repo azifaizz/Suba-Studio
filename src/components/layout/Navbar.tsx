@@ -41,18 +41,13 @@ const navData = [
             { name: "Couple Portraits", path: "/gallery/couple-portraits", hasCamera: true },
             { name: "Groom Portraits", path: "/gallery/groom-portraits", hasCamera: true },
             { name: "Rituals", path: "/gallery/rituals", hasCamera: true },
-            { name: "Candid Moments", path: "/gallery/candid-moments", hasCamera: true },
         ]
     },
     {
         name: "VIDEOS",
-        path: "/video",
-        vertical: true,
-        subMenu: [
-            { name: "Candid Wedding Films", path: "/video/candid", hasCamera: true },
-            { name: "Outdoor Wedding Films", path: "/video/outdoor", hasCamera: true },
-            { name: "Short Stories", path: "/video/short-stories", hasCamera: true },
-        ]
+        path: "/videos",
+        noDropdown: true,
+        subMenu: []
     }
 ];
 

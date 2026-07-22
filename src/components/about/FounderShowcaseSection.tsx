@@ -91,7 +91,7 @@ const FounderShowcaseSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative py-24 md:py-32 lg:py-48 overflow-hidden bg-[#FAFAF8] text-[#111111]">
+    <section ref={containerRef} className="relative py-16 md:py-24 lg:py-48 overflow-hidden bg-[#FAFAF8] text-[#111111]">
       {/* Subtle paper grain overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }}></div>
 
@@ -104,6 +104,7 @@ const FounderShowcaseSection = () => {
               ref={imageRef}
               src="/suba.jpg" 
               alt="Ajay Benjamin - Founder" 
+              loading="lazy"
               className="w-full h-auto block transform origin-center scale-[1.05]"
             />
           </div>

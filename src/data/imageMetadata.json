@@ -1,950 +1,1088 @@
 {
-    "/039.jpg":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/040.jpg":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/08 copy.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/1.jpg":  {
-                   "width":  1920,
-                   "height":  1200,
-                   "aspectRatio":  1.6,
-                   "orientation":  "landscape"
-               },
-    "/10.JPG":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/14.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/15.JPG":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/16.jpg":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/18.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/19.jpg":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/2.jpg":  {
-                   "width":  1920,
-                   "height":  1280,
-                   "aspectRatio":  1.5,
-                   "orientation":  "landscape"
-               },
-    "/20.jpg":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/23.jpg":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/3.jpg":  {
-                   "width":  1920,
-                   "height":  1280,
-                   "aspectRatio":  1.5,
-                   "orientation":  "landscape"
-               },
-    "/4.JPG":  {
-                   "width":  1280,
-                   "height":  1920,
-                   "aspectRatio":  0.6666666666666666,
-                   "orientation":  "portrait"
-               },
-    "/4Z5A2029.JPG":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/4Z5A2046.JPG":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/4Z5A2060.JPG":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/4Z5A4691.jpg":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/4Z5A4696.jpg":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/4Z5A4700.jpg":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/5.JPG":  {
-                   "width":  1280,
-                   "height":  1920,
-                   "aspectRatio":  0.6666666666666666,
-                   "orientation":  "portrait"
-               },
-    "/8.JPG":  {
-                   "width":  1280,
-                   "height":  1920,
-                   "aspectRatio":  0.6666666666666666,
-                   "orientation":  "portrait"
-               },
-    "/Aa.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/b1.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b10.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/b11.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/b12.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/b14.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/b15.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/b2.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b3.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b4.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b6.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b7.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/b8.jpg":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/b9.jpg":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/Baby/100.jpg":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/Baby/101.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/Baby/20.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/Baby/30.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/40.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/50.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/60.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/70.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/80.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/90.jpg":  {
-                         "width":  1920,
-                         "height":  1280,
-                         "aspectRatio":  1.5,
-                         "orientation":  "landscape"
-                     },
-    "/Baby/bby.jpg":  {
-                          "width":  1920,
-                          "height":  1280,
-                          "aspectRatio":  1.5,
-                          "orientation":  "landscape"
-                      },
-    "/Baby/toddler.jpg":  {
-                              "width":  1920,
-                              "height":  1280,
-                              "aspectRatio":  1.5,
-                              "orientation":  "landscape"
-                          },
-    "/Bby.mp4":  {
-                     "width":  1920,
-                     "height":  1080,
-                     "aspectRatio":  1.7777777777777777,
-                     "orientation":  "landscape"
-                 },
-    "/Bs.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/Christian/4Z5A8479.JPG":  {
-                                    "width":  1920,
-                                    "height":  1280,
-                                    "aspectRatio":  1.5,
-                                    "orientation":  "landscape"
-                                },
-    "/Christian/4Z5A8729.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8732.JPG":  {
-                                    "width":  1920,
-                                    "height":  1280,
-                                    "aspectRatio":  1.5,
-                                    "orientation":  "landscape"
-                                },
-    "/Christian/4Z5A8733.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8747.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8752.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8754.JPG":  {
-                                    "width":  1920,
-                                    "height":  1280,
-                                    "aspectRatio":  1.5,
-                                    "orientation":  "landscape"
-                                },
-    "/Christian/4Z5A8768.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8776.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/Christian/4Z5A8807.JPG":  {
-                                    "width":  1280,
-                                    "height":  1920,
-                                    "aspectRatio":  0.6666666666666666,
-                                    "orientation":  "portrait"
-                                },
-    "/g11.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g14.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/g16.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/g17.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/g19.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/g20.JPG":  {
-                     "width":  1280,
-                     "height":  1920,
-                     "aspectRatio":  0.6666666666666666,
-                     "orientation":  "portrait"
-                 },
-    "/g24.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g25.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g27.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g28.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g3.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/g31.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/g34.jpg":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/hindu/1.png":  {
-                         "width":  640,
-                         "height":  800,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/10.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/11.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/12.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/13.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/14.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/15.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/16.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/17.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/18.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/19.jpg":  {
-                          "width":  1080,
-                          "height":  1350,
-                          "aspectRatio":  0.8,
-                          "orientation":  "portrait"
-                      },
-    "/hindu/2.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/3.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/4.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/5.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/6.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/7.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/8.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/hindu/9.jpg":  {
-                         "width":  1080,
-                         "height":  1350,
-                         "aspectRatio":  0.8,
-                         "orientation":  "portrait"
-                     },
-    "/landscape.png":  {
-                           "width":  640,
-                           "height":  1136,
-                           "aspectRatio":  0.5633802816901409,
-                           "orientation":  "portrait"
-                       },
-    "/Ma.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/Maternity/heroimg.jpg":  {
-                                   "width":  1280,
-                                   "height":  1920,
-                                   "aspectRatio":  0.6666666666666666,
-                                   "orientation":  "portrait"
-                               },
-    "/Maternity/m1.jpg":  {
-                              "width":  1080,
-                              "height":  1350,
-                              "aspectRatio":  0.8,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m12.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m13.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m14.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m15.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m16.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m17.jpg":  {
-                               "width":  1280,
-                               "height":  1920,
-                               "aspectRatio":  0.6666666666666666,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m18.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m19.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m2.jpg":  {
-                              "width":  1080,
-                              "height":  1350,
-                              "aspectRatio":  0.8,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m20.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m21.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m22.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m23.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m24.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m25.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m26.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m27.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m28.jpg":  {
-                               "width":  1080,
-                               "height":  1350,
-                               "aspectRatio":  0.8,
-                               "orientation":  "portrait"
-                           },
-    "/Maternity/m3.jpg":  {
-                              "width":  1080,
-                              "height":  1350,
-                              "aspectRatio":  0.8,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m4.jpg":  {
-                              "width":  1080,
-                              "height":  1350,
-                              "aspectRatio":  0.8,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m5.jpg":  {
-                              "width":  1280,
-                              "height":  1920,
-                              "aspectRatio":  0.6666666666666666,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m6.jpg":  {
-                              "width":  1280,
-                              "height":  1920,
-                              "aspectRatio":  0.6666666666666666,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m7.jpg":  {
-                              "width":  1280,
-                              "height":  1920,
-                              "aspectRatio":  0.6666666666666666,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m8.jpg":  {
-                              "width":  1280,
-                              "height":  1920,
-                              "aspectRatio":  0.6666666666666666,
-                              "orientation":  "portrait"
-                          },
-    "/Maternity/m9.jpg":  {
-                              "width":  1280,
-                              "height":  1920,
-                              "aspectRatio":  0.6666666666666666,
-                              "orientation":  "portrait"
-                          },
-    "/Mk.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/Mk1.mp4":  {
-                     "width":  1920,
-                     "height":  1080,
-                     "aspectRatio":  1.7777777777777777,
-                     "orientation":  "landscape"
-                 },
-    "/muhurtham.jpg":  {
-                           "width":  1536,
-                           "height":  1920,
-                           "aspectRatio":  0.8,
-                           "orientation":  "portrait"
-                       },
-    "/Od.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/p1.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p10.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/p2.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p3.JPG":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/p4.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p5.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p6.JPG":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/p7.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p8.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/p9.JPG":  {
-                    "width":  1280,
-                    "height":  1920,
-                    "aspectRatio":  0.6666666666666666,
-                    "orientation":  "portrait"
-                },
-    "/portfolio_fashion.png":  {
-                                   "width":  640,
-                                   "height":  1136,
-                                   "aspectRatio":  0.5633802816901409,
-                                   "orientation":  "portrait"
-                               },
-    "/portfolio_romantic.png":  {
-                                    "width":  640,
-                                    "height":  800,
-                                    "aspectRatio":  0.8,
-                                    "orientation":  "portrait"
-                                },
-    "/portfolio_wedding.png":  {
-                                   "width":  640,
-                                   "height":  1138,
-                                   "aspectRatio":  0.562390158172232,
-                                   "orientation":  "portrait"
-                               },
-    "/portrait.png":  {
-                          "width":  610,
-                          "height":  1084,
-                          "aspectRatio":  0.5627306273062731,
-                          "orientation":  "portrait"
-                      },
-    "/pp10.jpg":  {
-                      "width":  1080,
-                      "height":  1350,
-                      "aspectRatio":  0.8,
-                      "orientation":  "portrait"
-                  },
-    "/pp11.jpg":  {
-                      "width":  1080,
-                      "height":  1350,
-                      "aspectRatio":  0.8,
-                      "orientation":  "portrait"
-                  },
-    "/pp2.jpg":  {
-                     "width":  1080,
-                     "height":  1350,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp3.jpg":  {
-                     "width":  1080,
-                     "height":  1350,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp4.jpg":  {
-                     "width":  1080,
-                     "height":  1350,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp5.jpg":  {
-                     "width":  1536,
-                     "height":  1920,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp6.JPG":  {
-                     "width":  1920,
-                     "height":  1280,
-                     "aspectRatio":  1.5,
-                     "orientation":  "landscape"
-                 },
-    "/pp7.jpg":  {
-                     "width":  1080,
-                     "height":  1350,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp8.jpg":  {
-                     "width":  1080,
-                     "height":  1350,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/pp9.jpg":  {
-                     "width":  1536,
-                     "height":  1920,
-                     "aspectRatio":  0.8,
-                     "orientation":  "portrait"
-                 },
-    "/r1.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/r2.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/r3.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/r4.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/r5.JPG":  {
-                    "width":  1920,
-                    "height":  1280,
-                    "aspectRatio":  1.5,
-                    "orientation":  "landscape"
-                },
-    "/Ss.mp4":  {
-                    "width":  1920,
-                    "height":  1080,
-                    "aspectRatio":  1.7777777777777777,
-                    "orientation":  "landscape"
-                },
-    "/SUBA6489 copy 2.jpg":  {
-                                 "width":  1280,
-                                 "height":  1920,
-                                 "aspectRatio":  0.6666666666666666,
-                                 "orientation":  "portrait"
-                             },
-    "/SUBA6537 copy 2.jpg":  {
-                                 "width":  1280,
-                                 "height":  1920,
-                                 "aspectRatio":  0.6666666666666666,
-                                 "orientation":  "portrait"
-                             }
+    "/039.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/040.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/08 copy.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/1.jpg": {
+        "width": 1920,
+        "height": 1200,
+        "aspectRatio": 1.6,
+        "orientation": "landscape"
+    },
+    "/10.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/14.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/15.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/16.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/18.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/19.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/2.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/20.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/23.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/3.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/4Z5A2029.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4Z5A2046.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4Z5A2060.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4Z5A4691.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4Z5A4696.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/4Z5A4700.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/5.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/8.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Aa.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/b1.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b10.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/b11.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b12.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/b14.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b15.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b2.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b3.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b4.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b6.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b7.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/b8.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/b9.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Baby/100.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/101.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Baby/20.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Baby/30.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/40.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/50.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/60.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/70.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/80.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/90.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/bby.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Baby/toddler.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bby.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/Bs.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/Christian/4Z5A8479.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Christian/4Z5A8729.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8732.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Christian/4Z5A8733.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8747.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8752.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8754.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Christian/4Z5A8768.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8776.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Christian/4Z5A8807.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g11.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g14.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g16.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g17.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g19.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g20.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/g24.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g25.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g27.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g28.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g3.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g31.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/g34.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/hindu/1.png": {
+        "width": 640,
+        "height": 800,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/10.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/11.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/12.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/13.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/14.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/15.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/16.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/17.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/18.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/19.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/2.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/3.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/4.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/5.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/6.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/7.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/8.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/hindu/9.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/landscape.png": {
+        "width": 640,
+        "height": 1136,
+        "aspectRatio": 0.5633802816901409,
+        "orientation": "portrait"
+    },
+    "/Ma.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/Maternity/heroimg.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m1.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m12.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m13.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m14.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m15.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m16.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m17.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m18.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m19.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m2.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m20.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m21.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m22.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m23.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m24.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m25.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m26.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m27.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m28.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m3.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m4.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Maternity/m5.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m6.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m7.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m8.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Maternity/m9.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/Mk.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/Mk1.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/muhurtham.jpg": {
+        "width": 1536,
+        "height": 1920,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/Od.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/p1.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p10.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p2.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p3.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/p4.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p5.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p6.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/p7.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p8.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/p9.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/portfolio_fashion.png": {
+        "width": 640,
+        "height": 1136,
+        "aspectRatio": 0.5633802816901409,
+        "orientation": "portrait"
+    },
+    "/portfolio_romantic.png": {
+        "width": 640,
+        "height": 800,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/portfolio_wedding.png": {
+        "width": 640,
+        "height": 1138,
+        "aspectRatio": 0.562390158172232,
+        "orientation": "portrait"
+    },
+    "/portrait.png": {
+        "width": 610,
+        "height": 1084,
+        "aspectRatio": 0.5627306273062731,
+        "orientation": "portrait"
+    },
+    "/pp10.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp11.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp2.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp3.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp4.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp5.jpg": {
+        "width": 1536,
+        "height": 1920,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp6.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/pp7.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp8.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/pp9.jpg": {
+        "width": 1536,
+        "height": 1920,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/r1.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/r2.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/r3.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/r4.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/r5.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Ss.mp4": {
+        "width": 1920,
+        "height": 1080,
+        "aspectRatio": 1.7777777777777777,
+        "orientation": "landscape"
+    },
+    "/SUBA6489 copy 2.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/SUBA6537 copy 2.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/engagement/039.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/engagement/040.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/engagement/1.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/engagement/2.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/engagement/4Z5A2046.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/engagement/4Z5A2060.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/engagement/4Z5A4696.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/engagement/4Z5A4700.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p1.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p10.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p11.png": {
+        "width": 640,
+        "height": 800,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/postwed/p12.png": {
+        "width": 640,
+        "height": 1138,
+        "aspectRatio": 0.562390158172232,
+        "orientation": "portrait"
+    },
+    "/postwed/p13.jpg": {
+        "width": 1536,
+        "height": 1920,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/postwed/p14.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p15.jpg": {
+        "width": 1080,
+        "height": 1350,
+        "aspectRatio": 0.8,
+        "orientation": "portrait"
+    },
+    "/postwed/p2.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p3.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/postwed/p4.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p5.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p6.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    },
+    "/postwed/p7.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p8.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/postwed/p9.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6666666666666666,
+        "orientation": "portrait"
+    }
 }

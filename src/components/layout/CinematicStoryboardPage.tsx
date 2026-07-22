@@ -304,9 +304,9 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
                         <p className="font-poppins text-white/60 mb-10 md:mb-12 max-w-lg mx-auto text-sm md:text-base leading-relaxed px-4">
                             {content.whyChooseText}
                         </p>
-                        <button className="px-8 py-4 md:px-10 md:py-5 bg-transparent border border-white/20 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-500 font-poppins text-xs md:text-sm tracking-widest uppercase hover:bg-[#D4AF37]/5">
+                        <a href="tel:+918994442768" className="inline-block px-8 py-4 md:px-10 md:py-5 bg-transparent border border-white/20 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-500 font-poppins text-xs md:text-sm tracking-widest uppercase hover:bg-[#D4AF37]/5 cursor-pointer">
                             Book Subha Studios
-                        </button>
+                        </a>
                     </div>
                 </section>
 

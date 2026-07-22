@@ -141,31 +141,97 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
             <Reveal delay={100}>
-              <div className="group cursor-pointer" onClick={() => navigate('/weddings/hindu')}>
+              <div 
+                className="group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 rounded-2xl transition-all duration-500 ease-out md:hover:-translate-y-[6px] md:hover:scale-[1.02] md:hover:shadow-xl"
+                onClick={() => navigate('/weddings/hindu')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate('/weddings/hindu');
+                  }
+                }}
+                tabIndex={0}
+                role="link"
+                aria-label="Hindu Wedding Photography"
+              >
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
-                  <img src="/portfolio_wedding.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Hindu Wedding" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <img src="/hindu/1.png" className="w-full h-full object-cover transition-all duration-700 ease-out md:group-hover:scale-[1.03] md:group-hover:brightness-105" alt="Hindu Wedding" />
+                  <div className="absolute inset-0 bg-black/20 md:group-hover:bg-black/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-7 lg:p-8 flex flex-col items-start w-full pointer-events-none pr-20">
+                    <span className="text-white/90 text-xs tracking-[0.2em] uppercase font-medium mb-2 drop-shadow-sm">
+                      Photography
+                    </span>
+                    <h3 className="text-white text-2xl md:text-3xl font-serif font-bold leading-tight opacity-95 translate-y-[6px] transition-all duration-500 ease-out md:group-hover:translate-y-0 md:group-hover:opacity-100 drop-shadow-md">
+                      Hindu Wedding
+                    </h3>
+                  </div>
+
                   <StandaloneArrowCTA to="/weddings/hindu" darkBackground={true} />
                 </div>
               </div>
             </Reveal>
             <Reveal delay={200}>
-              <div className="group cursor-pointer" onClick={() => navigate('/weddings/engagement')}>
+              <div 
+                className="group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 rounded-2xl transition-all duration-500 ease-out md:hover:-translate-y-[6px] md:hover:scale-[1.02] md:hover:shadow-xl"
+                onClick={() => navigate('/weddings/engagement')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate('/weddings/engagement');
+                  }
+                }}
+                tabIndex={0}
+                role="link"
+                aria-label="Engagement Photography"
+              >
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
-                  <img src="/portfolio_romantic.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Engagement Photography" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <img src="/couple_portrait/pp4.jpg" className="w-full h-full object-cover transition-all duration-700 ease-out md:group-hover:scale-[1.03] md:group-hover:brightness-105" alt="Engagement Photography" />
+                  <div className="absolute inset-0 bg-black/20 md:group-hover:bg-black/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-7 lg:p-8 flex flex-col items-start w-full pointer-events-none pr-20">
+                    <span className="text-white/90 text-xs tracking-[0.2em] uppercase font-medium mb-2 drop-shadow-sm">
+                      Photography
+                    </span>
+                    <h3 className="text-white text-2xl md:text-3xl font-serif font-bold leading-tight opacity-95 translate-y-[6px] transition-all duration-500 ease-out md:group-hover:translate-y-0 md:group-hover:opacity-100 drop-shadow-md">
+                      Engagement
+                    </h3>
+                  </div>
+
                   <StandaloneArrowCTA to="/weddings/engagement" darkBackground={true} />
                 </div>
               </div>
             </Reveal>
             <Reveal delay={300}>
-              <div className="group cursor-pointer" onClick={() => navigate('/weddings/christian')}>
+              <div 
+                className="group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 rounded-2xl transition-all duration-500 ease-out md:hover:-translate-y-[6px] md:hover:scale-[1.02] md:hover:shadow-xl"
+                onClick={() => navigate('/weddings/christian')}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate('/weddings/christian');
+                  }
+                }}
+                tabIndex={0}
+                role="link"
+                aria-label="Christian Wedding Photography"
+              >
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
-                  <img src="/portfolio_romantic.png" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Christian Wedding" />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500 pointer-events-none" />
+                  <img src="/Christian/4Z5A8733.JPG" className="w-full h-full object-cover transition-all duration-700 ease-out md:group-hover:scale-[1.03] md:group-hover:brightness-105" alt="Christian Wedding" />
+                  <div className="absolute inset-0 bg-black/20 md:group-hover:bg-black/10 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="absolute bottom-0 left-0 p-6 sm:p-7 lg:p-8 flex flex-col items-start w-full pointer-events-none pr-20">
+                    <span className="text-white/90 text-xs tracking-[0.2em] uppercase font-medium mb-2 drop-shadow-sm">
+                      Photography
+                    </span>
+                    <h3 className="text-white text-2xl md:text-3xl font-serif font-bold leading-tight opacity-95 translate-y-[6px] transition-all duration-500 ease-out md:group-hover:translate-y-0 md:group-hover:opacity-100 drop-shadow-md">
+                      Christian Wedding
+                    </h3>
+                  </div>
+
                   <StandaloneArrowCTA to="/weddings/christian" darkBackground={true} />
                 </div>
               </div>

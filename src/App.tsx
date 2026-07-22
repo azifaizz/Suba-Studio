@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
+import Videos from "./pages/Videos";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,7 @@ const App = () => (
             <Route path="/weddings/:subcategory" element={<CategoryPage />} />
             <Route path="/gallery/:subcategory" element={<CategoryPage />} />
             <Route path="/outdoor/:subcategory" element={<CategoryPage />} />
-            <Route path="/video/:subcategory" element={<CategoryPage />} />
+            <Route path="/videos" element={<Videos />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
