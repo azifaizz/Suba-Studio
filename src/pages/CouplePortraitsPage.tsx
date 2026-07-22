@@ -6,7 +6,6 @@ import CoupleLoveInMotion from '@/components/couple-portraits/CoupleLoveInMotion
 import CoupleQuote from '@/components/couple-portraits/CoupleQuote';
 import CoupleParallaxWall from '@/components/couple-portraits/CoupleParallaxWall';
 import CoupleDetails from '@/components/couple-portraits/CoupleDetails';
-import CoupleFullscreenStory from '@/components/couple-portraits/CoupleFullscreenStory';
 import CoupleCTA from '@/components/couple-portraits/CoupleCTA';
 
 interface CouplePortraitsPageProps {
@@ -49,9 +48,6 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
 
             {/* Editorial Details (Micro-moments) */}
             <CoupleDetails />
-
-            {/* Fullscreen Love Story Isolation */}
-            <CoupleFullscreenStory />
 
             {/* Book Your Story CTA */}
             <CoupleCTA />
