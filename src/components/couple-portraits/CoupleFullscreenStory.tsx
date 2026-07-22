@@ -19,22 +19,26 @@ const CoupleFullscreenStory = () => {
                     start: 'top top',
                     end: '+=100%',
                     pin: true,
-                    scrub: 1
+                    scrub: 1,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true
                 }
             });
 
             // Slow cinematic zoom
             tl.fromTo(bgRef.current, 
                 { scale: 1 },
-                { scale: 1.2, ease: 'none' }
+                { scale: 1.15, ease: 'none' },
+                0
             );
 
-            // Fade out text as we zoom
+            // Smoothly fade out text toward the release phase of the pin so there's no sudden void or abrupt release
             tl.to('.cfs-text', {
                 opacity: 0,
-                y: -50,
-                ease: 'power2.in'
-            }, 0);
+                y: -40,
+                ease: 'power2.inOut',
+                duration: 0.4
+            }, 0.6);
 
         }, containerRef);
 

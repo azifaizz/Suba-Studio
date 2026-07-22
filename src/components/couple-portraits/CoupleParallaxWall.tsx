@@ -66,7 +66,7 @@ const CoupleParallaxWall = () => {
     }, []);
 
     return (
-        <section className="w-full bg-[#FAF9F6] py-24 px-4 md:px-12">
+        <section ref={containerRef} className="w-full bg-[#FAF9F6] py-24 px-4 md:px-12">
             
             {/* Center Focus Text */}
             <div className="text-center mb-16 md:mb-24">

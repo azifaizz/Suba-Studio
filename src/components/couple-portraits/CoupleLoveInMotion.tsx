@@ -50,13 +50,19 @@ const CoupleLoveInMotion = () => {
             
             if (!container || !rightSide) return;
 
-            // Pin the left text area while the right area scrolls
-            ScrollTrigger.create({
-                trigger: container,
-                start: 'top top',
-                end: 'bottom bottom',
-                pin: textRef.current,
-                pinSpacing: false
+            const mm = gsap.matchMedia();
+
+            // Pin the left text area on desktop (>= 1024px) while the right area scrolls
+            mm.add("(min-width: 1024px)", () => {
+                ScrollTrigger.create({
+                    trigger: container,
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    pin: textRef.current,
+                    pinSpacing: false,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true
+                });
             });
 
             // Animate progress bar
@@ -67,7 +73,8 @@ const CoupleLoveInMotion = () => {
                     trigger: container,
                     start: 'top top',
                     end: 'bottom bottom',
-                    scrub: true
+                    scrub: true,
+                    invalidateOnRefresh: true
                 }
             });
 
@@ -78,6 +85,7 @@ const CoupleLoveInMotion = () => {
                     start: 'top center',
                     end: 'bottom center',
                     scrub: true,
+                    invalidateOnRefresh: true,
                     onEnter: () => {
                         gsap.to(container, { backgroundColor: storySteps[i].bgColor, duration: 0.8 });
                         gsap.to(textRef.current, { color: storySteps[i].textColor, duration: 0.8 });

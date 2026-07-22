@@ -39,7 +39,8 @@ const CouplePinnedStory = () => {
                     end: '+=4000', // 4000px of scrolling
                     pin: true,
                     scrub: 1,
-                    anticipatePin: 1
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true
                 }
             });
 

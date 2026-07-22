@@ -19,7 +19,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
     }, []);
 
     return (
-        <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] overflow-hidden selection:bg-[#D4AF37] selection:text-white">
+        <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] overflow-x-hidden selection:bg-[#D4AF37] selection:text-white">
             {/* Cinematic Hero */}
             <CoupleHero />
 
