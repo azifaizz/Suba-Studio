@@ -16,10 +16,10 @@ const CandidMomentsPage: React.FC<CandidMomentsPageProps> = ({ subcategory }) =>
   
   // Since candid moments has limited images in the dummy data, let's pull some nice ones for the scatter layout
   const allImages = [
-    "/candid/p1.JPG", "/candid/p2.JPG", "/candid/p3.JPG", "/candid/p4.JPG",
-    "/candid/p5.JPG", "/candid/p6.JPG", "/candid/p7.JPG", "/candid/p8.JPG",
-    "/candid/p9.JPG", "/candid/p10.JPG", "/candid/p11.png", "/candid/p12.png",
-    "/candid/p13.jpg", "/candid/p14.JPG", "/candid/p15.jpg"
+    "/postwed/p1.JPG", "/postwed/p2.JPG", "/postwed/p3.JPG", "/postwed/p4.JPG",
+    "/postwed/p5.JPG", "/postwed/p6.JPG", "/postwed/p7.JPG", "/postwed/p8.JPG",
+    "/postwed/p9.JPG", "/postwed/p10.JPG", "/postwed/p11.png", "/postwed/p12.png",
+    "/postwed/p13.jpg", "/postwed/p14.JPG", "/postwed/p15.jpg"
   ];
   const uniqueImages = Array.from(new Set(allImages));
   

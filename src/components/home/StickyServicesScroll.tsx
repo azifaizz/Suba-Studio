@@ -47,7 +47,7 @@ const servicesData: ServiceCardData[] = [
     id: 3,
     title: "Post Wedding",
     description: "Celebrating your journey with timeless portraits.",
-    image: "/candid/p4.JPG",
+    image: "/postwed/p4.JPG",
     link: "/weddings/post-wedding",
     icon: <Aperture className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
@@ -63,7 +63,7 @@ const servicesData: ServiceCardData[] = [
     id: 5,
     title: "Family Photography",
     description: "Preserving the people who matter most.",
-    image: "/039.jpg",
+    image: "/engagement/039.jpg",
     link: "/weddings/candid-moments",
     icon: <Users className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
   },
