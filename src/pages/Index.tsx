@@ -11,7 +11,17 @@ import {
   MapPin,
   Phone,
   Mail,
-  Play
+  Play,
+  Camera,
+  Image as ImageIcon,
+  Aperture,
+  Heart,
+  Users,
+  Sparkles,
+  Smile,
+  Gift,
+  Home,
+  Star
 } from "lucide-react";
 import { FlowButton } from "@/components/ui/flow-button";
 import { HeroQuote } from "@/components/home/HeroQuote";
