@@ -220,43 +220,45 @@ const Navbar = () => {
             layout
             layoutId={isLeftItem ? `desktop-nav-item-${item.name}` : undefined}
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-            className="relative group px-3 xl:px-5 py-2.5 hover:z-[60]"
+            className="relative group px-4 xl:px-6 py-2.5 hover:z-[60]"
             onMouseEnter={() => !item.noDropdown && setActiveSubMenu(item.name)}
             onMouseLeave={() => setActiveSubMenu(null)}
         >
             <button
-                className={`relative flex items-center gap-1.5 transition-colors duration-300 uppercase font-serif font-medium tracking-[0.18em] text-[15px] xl:text-[16px] py-1 ${
+                className={`relative flex items-center gap-2 transition-all duration-300 uppercase font-serif font-semibold tracking-[0.22em] text-[15px] xl:text-[17px] py-1 ${
                     active
-                        ? (isScrolled || !isHome ? 'text-zg-blue font-semibold' : 'text-white font-semibold')
-                        : (isScrolled || !isHome ? 'text-gray-800 hover:text-zg-blue' : 'text-white/90 hover:text-white')
+                        ? (isScrolled || !isHome ? 'text-zg-blue font-bold' : 'text-white font-bold')
+                        : (isScrolled || !isHome ? 'text-gray-900 hover:text-[#D4AF37]' : 'text-white/95 hover:text-[#D4AF37]')
                 }`}
                 onClick={() => item.noDropdown ? handleNavClick(item.path) : undefined}
             >
                 {item.name}
                 {!item.noDropdown && (
-                    <ChevronDown size={13} className={`transition-transform duration-300 text-current ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={14} className={`transition-transform duration-300 text-current ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
                 )}
 
-                {/* Luxury Underline Reveal Indicator */}
-                <span className={`absolute bottom-0 left-0 h-[2px] bg-zg-blue transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    active ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                {/* Luxury Gold/Blue Animated Underline Reveal */}
+                <span className={`absolute -bottom-1 left-0 h-[2.5px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    isScrolled || !isHome ? 'bg-zg-blue' : 'bg-[#D4AF37]'
+                } ${
+                    active ? 'w-full opacity-100 shadow-[0_0_8px_rgba(212,175,55,0.5)]' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                 }`} />
             </button>
 
             {/* Desktop Dropdown Drawer */}
             {!item.noDropdown && item.subMenu.length > 0 && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
-                    <div className="bg-white/98 text-black shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-[20px] overflow-hidden border border-black/[0.06] backdrop-blur-2xl p-3 xl:p-4 flex flex-col gap-1 min-w-[280px] xl:min-w-[310px]">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-3 z-50">
+                    <div className="bg-white text-gray-900 shadow-[0_25px_60px_rgba(0,0,0,0.14)] rounded-[22px] overflow-hidden border border-gray-200/90 backdrop-blur-2xl p-3.5 xl:p-4 flex flex-col gap-1.5 min-w-[290px] xl:min-w-[320px]">
                         {item.subMenu.map((sub) => (
                             <button
                                 key={sub.name}
                                 onClick={() => handleNavClick(sub.path)}
-                                className="w-full transition-all duration-300 flex items-center justify-between text-left px-4 py-3 rounded-[12px] hover:bg-gray-50/80 group/sub relative overflow-hidden"
+                                className="w-full transition-all duration-300 flex items-center justify-between text-left px-4 py-3.5 rounded-[14px] hover:bg-gray-50 group/sub relative overflow-hidden"
                             >
-                                {/* Subtle Left Indicator Accent Line */}
-                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 group-hover/sub:h-6 bg-zg-blue transition-all duration-300 rounded-r-full" />
+                                {/* Gold Indicator Accent Bar on Hover */}
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[4px] h-0 group-hover/sub:h-7 bg-[#D4AF37] transition-all duration-300 rounded-r-full shadow-sm" />
 
-                                <span className="font-serif font-medium text-[13px] xl:text-[14px] text-gray-800 group-hover/sub:text-zg-blue group-hover/sub:translate-x-1.5 transition-all duration-300 tracking-[0.06em] whitespace-nowrap">
+                                <span className="font-serif font-medium text-[14px] xl:text-[15px] text-gray-900 group-hover/sub:text-[#D4AF37] group-hover/sub:translate-x-2 transition-all duration-300 tracking-[0.08em] uppercase whitespace-nowrap">
                                     {sub.name}
                                 </span>
                             </button>
