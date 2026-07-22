@@ -220,45 +220,45 @@ const Navbar = () => {
             layout
             layoutId={isLeftItem ? `desktop-nav-item-${item.name}` : undefined}
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-            className="relative group px-2.5 xl:px-4 py-1.5 hover:z-[60]"
+            className="relative group px-1.5 xl:px-2.5 py-1 hover:z-[60]"
             onMouseEnter={() => !item.noDropdown && setActiveSubMenu(item.name)}
             onMouseLeave={() => setActiveSubMenu(null)}
         >
             <button
-                className={`relative flex items-center gap-1.5 transition-all duration-300 uppercase font-serif font-semibold tracking-[0.14em] text-[13px] xl:text-[14px] py-0.5 ${
+                className={`relative flex items-center gap-1 transition-all duration-300 uppercase font-serif font-medium tracking-[0.12em] text-[12px] xl:text-[13px] py-0.5 ${
                     active
-                        ? (isScrolled || !isHome ? 'text-zg-blue font-bold' : 'text-white font-bold')
+                        ? (isScrolled || !isHome ? 'text-zg-blue font-semibold' : 'text-white font-semibold')
                         : (isScrolled || !isHome ? 'text-gray-900 hover:text-[#D4AF37]' : 'text-white/95 hover:text-[#D4AF37]')
                 }`}
                 onClick={() => item.noDropdown ? handleNavClick(item.path) : undefined}
             >
                 {item.name}
                 {!item.noDropdown && (
-                    <ChevronDown size={12} className={`transition-transform duration-300 text-current ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={11} className={`transition-transform duration-300 text-current ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
                 )}
 
                 {/* Luxury Gold/Blue Animated Underline Reveal */}
-                <span className={`absolute -bottom-1 left-0 h-[2px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                <span className={`absolute -bottom-1 left-0 h-[1.5px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     isScrolled || !isHome ? 'bg-zg-blue' : 'bg-[#D4AF37]'
                 } ${
-                    active ? 'w-full opacity-100 shadow-[0_0_8px_rgba(212,175,55,0.5)]' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                    active ? 'w-full opacity-100 shadow-[0_0_6px_rgba(212,175,55,0.5)]' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                 }`} />
             </button>
 
             {/* Desktop Dropdown Drawer */}
             {!item.noDropdown && item.subMenu.length > 0 && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
-                    <div className="bg-white text-gray-900 shadow-[0_20px_50px_rgba(0,0,0,0.12)] rounded-[18px] overflow-hidden border border-gray-200/90 backdrop-blur-2xl p-2 xl:p-2.5 flex flex-col gap-1 min-w-[240px] xl:min-w-[260px]">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                    <div className="bg-white text-gray-900 shadow-[0_16px_40px_rgba(0,0,0,0.12)] rounded-[14px] overflow-hidden border border-gray-200/90 backdrop-blur-2xl p-1.5 xl:p-2 flex flex-col gap-0.5 min-w-[220px] xl:min-w-[240px]">
                         {item.subMenu.map((sub) => (
                             <button
                                 key={sub.name}
                                 onClick={() => handleNavClick(sub.path)}
-                                className="w-full transition-all duration-300 flex items-center justify-between text-left px-3 py-2 rounded-[10px] hover:bg-gray-50 group/sub relative overflow-hidden"
+                                className="w-full transition-all duration-300 flex items-center justify-between text-left px-2.5 py-1.5 rounded-[8px] hover:bg-gray-50 group/sub relative overflow-hidden"
                             >
                                 {/* Gold Indicator Accent Bar on Hover */}
-                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 group-hover/sub:h-5 bg-[#D4AF37] transition-all duration-300 rounded-r-full shadow-sm" />
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2.5px] h-0 group-hover/sub:h-4 bg-[#D4AF37] transition-all duration-300 rounded-r-full shadow-sm" />
 
-                                <span className="font-serif font-medium text-[12px] xl:text-[13px] text-gray-900 group-hover/sub:text-[#D4AF37] group-hover/sub:translate-x-1.5 transition-all duration-300 tracking-[0.06em] uppercase whitespace-nowrap">
+                                <span className="font-serif font-medium text-[11px] xl:text-[12px] text-gray-900 group-hover/sub:text-[#D4AF37] group-hover/sub:translate-x-1 transition-all duration-300 tracking-[0.05em] uppercase whitespace-nowrap">
                                     {sub.name}
                                 </span>
                             </button>
@@ -275,16 +275,16 @@ const Navbar = () => {
             <nav
                 className={`fixed top-0 w-full z-[100] transition-all duration-400 ease-out ${
                     isScrolled || !isHome
-                        ? 'bg-white/95 backdrop-blur-md shadow-sm py-2 border-b border-gray-100/50 text-black'
-                        : 'bg-transparent py-3 sm:py-4 text-white'
+                        ? 'bg-white/95 backdrop-blur-md shadow-sm py-1.5 border-b border-gray-100/50 text-black'
+                        : 'bg-transparent py-2.5 sm:py-3 text-white'
                 }`}
             >
-                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between relative h-12 md:h-14 [padding-left:max(16px,env(safe-area-inset-left))] [padding-right:max(16px,env(safe-area-inset-right))]">
+                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between relative h-10 md:h-12 [padding-left:max(16px,env(safe-area-inset-left))] [padding-right:max(16px,env(safe-area-inset-right))]">
                     
                     {/* Left Section (Desktop Split vs Scrolled Logo Slot) */}
                     <div className={`hidden lg:flex items-center justify-start z-40 ${isSplitLayout ? 'flex-1' : 'shrink-0'}`}>
                         {isSplitLayout ? (
-                            <div className="flex items-center gap-1 xl:gap-2">
+                            <div className="flex items-center gap-0.5 xl:gap-1.5">
                                 {leftNavItems.map(renderDesktopNavItem)}
                             </div>
                         ) : isHomeClickAnimating ? null : (
@@ -295,7 +295,7 @@ const Navbar = () => {
                                 onClick={() => handleHomeClick()}
                                 className="cursor-pointer select-none py-1 flex items-center shrink-0"
                             >
-                                <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.24em] text-xl xl:text-2xl uppercase transition-colors duration-300 whitespace-nowrap ${
+                                <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.22em] text-lg xl:text-xl uppercase transition-colors duration-300 whitespace-nowrap ${
                                     isScrolled || !isHome ? 'text-black' : 'text-white'
                                 }`}>
                                     SUBA STUDIOS
@@ -312,9 +312,9 @@ const Navbar = () => {
                                 layoutId="cinematic-brand-logo"
                                 transition={{ duration: 0.42, ease: [0.19, 1, 0.22, 1] }}
                                 onClick={() => handleHomeClick()}
-                                className="pointer-events-auto cursor-pointer select-none py-2 flex items-center justify-center"
+                                className="pointer-events-auto cursor-pointer select-none py-1 flex items-center justify-center"
                             >
-                                <span className="font-serif font-black tracking-[0.15em] xl:tracking-[0.28em] text-xl lg:text-2xl xl:text-3xl uppercase text-white transition-colors duration-300 whitespace-nowrap">
+                                <span className="font-serif font-black tracking-[0.15em] xl:tracking-[0.24em] text-lg lg:text-xl xl:text-2xl uppercase text-white transition-colors duration-300 whitespace-nowrap">
                                     SUBA STUDIOS
                                 </span>
                             </motion.div>
@@ -327,9 +327,9 @@ const Navbar = () => {
                             <div
                                 ref={logoRef}
                                 onClick={() => handleHomeClick()}
-                                className="pointer-events-auto cursor-pointer select-none py-2 flex items-center justify-center"
+                                className="pointer-events-auto cursor-pointer select-none py-1 flex items-center justify-center"
                             >
-                                <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.28em] text-xl lg:text-2xl xl:text-3xl uppercase transition-colors duration-300 whitespace-nowrap ${
+                                <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.24em] text-lg lg:text-xl xl:text-2xl uppercase transition-colors duration-300 whitespace-nowrap ${
                                     isScrolled || !isHome ? 'text-black' : 'text-white'
                                 }`}>
                                     SUBA STUDIOS
@@ -353,7 +353,7 @@ const Navbar = () => {
                             }}
                             className="cursor-pointer select-none py-1 flex items-center origin-left shrink-0"
                         >
-                            <span className={`font-serif font-black tracking-[0.16em] sm:tracking-[0.20em] md:tracking-[0.24em] text-base sm:text-lg md:text-xl uppercase transition-colors duration-300 whitespace-nowrap ${
+                            <span className={`font-serif font-black tracking-[0.16em] sm:tracking-[0.20em] md:tracking-[0.24em] text-sm sm:text-base md:text-lg uppercase transition-colors duration-300 whitespace-nowrap ${
                                 isScrolled || !isHome || isMobileMenuOpen ? 'text-black' : 'text-white'
                             }`}>
                                 SUBA STUDIOS
@@ -362,19 +362,19 @@ const Navbar = () => {
                     </div>
 
                     {/* Right Section: Nav links on desktop, Hamburger button always visible on right */}
-                    <div className={`flex items-center justify-end z-50 ${isSplitLayout ? 'flex-1' : 'shrink-0 ml-auto'} gap-1 sm:gap-2`}>
+                    <div className={`flex items-center justify-end z-50 ${isSplitLayout ? 'flex-1' : 'shrink-0 ml-auto'} gap-1 sm:gap-1.5`}>
                         {!isSplitLayout && (
-                            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+                            <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
                                 {leftNavItems.map(renderDesktopNavItem)}
                             </div>
                         )}
                         
-                        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+                        <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5">
                             {rightNavItems.map(renderDesktopNavItem)}
                         </div>
 
                         {/* CTA Button (Desktop only) */}
-                        <motion.div layout transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} className="hidden lg:block pl-2">
+                        <motion.div layout transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} className="hidden lg:block pl-1">
                             <LuxuryBookButton onClick={() => window.location.href = 'tel:+918994442768'} />
                         </motion.div>
 
@@ -382,12 +382,12 @@ const Navbar = () => {
                         <button
                             type="button"
                             aria-label="Open navigation menu"
-                            className={`lg:hidden z-50 shrink-0 flex items-center justify-center w-12 h-12 touch-target rounded-full transition-all duration-300 active:scale-95 ${
+                            className={`lg:hidden z-50 shrink-0 flex items-center justify-center w-10 h-10 touch-target rounded-full transition-all duration-300 active:scale-95 ${
                                 isScrolled || !isHome ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10'
                             }`}
                             onClick={() => setIsMobileMenuOpen(true)}
                         >
-                            <Menu size={26} className="shrink-0" strokeWidth={2.2} />
+                            <Menu size={22} className="shrink-0" strokeWidth={2.2} />
                         </button>
                     </div>
                 </div>
@@ -416,32 +416,32 @@ const Navbar = () => {
                             animate={{ x: '0%' }}
                             exit={{ x: '100%' }}
                             transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[380px] bg-white text-black shadow-[0_0_80px_rgba(0,0,0,0.35)] z-[60] lg:hidden overflow-y-auto flex flex-col justify-between [padding-left:max(20px,env(safe-area-inset-left))] [padding-right:max(20px,env(safe-area-inset-right))] safe-pt"
+                            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[340px] bg-white text-black shadow-[0_0_80px_rgba(0,0,0,0.35)] z-[60] lg:hidden overflow-y-auto flex flex-col justify-between [padding-left:max(20px,env(safe-area-inset-left))] [padding-right:max(20px,env(safe-area-inset-right))] safe-pt"
                         >
                             {/* Drawer Header (Logo + Close X Button) */}
-                            <div className="pt-6 sm:pt-7 pb-4 px-4 sm:px-6 flex items-center justify-between border-b border-gray-100/80 shrink-0">
-                                <span className="font-serif font-black tracking-[0.22em] text-sm sm:text-base uppercase text-gray-900 select-none">
+                            <div className="pt-5 sm:pt-6 pb-3 px-4 sm:px-5 flex items-center justify-between border-b border-gray-100/80 shrink-0">
+                                <span className="font-serif font-black tracking-[0.2em] text-xs sm:text-sm uppercase text-gray-900 select-none">
                                     SUBA STUDIOS
                                 </span>
                                 <button
                                     type="button"
                                     aria-label="Close navigation drawer"
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="w-12 h-12 touch-target rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center justify-center transition-all active:scale-90 shrink-0 shadow-sm"
+                                    className="w-10 h-10 touch-target rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 flex items-center justify-center transition-all active:scale-90 shrink-0 shadow-sm"
                                 >
-                                    <X size={22} strokeWidth={2.5} />
+                                    <X size={18} strokeWidth={2.5} />
                                 </button>
                             </div>
 
                             {/* Accordion Navigation Items */}
-                            <div className="flex flex-col gap-1.5 py-6 px-3 sm:px-5 my-auto">
+                            <div className="flex flex-col gap-1 py-4 px-3 sm:px-4 my-auto">
                                 {navData.map((item) => (
                                     <div key={item.name} className="flex flex-col w-full">
                                         
                                         {/* Main Item Header Button */}
                                         <button
                                             type="button"
-                                            className={`w-full min-h-[52px] sm:min-h-[56px] px-3 py-3.5 rounded-xl text-xl sm:text-2xl font-serif font-bold flex items-center justify-between transition-all text-left active:bg-gray-100/70 select-none ${
+                                            className={`w-full min-h-[44px] sm:min-h-[48px] px-3 py-2.5 rounded-lg text-base sm:text-lg font-serif font-bold flex items-center justify-between transition-all text-left active:bg-gray-100/70 select-none ${
                                                 isItemActive(item.path) || activeSubMenu === item.name
                                                     ? 'text-zg-blue'
                                                     : 'text-gray-900'
