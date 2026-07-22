@@ -40,12 +40,12 @@ export const LuxuryBookButton = React.forwardRef<HTMLButtonElement, LuxuryBookBu
         onClick={onClick}
         animate={{ x: position.x, y: position.y }}
         transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
-        whileHover={{ scale: 1.03, y: -3 }}
-        whileTap={{ scale: 0.96 }}
+        whileHover={{ scale: 1.02, y: -2 }}
+        whileTap={{ scale: 0.97 }}
         className={cn(
-          "group relative flex items-center justify-center gap-2 overflow-hidden rounded-[9999px] px-6 py-3 sm:px-8 sm:py-3.5 cursor-pointer",
-          "bg-[#111111]/80 backdrop-blur-xl border border-white/15 shadow-md",
-          "hover:bg-[#D4AF37] hover:border-transparent hover:shadow-[0_4px_20px_rgba(212,175,55,0.3)]",
+          "group relative flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-2.5 sm:px-7 sm:py-3 cursor-pointer",
+          "bg-[#111111]/85 backdrop-blur-xl border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.06)]",
+          "hover:bg-[#D4AF37] hover:border-transparent hover:shadow-[0_6px_22px_rgba(212,175,55,0.28)]",
           "transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
           className
         )}
@@ -62,7 +62,7 @@ export const LuxuryBookButton = React.forwardRef<HTMLButtonElement, LuxuryBookBu
         />
         
         {/* Text */}
-        <span className="relative z-10 font-poppins font-semibold text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-white group-hover:text-black transition-all duration-300 group-hover:tracking-[0.12em]">
+        <span className="relative z-10 font-serif font-semibold text-[11px] sm:text-[12px] tracking-[0.16em] uppercase text-white group-hover:text-black transition-all duration-300">
           {text}
         </span>
       </motion.button>

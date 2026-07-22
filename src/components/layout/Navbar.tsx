@@ -212,59 +212,51 @@ const Navbar = () => {
 
     const renderDesktopNavItem = (item: typeof navData[0]) => {
         const isLeftItem = leftNavItems.some(nav => nav.name === item.name);
+        const active = isItemActive(item.path);
+
         return (
         <motion.div
             key={item.name}
             layout
             layoutId={isLeftItem ? `desktop-nav-item-${item.name}` : undefined}
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-            className="relative group px-2 xl:px-3 py-2 hover:z-[60]"
+            className="relative group px-3 xl:px-5 py-2.5 hover:z-[60]"
             onMouseEnter={() => !item.noDropdown && setActiveSubMenu(item.name)}
             onMouseLeave={() => setActiveSubMenu(null)}
         >
             <button
-                className={`flex items-center gap-1 hover:text-zg-blue transition-colors uppercase font-serif font-bold tracking-widest text-[14px] ${
-                    isItemActive(item.path)
-                        ? (isScrolled || !isHome ? 'text-zg-blue underline underline-offset-[8px] decoration-2' : 'text-white underline underline-offset-[8px] decoration-2')
-                        : ''
+                className={`relative flex items-center gap-1.5 transition-colors duration-300 uppercase font-serif font-medium tracking-[0.18em] text-[15px] xl:text-[16px] py-1 ${
+                    active
+                        ? (isScrolled || !isHome ? 'text-zg-blue font-semibold' : 'text-white font-semibold')
+                        : (isScrolled || !isHome ? 'text-gray-800 hover:text-zg-blue' : 'text-white/90 hover:text-white')
                 }`}
                 onClick={() => item.noDropdown ? handleNavClick(item.path) : undefined}
             >
                 {item.name}
                 {!item.noDropdown && (
-                    <ChevronDown size={12} className={`transition-transform duration-300 ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown size={13} className={`transition-transform duration-300 text-current ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
                 )}
+
+                {/* Luxury Underline Reveal Indicator */}
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-zg-blue transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    active ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                }`} />
             </button>
 
             {/* Desktop Dropdown Drawer */}
             {!item.noDropdown && item.subMenu.length > 0 && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform group-hover:translate-y-0 translate-y-2 z-50">
-                    <div className={`bg-white text-black shadow-2xl rounded-[12px] overflow-hidden border border-gray-100/60 backdrop-blur-xl p-2 bg-white/97 ${
-                        item.vertical
-                            ? 'flex flex-col gap-1 min-w-[230px]'
-                            : item.subMenu.length > 4
-                                ? 'grid grid-cols-3 gap-1.5 w-[360px]'
-                                : item.subMenu.length > 2
-                                    ? 'grid grid-cols-3 gap-1.5 w-[360px]'
-                                    : 'grid grid-cols-2 gap-1.5 w-[240px]'
-                    }`}>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                    <div className="bg-white/98 text-black shadow-[0_20px_50px_rgba(0,0,0,0.08)] rounded-[20px] overflow-hidden border border-black/[0.06] backdrop-blur-2xl p-3 xl:p-4 flex flex-col gap-1 min-w-[280px] xl:min-w-[310px]">
                         {item.subMenu.map((sub) => (
                             <button
                                 key={sub.name}
                                 onClick={() => handleNavClick(sub.path)}
-                                className={`w-full transition-all duration-300 flex items-center gap-2 text-left px-3 py-2.5 rounded-[8px] hover:bg-zg-blue group/sub relative overflow-hidden ${
-                                    item.vertical ? '' : 'justify-center text-center flex-col'
-                                }`}
+                                className="w-full transition-all duration-300 flex items-center justify-between text-left px-4 py-3 rounded-[12px] hover:bg-gray-50/80 group/sub relative overflow-hidden"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-zg-blue/10 to-transparent opacity-0 group-hover/sub:opacity-100 transition-opacity" />
-                                {sub.hasCamera && (
-                                    <Camera
-                                        size={11}
-                                        className="relative z-10 text-zg-blue group-hover/sub:text-white transition-colors shrink-0"
-                                        strokeWidth={2}
-                                    />
-                                )}
-                                <span className="font-serif font-bold text-[9px] relative z-10 group-hover/sub:text-white leading-tight uppercase tracking-wider whitespace-nowrap">
+                                {/* Subtle Left Indicator Accent Line */}
+                                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 group-hover/sub:h-6 bg-zg-blue transition-all duration-300 rounded-r-full" />
+
+                                <span className="font-serif font-medium text-[13px] xl:text-[14px] text-gray-800 group-hover/sub:text-zg-blue group-hover/sub:translate-x-1.5 transition-all duration-300 tracking-[0.06em] whitespace-nowrap">
                                     {sub.name}
                                 </span>
                             </button>
