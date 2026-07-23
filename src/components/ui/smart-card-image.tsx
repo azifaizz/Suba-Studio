@@ -81,7 +81,7 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
     <div
       ref={containerRef}
       className={`w-full sm:w-[52%] flex-1 relative rounded-xl sm:rounded-[26px] overflow-hidden bg-[#10141D] border border-gray-100 shrink-0 flex items-center justify-center shadow-md group-hover:shadow-2xl transition-shadow duration-500 ${getAdaptiveHeightClass()} ${className}`}
-      style={metadata ? { aspectRatio: ratio } : {}}
+      style={{ aspectRatio: ratio }}
     >
       {/* 
         Dual-Layer Ambient Backdrop:

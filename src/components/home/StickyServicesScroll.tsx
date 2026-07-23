@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import {
   Camera,
   Image as ImageIcon,
@@ -91,7 +92,7 @@ export const StickyServicesScroll: React.FC = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeChapter, setActiveChapter] = useState(0);
 
-  useEffect(() => {
+  useGSAP(() => {
     const mm = gsap.matchMedia();
 
     mm.add(
@@ -179,7 +180,7 @@ export const StickyServicesScroll: React.FC = () => {
     <section
       id="services"
       ref={containerRef}
-      className="relative w-full h-screen bg-gradient-to-b from-gray-50 via-[#FAF9F6] to-gray-50 overflow-hidden pt-20 sm:pt-24 pb-6 sm:pb-10 flex flex-col justify-center"
+      className="relative w-full h-[100svh] bg-gradient-to-b from-gray-50 via-[#FAF9F6] to-gray-50 overflow-hidden pt-20 sm:pt-24 pb-6 sm:pb-10 flex flex-col justify-center"
     >
       {/* Subtle Warm Luxury Background Accents */}
       <div className="absolute top-[15%] left-10 w-[450px] h-[450px] bg-amber-100/35 rounded-full blur-[140px] pointer-events-none" />
