@@ -220,9 +220,6 @@ export const HeroQuote: React.FC = () => {
             className="text-white/80 group-hover:text-[#D4AF37] transition-all duration-300 group-hover:scale-105"
           />
         </div>
-        <span className="font-poppins font-medium text-[11px] sm:text-[12px] tracking-[0.4em] text-white/70 group-hover:text-[#D4AF37] uppercase transition-colors duration-300">
-          Scroll to Explore
-        </span>
       </div>
     </div>
   );
