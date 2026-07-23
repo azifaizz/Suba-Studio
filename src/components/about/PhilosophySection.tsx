@@ -47,17 +47,25 @@ const PhilosophySection = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
+    const wrappers = gsap.utils.toArray('.philosophy-wrapper') as HTMLElement[];
     const cards = gsap.utils.toArray('.philosophy-card') as HTMLElement[];
     
-    if (cards.length > 0) {
+    if (cards.length > 0 && wrappers.length === cards.length) {
+      // Freeze wrapper heights to prevent layout collapse when cards are pinned
+      wrappers.forEach((wrapper, i) => {
+        gsap.set(wrapper, { height: cards[i].offsetHeight });
+      });
+
       // Apply stacking animation on all screen sizes
-      cards.forEach((card, i) => {
+      wrappers.forEach((wrapper, i) => {
+          const card = cards[i];
+          
           ScrollTrigger.create({
-            trigger: card,
+            trigger: wrapper,
             start: `top top+=${100 + i * 20}px`,
             endTrigger: containerRef.current,
             end: 'bottom top',
-            pin: true,
+            pin: card,
             pinSpacing: false,
             markers: false,
           });
@@ -69,9 +77,9 @@ const PhilosophySection = () => {
               opacity: 0.5,
               ease: "none",
               scrollTrigger: {
-                trigger: cards[i + 1],
+                trigger: wrappers[i + 1],
                 start: "top 80%",
-                end: `top top+=${100 + i * 20}px`,
+                end: `top top+=${100 + (i + 1) * 20}px`,
                 scrub: true,
               }
             });
@@ -91,22 +99,23 @@ const PhilosophySection = () => {
 
         <div className="relative pb-12 md:pb-24">
           {philosophies.map((phil, i) => (
-            <div 
-              key={i} 
-              className="philosophy-card w-full bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-start md:items-center justify-between mb-12 last:mb-0 relative overflow-hidden group"
-            >
-              {/* Soft glow effect */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            <div key={i} className="philosophy-wrapper w-full mb-12 last:mb-0 relative">
+              <div 
+                className="philosophy-card w-full bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] p-12 md:p-16 rounded-3xl flex flex-col md:flex-row items-start md:items-center justify-between relative overflow-hidden group origin-top"
+              >
+                {/* Soft glow effect */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-              <div className="md:w-1/3 mb-8 md:mb-0 relative z-10">
-                <span className="text-6xl md:text-8xl font-serif text-[#F8F8F8] absolute -top-10 -left-6 md:-left-10 z-[-1] font-bold select-none drop-shadow-sm">{phil.number}</span>
-                <h3 className="text-3xl md:text-4xl font-serif text-[#111111]">{phil.title}</h3>
-              </div>
-              
-              <div className="md:w-2/3 md:pl-12 relative z-10">
-                <p className="text-lg md:text-xl text-[#2B2B2B] font-sans font-light leading-relaxed">
-                  {phil.desc}
-                </p>
+                <div className="md:w-1/3 mb-8 md:mb-0 relative z-10">
+                  <span className="text-6xl md:text-8xl font-serif text-[#F8F8F8] absolute -top-10 -left-6 md:-left-10 z-[-1] font-bold select-none drop-shadow-sm">{phil.number}</span>
+                  <h3 className="text-3xl md:text-4xl font-serif text-[#111111]">{phil.title}</h3>
+                </div>
+                
+                <div className="md:w-2/3 md:pl-12 relative z-10">
+                  <p className="text-lg md:text-xl text-[#2B2B2B] font-sans font-light leading-relaxed">
+                    {phil.desc}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

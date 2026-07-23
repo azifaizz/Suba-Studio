@@ -216,13 +216,14 @@ export const AnimatedStatsSection: React.FC = () => {
             <div
               key={stat.id}
               ref={(el) => (cardsRef.current[index] = el)}
-              className="relative group rounded-3xl bg-white/[0.03] hover:bg-white/[0.06] backdrop-blur-xl border border-white/[0.08] hover:border-white/20 p-8 sm:p-9 transition-colors duration-500 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              className="relative group rounded-3xl bg-white/[0.03] hover:bg-white/[0.06] backdrop-blur-xl border border-white/[0.08] hover:border-white/20 p-8 sm:p-9 pt-24 sm:pt-28 transition-colors duration-500 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
             >
-              {/* Top Card Bar: Icon & ID */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="p-3.5 rounded-2xl bg-white/[0.05] border border-white/10 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                  {stat.icon}
-                </div>
+              {/* Exact Positioning System: Completely Inside (24px top/left) */}
+              <div className="absolute top-6 left-6 w-16 h-16 rounded-2xl bg-white/[0.05] border border-white/10 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 flex items-center justify-center">
+                {stat.icon}
+              </div>
+              
+              <div className="absolute top-8 right-8">
                 <span className="font-serif text-[11px] font-semibold tracking-[0.22em] text-gray-500 uppercase">
                   0{stat.id}
                 </span>

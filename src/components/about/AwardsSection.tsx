@@ -92,11 +92,11 @@ const AwardsSection = () => {
               className="award-card group relative w-full lg:w-[450px] shrink-0 bg-[#F8F8F8] border border-gray-100 p-10 lg:p-14 lg:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-500 lg:hover:-translate-y-2 cursor-pointer"
             >
               {/* Magazine style badge */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-[#111111] text-[#D4AF37] flex items-center justify-center transform translate-x-2 -translate-y-2 rotate-12 lg:group-hover:rotate-0 transition-transform duration-500 shadow-xl z-10">
-                <span className="font-serif text-2xl font-bold">W</span>
+              <div className="absolute top-6 left-6 w-[72px] h-[72px] bg-[#111111] text-[#D4AF37] flex items-center justify-center rounded-2xl lg:group-hover:rotate-12 transition-transform duration-500 shadow-xl z-10">
+                <span className="font-serif text-3xl font-bold">W</span>
               </div>
               
-              <div className="mb-8 pb-8 border-b border-gray-200">
+              <div className="mt-20 mb-8 pb-8 border-b border-gray-200">
                 <span className="text-sm font-sans tracking-widest uppercase text-[#D4AF37] block mb-2">{award.org}</span>
                 <h3 className="text-2xl lg:text-3xl font-serif text-[#111111] leading-snug lg:group-hover:text-[#D4AF37] transition-colors duration-300">{award.title}</h3>
               </div>
