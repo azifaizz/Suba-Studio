@@ -172,7 +172,7 @@ export const HeroQuote: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 z-10 flex flex-col items-start justify-end pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-32 px-6 sm:px-12 md:px-20 pointer-events-none select-none overflow-hidden"
+      className="absolute inset-0 z-10 flex flex-col items-start justify-end pt-24 pb-24 sm:pb-16 md:pb-20 lg:pb-32 px-6 sm:px-12 md:px-20 pointer-events-none select-none overflow-hidden"
     >
       {/* Soft Dark Overlay for Readability over Hero Video */}
       <div
