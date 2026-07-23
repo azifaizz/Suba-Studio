@@ -17,7 +17,7 @@ interface StatItem {
 const statItems: StatItem[] = [
   {
     id: 1,
-    targetValue: 22,
+    targetValue: 23,
     suffix: "+",
     label: "Years of Experience",
     icon: <Award className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />,
@@ -25,7 +25,7 @@ const statItems: StatItem[] = [
   },
   {
     id: 2,
-    targetValue: 5000,
+    targetValue: 10000,
     suffix: "+",
     label: "Happy Customers",
     icon: <Users className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" />,
@@ -41,9 +41,9 @@ const statItems: StatItem[] = [
   },
   {
     id: 4,
-    targetValue: 56,
+    targetValue: 10,
     suffix: "+",
-    label: "Team Members",
+    label: "Working Employees",
     icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-purple-400" />,
     description: "Master photographers, cinematographers & creative editors."
   }

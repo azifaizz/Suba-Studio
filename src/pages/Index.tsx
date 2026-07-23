@@ -38,10 +38,10 @@ const portfolioItems = [
 ];
 
 const facts = [
-  { id: 1, number: "22+", label: "Years of Experience" },
-  { id: 2, number: "5000+", label: "Happy Customers" },
+  { id: 1, number: "23+", label: "Years of Experience" },
+  { id: 2, number: "10000+", label: "Happy Customers" },
   { id: 3, number: "100%", label: "Client Satisfaction" },
-  { id: 4, number: "56+", label: "Team Members" },
+  { id: 4, number: "10+", label: "Working Employees" },
 ];
 
 const specializations = [
