@@ -116,7 +116,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const isSplitLayout = isHome && !isScrolled && !isHomeClickAnimating;
+    // During the cinematic logo animation, force the navbar to behave perfectly as if it's at the top of the Home page
+    const forceHomeTop = isHomeClickAnimating;
+    const isSplitLayout = forceHomeTop || (isHome && !isScrolled);
+    const isNavbarScrolled = !forceHomeTop && (isScrolled || !isHome);
 
     const handleHomeClick = (e?: React.MouseEvent) => {
         if (e) e.preventDefault();
@@ -128,10 +131,10 @@ const Navbar = () => {
             return;
         }
         
-        navigate('/');
-        
         if (isHomeClickAnimating) return;
 
+        // Execute state updates together immediately
+        navigate('/');
         setIsHomeClickAnimating(true);
 
         setTimeout(() => {
@@ -190,14 +193,24 @@ const Navbar = () => {
 
     const handleNavClick = (path: string) => {
         setIsMobileMenuOpen(false);
-        // Smoothly close the drawer first, then execute navigation right after slide completes (~320ms)
-        setTimeout(() => {
+        // Smoothly close the drawer first, then execute navigation
+        const wasMobileMenuOpen = isMobileMenuOpen;
+        
+        const performNavigation = () => {
             if (path === '/') {
                 handleHomeClick();
             } else {
                 navigate(path);
             }
-        }, 320);
+        };
+
+        if (wasMobileMenuOpen) {
+            // Wait for drawer to close only on mobile
+            setTimeout(performNavigation, 320);
+        } else {
+            // Execute immediately on desktop
+            performNavigation();
+        }
     };
 
     const isItemActive = (path: string) => {
@@ -220,8 +233,8 @@ const Navbar = () => {
         return (
         <motion.div
             key={item.name}
-            layout
-            layoutId={isLeftItem ? `desktop-nav-item-${item.name}` : undefined}
+            layout={!isHomeClickAnimating}
+            layoutId={isLeftItem && !isHomeClickAnimating ? `desktop-nav-item-${item.name}` : undefined}
             transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
             className="relative group px-1.5 xl:px-2.5 py-1 hover:z-[60]"
             onMouseEnter={() => !item.noDropdown && setActiveSubMenu(item.name)}
@@ -230,8 +243,8 @@ const Navbar = () => {
             <button
                 className={`relative flex items-center gap-1 transition-all duration-300 uppercase font-serif font-medium tracking-[0.12em] text-[12px] xl:text-[13px] py-0.5 ${
                     active
-                        ? (isScrolled || !isHome ? 'text-zg-blue font-semibold' : 'text-white font-semibold')
-                        : (isScrolled || !isHome ? 'text-gray-900 hover:text-[#D4AF37]' : 'text-white/95 hover:text-[#D4AF37]')
+                        ? (isNavbarScrolled ? 'text-zg-blue font-semibold' : 'text-white font-semibold')
+                        : (isNavbarScrolled ? 'text-gray-900 hover:text-[#D4AF37]' : 'text-white/95 hover:text-[#D4AF37]')
                 }`}
                 onClick={() => item.noDropdown ? handleNavClick(item.path) : undefined}
             >
@@ -242,7 +255,7 @@ const Navbar = () => {
 
                 {/* Luxury Gold/Blue Animated Underline Reveal */}
                 <span className={`absolute -bottom-1 left-0 h-[1.5px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    isScrolled || !isHome ? 'bg-zg-blue' : 'bg-[#D4AF37]'
+                    isNavbarScrolled ? 'bg-zg-blue' : 'bg-[#D4AF37]'
                 } ${
                     active ? 'w-full opacity-100 shadow-[0_0_6px_rgba(212,175,55,0.5)]' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
                 }`} />
@@ -277,7 +290,7 @@ const Navbar = () => {
         <>
             <nav
                 className={`fixed top-0 w-full z-[100] transition-all duration-400 ease-out ${
-                    isScrolled || !isHome
+                    isNavbarScrolled
                         ? 'bg-white/95 backdrop-blur-md shadow-sm py-1.5 border-b border-gray-100/50 text-black'
                         : 'bg-transparent py-2.5 sm:py-3 text-white'
                 }`}
@@ -299,7 +312,7 @@ const Navbar = () => {
                                 className="cursor-pointer select-none py-1 flex items-center shrink-0"
                             >
                                 <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.22em] text-lg xl:text-xl uppercase transition-colors duration-300 whitespace-nowrap ${
-                                    isScrolled || !isHome ? 'text-black' : 'text-white'
+                                    isNavbarScrolled ? 'text-black' : 'text-white'
                                 }`}>
                                     SUBA STUDIOS
                                 </span>
@@ -333,7 +346,7 @@ const Navbar = () => {
                                 className="pointer-events-auto cursor-pointer select-none py-1 flex items-center justify-center"
                             >
                                 <span className={`font-serif font-black tracking-[0.15em] xl:tracking-[0.24em] text-lg lg:text-xl xl:text-2xl uppercase transition-colors duration-300 whitespace-nowrap ${
-                                    isScrolled || !isHome ? 'text-black' : 'text-white'
+                                    isNavbarScrolled ? 'text-black' : 'text-white'
                                 }`}>
                                     SUBA STUDIOS
                                 </span>
@@ -357,7 +370,7 @@ const Navbar = () => {
                             className="cursor-pointer select-none py-1 flex items-center origin-left shrink-0"
                         >
                             <span className={`font-serif font-black tracking-[0.16em] sm:tracking-[0.20em] md:tracking-[0.24em] text-sm sm:text-base md:text-lg uppercase transition-colors duration-300 whitespace-nowrap ${
-                                isScrolled || !isHome || isMobileMenuOpen ? 'text-black' : 'text-white'
+                                isNavbarScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'
                             }`}>
                                 SUBA STUDIOS
                             </span>
@@ -388,7 +401,7 @@ const Navbar = () => {
                             className={`lg:hidden z-[70] shrink-0 flex items-center justify-center w-10 h-10 touch-target rounded-full transition-all duration-300 active:scale-95 ${
                                 isMobileMenuOpen
                                     ? 'text-black bg-gray-100 hover:bg-gray-200 shadow-sm'
-                                    : (isScrolled || !isHome ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10')
+                                    : (isNavbarScrolled ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10')
                             }`}
                             onClick={() => setIsMobileMenuOpen(prev => !prev)}
                         >
