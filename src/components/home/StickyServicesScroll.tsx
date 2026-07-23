@@ -104,7 +104,7 @@ export const StickyServicesScroll: React.FC = () => {
         if (!containerRef.current || cardRefs.current.length === 0) return;
 
         const totalCards = servicesData.length;
-        const cardScrollDistance = isMobile ? 400 : 700;
+        const cardScrollDistance = isMobile ? 250 : 700;
         const scrollDistance = (totalCards - 1) * cardScrollDistance;
 
         const tl = gsap.timeline({
@@ -113,8 +113,16 @@ export const StickyServicesScroll: React.FC = () => {
             pin: true,
             start: 'top top',
             end: `+=${scrollDistance}px`,
-            scrub: 0.8,
+            scrub: 0.6,
+            snap: {
+              snapTo: 1 / (totalCards - 1),
+              duration: { min: 0.2, max: 0.4 },
+              ease: 'power1.inOut',
+              inertia: false,
+            },
             invalidateOnRefresh: true,
+            fastScrollEnd: true,
+            preventOverlaps: true,
             onUpdate: (self) => {
               const currentIdx = Math.min(
                 totalCards - 1,
@@ -127,10 +135,15 @@ export const StickyServicesScroll: React.FC = () => {
 
         cardRefs.current.forEach((card, index) => {
           if (!card) return;
+          // Force GPU compositing layer on all cards to prevent sub-pixel jitter
+          gsap.set(card, {
+            force3D: true,
+            backfaceVisibility: 'hidden',
+          });
           if (index === 0) {
             gsap.set(card, { y: '0%', scale: 1, opacity: 1, zIndex: 10 });
           } else {
-            gsap.set(card, { y: '100%', scale: 0.96, opacity: 1, zIndex: index + 10 });
+            gsap.set(card, { y: '100%', scale: 1, opacity: 1, zIndex: index + 10 });
           }
         });
 
@@ -146,13 +159,14 @@ export const StickyServicesScroll: React.FC = () => {
             currentCard,
             {
               y: '100%',
-              scale: 0.96,
+              scale: 1,
             },
             {
               y: '0%',
               scale: 1,
               duration: 1,
-              ease: 'power2.out',
+              ease: 'none',
+              force3D: true,
             },
             stepLabel
           );
@@ -160,13 +174,14 @@ export const StickyServicesScroll: React.FC = () => {
           tl.to(
             prevCard,
             {
-              scale: 0.92,
-              y: '-5%',
+              scale: 0.94,
+              y: '-4%',
               opacity: 0,
-              duration: 0.9,
-              ease: 'power1.in',
+              duration: 1,
+              ease: 'none',
+              force3D: true,
             },
-            `${stepLabel}+=0.1`
+            stepLabel
           );
         }
       }

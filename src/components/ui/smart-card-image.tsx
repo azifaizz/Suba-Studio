@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
 import { StandaloneArrowCTA } from '@/components/ui/standalone-arrow-cta';
 import imageMetadata from '@/data/imageMetadata.json';
 
@@ -16,8 +15,6 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
   link,
   className = "",
 }) => {
-  const imageRef = useRef<HTMLImageElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // Look up pre-calculated metadata
   const metadata = imageMetadata[src as keyof typeof imageMetadata] || 
@@ -31,27 +28,8 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
   // intelligently switch to contain + ambient blurred backdrop so 100% of the couple is sharp and visible.
   const useContain = orientation === 'panoramic' || (orientation === 'portrait' && ratio < 0.72);
 
-  // Image Reveal Animation (Duration 700ms, Power4.Out: fade in, scale 1.03 -> 1, slight blur removal)
-  useEffect(() => {
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current,
-        {
-          opacity: 0,
-          scale: 1.03,
-          filter: 'blur(10px)',
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          filter: 'blur(0px)',
-          duration: 0.7,
-          ease: 'power4.out',
-          force3D: true,
-        }
-      );
-    }
-  }, []); // Run once on mount
+  // Smooth CSS-only image reveal on load (prevents GSAP fromTo re-triggering on scroll)
+  const [loaded, setLoaded] = React.useState(false);
 
   // Adaptive Predefined Heights on Mobile based on detected orientation
   const getAdaptiveHeightClass = () => {
@@ -79,7 +57,6 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
 
   return (
     <div
-      ref={containerRef}
       className={`w-full sm:w-[52%] flex-1 relative rounded-xl sm:rounded-[26px] overflow-hidden bg-[#10141D] border border-gray-100 shrink-0 flex items-center justify-center shadow-md group-hover:shadow-2xl transition-shadow duration-500 ${getAdaptiveHeightClass()} ${className}`}
       style={{ aspectRatio: ratio }}
     >
@@ -97,14 +74,16 @@ export const SmartCardImage: React.FC<SmartCardImageProps> = ({
 
       {/* Main High-Resolution Photograph */}
       <img
-        ref={imageRef}
         src={src}
         alt={alt}
         loading="lazy"
+        onLoad={() => setLoaded(true)}
         style={getObjectPositionStyle()}
         className={`relative z-10 w-full h-full transition-all duration-700 ease-out will-change-transform ${
           useContain ? 'object-contain p-1 sm:p-2' : 'object-cover'
-        } group-hover:scale-[1.03] group-hover:brightness-[1.05]`}
+        } group-hover:scale-[1.03] group-hover:brightness-[1.05] ${
+          loaded ? 'opacity-100' : 'opacity-0'
+        }`}
       />
 
       {/* Cinematic Vignette for high-contrast standalone arrow CTA legibility */}
