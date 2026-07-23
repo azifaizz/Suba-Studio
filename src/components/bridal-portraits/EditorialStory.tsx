@@ -156,7 +156,7 @@ const EditorialStory: React.FC<Props> = ({ albums }) => {
       
       {/* --- DESKTOP: STICKY SHOWCASE --- */}
       <div className="showcase-wrapper hidden md:block w-full h-[100vh] overflow-hidden relative">
-        <div className="max-w-[100rem] mx-auto px-12 h-full flex items-center">
+        <div className="max-w-[100rem] mx-auto px-12 h-full flex items-center pt-24">
           
           {/* Left Side: Typography */}
           <div className="w-[40%] h-full relative flex items-center">
@@ -189,9 +189,9 @@ const EditorialStory: React.FC<Props> = ({ albums }) => {
                 {/* Supporting Detail Photograph - Offset based on index for variety */}
                 <div 
                   className={`detail-img-container absolute z-20 shadow-xl border-8 border-[#FAF9F7] overflow-hidden w-[40%] lg:w-[35%]
-                    ${i === 0 ? '-bottom-12 -left-12' : ''}
-                    ${i === 1 ? '-top-12 -right-12' : ''}
-                    ${i === 2 ? '-bottom-8 -right-8' : ''}
+                    ${i === 0 ? 'bottom-8 left-4 lg:left-8' : ''}
+                    ${i === 1 ? 'top-16 -right-12 lg:-right-16' : ''}
+                    ${i === 2 ? 'bottom-16 right-8 lg:right-12' : ''}
                   `}
                   style={{ aspectRatio: getAspectStyle(cat.detailImage) }}
                 >

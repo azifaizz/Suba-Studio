@@ -1,12 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleViewWork } from '@/utils/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CoupleCTA = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const bgRef = useRef<HTMLImageElement>(null);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -50,10 +54,16 @@ const CoupleCTA = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 items-center">
-                    <button className="px-10 py-4 bg-[#D4AF37] text-white text-sm uppercase tracking-widest font-semibold hover:bg-white hover:text-black transition-colors duration-500 rounded-full">
+                    <button 
+                        onClick={() => window.location.href = 'tel:+918994442768'}
+                        className="px-10 py-4 bg-[#D4AF37] text-white text-sm uppercase tracking-widest font-semibold hover:bg-white hover:text-black transition-colors duration-500 rounded-full"
+                    >
                         Book Your Story
                     </button>
-                    <button className="px-10 py-4 bg-transparent border border-white/30 text-white text-sm uppercase tracking-widest font-semibold hover:border-white transition-colors duration-500 rounded-full">
+                    <button 
+                        onClick={() => handleViewWork(navigate, location)}
+                        className="px-10 py-4 bg-transparent border border-white/30 text-white text-sm uppercase tracking-widest font-semibold hover:border-white transition-colors duration-500 rounded-full"
+                    >
                         Explore Galleries
                     </button>
                 </div>

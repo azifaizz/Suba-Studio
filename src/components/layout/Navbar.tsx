@@ -121,14 +121,17 @@ const Navbar = () => {
     const handleHomeClick = (e?: React.MouseEvent) => {
         if (e) e.preventDefault();
         
-        if (location.pathname !== '/') {
-            navigate('/');
-        }
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+
+        if (location.pathname === '/') {
+            return;
+        }
+        
+        navigate('/');
         
         if (isHomeClickAnimating) return;
 
-        setIsMobileMenuOpen(false);
         setIsHomeClickAnimating(true);
 
         setTimeout(() => {
@@ -378,16 +381,22 @@ const Navbar = () => {
                             <LuxuryBookButton onClick={() => window.location.href = 'tel:+918994442768'} />
                         </motion.div>
 
-                        {/* Mobile Menu Toggle Button: Never clipped, always vertically centered on far right */}
+                        {/* Mobile Menu Toggle Button: Toggles menu open and close */}
                         <button
                             type="button"
-                            aria-label="Open navigation menu"
-                            className={`lg:hidden z-50 shrink-0 flex items-center justify-center w-10 h-10 touch-target rounded-full transition-all duration-300 active:scale-95 ${
-                                isScrolled || !isHome ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10'
+                            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                            className={`lg:hidden z-[70] shrink-0 flex items-center justify-center w-10 h-10 touch-target rounded-full transition-all duration-300 active:scale-95 ${
+                                isMobileMenuOpen
+                                    ? 'text-black bg-gray-100 hover:bg-gray-200 shadow-sm'
+                                    : (isScrolled || !isHome ? 'text-black hover:bg-gray-100/80' : 'text-white hover:bg-white/10')
                             }`}
-                            onClick={() => setIsMobileMenuOpen(true)}
+                            onClick={() => setIsMobileMenuOpen(prev => !prev)}
                         >
-                            <Menu size={22} className="shrink-0" strokeWidth={2.2} />
+                            {isMobileMenuOpen ? (
+                                <X size={22} className="shrink-0" strokeWidth={2.5} />
+                            ) : (
+                                <Menu size={22} className="shrink-0" strokeWidth={2.2} />
+                            )}
                         </button>
                     </div>
                 </div>

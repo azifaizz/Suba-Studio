@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleViewWork } from '@/utils/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +16,8 @@ const BridalHero: React.FC<BridalHeroProps> = ({ image }) => {
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -116,12 +120,18 @@ const BridalHero: React.FC<BridalHeroProps> = ({ image }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-            <button className="hero-btn group relative px-8 py-4 touch-target active:scale-95 transition-transform duration-300 bg-transparent border border-[#D4AF37]/50 overflow-hidden rounded-none w-full sm:w-auto">
+            <button 
+              onClick={() => handleViewWork(navigate, location)}
+              className="hero-btn group relative px-8 py-4 touch-target active:scale-95 transition-transform duration-300 bg-transparent border border-[#D4AF37]/50 overflow-hidden rounded-none w-full sm:w-auto"
+            >
               <div className="absolute inset-0 w-full h-full bg-[#D4AF37] transform scale-x-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-x-100" />
               <span className="relative z-10 text-[#D4AF37] group-hover:text-[#111111] uppercase tracking-widest text-xs font-semibold transition-colors duration-500">Explore Gallery</span>
             </button>
             
-            <button className="hero-btn group relative px-8 py-4 touch-target active:scale-95 transition-transform duration-300 bg-white/5 backdrop-blur-md overflow-hidden rounded-none w-full sm:w-auto border border-white/10 hover:border-white/30">
+            <button 
+              onClick={() => window.location.href = 'tel:+918994442768'}
+              className="hero-btn group relative px-8 py-4 touch-target active:scale-95 transition-transform duration-300 bg-white/5 backdrop-blur-md overflow-hidden rounded-none w-full sm:w-auto border border-white/10 hover:border-white/30"
+            >
               <div className="absolute inset-0 w-full h-full bg-white transform scale-x-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-x-100" />
               <span className="relative z-10 text-white group-hover:text-[#111111] uppercase tracking-widest text-xs font-semibold transition-colors duration-500">Book Your Story</span>
             </button>

@@ -29,59 +29,59 @@ interface ServiceCardData {
 const servicesData: ServiceCardData[] = [
   {
     id: 1,
-    title: "Wedding Photography",
-    description: "Capturing every emotion, blessing, and celebration through timeless storytelling.",
+    title: "Hindu Wedding Photography",
+    description: "Capturing sacred traditions with timeless elegance.",
     image: "/hindu/14.jpg",
     link: "/weddings/hindu",
-    icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    icon: <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 2,
-    title: "Pre Wedding",
-    description: "Creating cinematic memories before your forever begins.",
-    image: "/couple_portrait/pp8.jpg",
-    link: "/weddings/pre-wedding",
-    icon: <ImageIcon className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    title: "Christian Wedding Photography",
+    description: "Documenting vows, faith, and unforgettable celebrations.",
+    image: "/Christian/4Z5A8729.JPG",
+    link: "/weddings/christian",
+    icon: <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 3,
-    title: "Post Wedding",
-    description: "Celebrating your journey with timeless portraits.",
-    image: "/postwed/p4.JPG",
-    link: "/weddings/post-wedding",
-    icon: <Aperture className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    title: "Engagement Photography",
+    description: "Where every love story begins.",
+    image: "/engagement/2.jpg",
+    link: "/weddings/engagement",
+    icon: <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 4,
-    title: "Romantic Couple Shoot",
-    description: "Authentic moments captured with artistic elegance.",
-    image: "/Christian/4Z5A8768.JPG",
-    link: "/weddings/christian",
-    icon: <Heart className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    title: "Pre Wedding Photography",
+    description: "Cinematic moments before the big day.",
+    image: "/prewed/01.jpg",
+    link: "/outdoor/pre-wedding",
+    icon: <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 5,
-    title: "Family Photography",
-    description: "Preserving the people who matter most.",
-    image: "/engagement/039.jpg",
-    link: "/weddings/candid-moments",
-    icon: <Users className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    title: "Post Wedding Photography",
+    description: "Beautiful memories beyond the wedding.",
+    image: "/postwed/p4.JPG",
+    link: "/outdoor/post-wedding",
+    icon: <Aperture className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 6,
-    title: "Baby Shower Photography",
-    description: "Beautiful beginnings deserve unforgettable memories.",
+    title: "Maternity Photography",
+    description: "Celebrating the beauty of new beginnings.",
     image: "/Maternity/heroimg.jpg",
     link: "/weddings/maternity",
-    icon: <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    icon: <Users className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   },
   {
     id: 7,
-    title: "Toddler Photography",
-    description: "Capturing tiny smiles and endless joy.",
-    image: "/Baby/bby.jpg",
+    title: "Baby Photography",
+    description: "Preserving the sweetest moments forever.",
+    image: "/Baby/101.jpg",
     link: "/weddings/baby",
-    icon: <Smile className="w-6 h-6 sm:w-7 sm:h-7 text-zg-blue" />
+    icon: <Smile className="w-5 h-5 sm:w-6 sm:h-6 text-zg-blue" />
   }
 ];
 
@@ -231,7 +231,7 @@ export const StickyServicesScroll: React.FC = () => {
               key={service.id}
               ref={(el) => (cardRefs.current[index] = el)}
               onClick={() => navigate(service.link)}
-              className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] sm:max-h-[620px] bg-white rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.12)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
+              className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] sm:max-h-[620px] bg-white rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.14)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
             >
               {/* Left Side Inside Card (48% on Desktop): Icon, Chapter Pill, Title, Description */}
               <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 sm:h-full shrink-0">

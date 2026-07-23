@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { categoryData } from '@/data/categoryContent';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleViewWork } from '@/utils/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +12,8 @@ const CoupleHero = () => {
     const bgRef = useRef<HTMLImageElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
     const data = categoryData['couple-portraits'];
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -92,10 +96,16 @@ const CoupleHero = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 items-center">
-                    <button className="px-10 py-4 bg-white text-black text-sm uppercase tracking-widest font-semibold hover:bg-[#D4AF37] hover:text-white transition-colors duration-500 rounded-full">
+                    <button 
+                        onClick={() => handleViewWork(navigate, location)}
+                        className="px-10 py-4 bg-white text-black text-sm uppercase tracking-widest font-semibold hover:bg-[#D4AF37] hover:text-white transition-colors duration-500 rounded-full"
+                    >
                         Explore Story
                     </button>
-                    <button className="px-10 py-4 bg-transparent border border-white/30 text-white text-sm uppercase tracking-widest font-semibold hover:border-white transition-colors duration-500 rounded-full">
+                    <button 
+                        onClick={() => window.location.href = 'tel:+918994442768'}
+                        className="px-10 py-4 bg-transparent border border-white/30 text-white text-sm uppercase tracking-widest font-semibold hover:border-white transition-colors duration-500 rounded-full"
+                    >
                         Book Your Session
                     </button>
                 </div>

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MoveDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +11,7 @@ const HeroSection = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -18,7 +19,7 @@ const HeroSection = () => {
     // Initial state
     gsap.set(titleRef.current, { y: 100, opacity: 0, clipPath: 'inset(100% 0 0 0)' });
     gsap.set(subtitleRef.current, { y: 20, opacity: 0 });
-    gsap.set(buttonRef.current, { y: 20, opacity: 0 });
+    gsap.set(scrollRef.current, { y: 20, opacity: 0 });
 
     // Entrance Animation
     tl.to(titleRef.current, {
@@ -34,7 +35,7 @@ const HeroSection = () => {
       duration: 1,
       ease: 'power2.out',
     }, '-=1')
-    .to(buttonRef.current, {
+    .to(scrollRef.current, {
       y: 0,
       opacity: 1,
       duration: 1,
@@ -76,19 +77,25 @@ const HeroSection = () => {
           Behind every unforgettable wedding is a storyteller who sees emotions before they become memories.
         </p>
         
-        <button 
-          ref={buttonRef}
-          className="group relative px-8 py-4 bg-transparent border border-white/30 rounded-full overflow-hidden transition-all duration-500 hover:border-white"
+        <div 
+          ref={scrollRef}
           onClick={() => {
             const nextSection = document.getElementById('visual-storytelling');
             nextSection?.scrollIntoView({ behavior: 'smooth' });
           }}
+          className="flex flex-col items-center gap-3 cursor-pointer group mt-8"
         >
-          <span className="relative z-10 font-sans tracking-widest text-sm uppercase group-hover:text-black transition-colors duration-500">
-            Discover Our Journey
+          <div className="animate-bounce">
+            <MoveDown
+              size={24}
+              strokeWidth={1}
+              className="text-white/80 group-hover:text-[#D4AF37] transition-all duration-300"
+            />
+          </div>
+          <span className="font-sans font-medium text-xs tracking-widest text-white/50 group-hover:text-[#D4AF37] uppercase transition-colors duration-300">
+            Scroll
           </span>
-          <div className="absolute inset-0 bg-white transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
-        </button>
+        </div>
       </div>
     </section>
   );

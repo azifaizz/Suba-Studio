@@ -212,16 +212,20 @@ export const categoryData: Record<string, CategoryContent> = {
         description: "Pre-wedding shoots are a wonderful way to tell your love story in a more casual and creative setting. We capture the chemistry and connection between you two before the big day, creating memories that last a lifetime.",
         whyChooseTitle: "Why choose our pre-wedding photography?",
         whyChooseText: "We focus on natural interactions and beautiful locations to create sets of photos that reflect your personalities. Our team ensures a relaxed atmosphere where your love can truly shine through.",
-        heroImage: "/pp6.JPG",
-        collageImages: ["/pp5.jpg", "/p1.JPG", "/couple_portrait/pp2.jpg"],
+        heroImage: "/prewed/01.jpg",
+        collageImages: ["/prewed/02.jpg", "/prewed/03.jpg", "/prewed/04.jpg", "/prewed/05.jpg"],
         albums: [
-            { id: 1, title: "", image: "/couple_portrait/pp3.jpg" },
-            { id: 2, title: "", image: "/couple_portrait/pp4.jpg" },
-            { id: 3, title: "", image: "/couple_portrait/pp7.jpg" },
-            { id: 4, title: "", image: "/couple_portrait/pp8.jpg" },
-            { id: 5, title: "", image: "/couple_portrait/pp9.jpg" },
-            { id: 6, title: "", image: "/pp10.jpg" },
-            { id: 7, title: "", image: "/couple_portrait/pp11.jpg" },
+            { id: 1, title: "", image: "/prewed/01.jpg" },
+            { id: 2, title: "", image: "/prewed/02.jpg" },
+            { id: 3, title: "", image: "/prewed/03.jpg" },
+            { id: 4, title: "", image: "/prewed/04.jpg" },
+            { id: 5, title: "", image: "/prewed/05.jpg" },
+            { id: 6, title: "", image: "/prewed/06.jpg" },
+            { id: 7, title: "", image: "/prewed/07 copy.jpg" },
+            { id: 8, title: "", image: "/prewed/08 copy.jpg" },
+            { id: 9, title: "", image: "/prewed/09.jpg" },
+            { id: 10, title: "", image: "/prewed/4Z5A3631 copy.jpg" },
+            { id: 11, title: "", image: "/prewed/4Z5A3670.JPG" },
         ]
     },
     "post-wedding": {
@@ -237,17 +241,17 @@ export const categoryData: Record<string, CategoryContent> = {
             "/postwed/p2.JPG"
         ],
         albums: [
-            { id: 1, title: "", image: "/postwed/p5.JPG" },
-            { id: 2, title: "", image: "/postwed/p6.JPG" },
-            { id: 3, title: "", image: "/postwed/p7.JPG" },
-            { id: 4, title: "", image: "/postwed/p8.JPG" },
-            { id: 5, title: "", image: "/postwed/p9.JPG" },
-            { id: 6, title: "", image: "/postwed/p10.JPG" },
-            { id: 7, title: "", image: "/postwed/p11.png" },
-            { id: 8, title: "", image: "/postwed/p12.png" },
-            { id: 9, title: "", image: "/postwed/p13.jpg" },
-            { id: 10, title: "", image: "/postwed/p14.JPG" },
-            { id: 11, title: "", image: "/postwed/p15.jpg" }
+            { id: 1, title: "", image: "/postwed/p1.JPG" },
+            { id: 2, title: "", image: "/postwed/p2.JPG" },
+            { id: 3, title: "", image: "/postwed/p3.JPG" },
+            { id: 4, title: "", image: "/postwed/p4.JPG" },
+            { id: 5, title: "", image: "/postwed/p5.JPG" },
+            { id: 6, title: "", image: "/postwed/p6.JPG" },
+            { id: 7, title: "", image: "/postwed/p7.JPG" },
+            { id: 8, title: "", image: "/postwed/p8.JPG" },
+            { id: 9, title: "", image: "/postwed/p9.JPG" },
+            { id: 10, title: "", image: "/postwed/p10.JPG" },
+            { id: 11, title: "", image: "/postwed/p12.png" }
         ]
     },
     "maternity": {

@@ -161,9 +161,9 @@ export const HeroQuote: React.FC = () => {
   }, []);
 
   const handleScrollClick = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
     }

@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleViewWork } from '@/utils/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,6 +11,8 @@ const BookStorySection = () => {
   const containerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useGSAP(() => {
     // Very slow background zoom
@@ -66,11 +70,17 @@ const BookStorySection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-10 py-4 bg-[#D4AF37] text-white font-sans uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 rounded-sm">
+          <button 
+            onClick={() => window.location.href = 'tel:+918994442768'}
+            className="w-full sm:w-auto px-10 py-4 bg-[#D4AF37] text-white font-sans uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 rounded-sm"
+          >
             Book Your Story
           </button>
           
-          <button className="w-full sm:w-auto px-10 py-4 bg-transparent border border-white text-white font-sans uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 rounded-sm">
+          <button 
+            onClick={() => handleViewWork(navigate, location)}
+            className="w-full sm:w-auto px-10 py-4 bg-transparent border border-white text-white font-sans uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-colors duration-500 rounded-sm"
+          >
             View Our Work
           </button>
         </div>

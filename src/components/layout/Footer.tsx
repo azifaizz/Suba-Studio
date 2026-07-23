@@ -23,8 +23,6 @@ const Footer = () => {
                         <div className="flex gap-4">
                             <a href="https://www.facebook.com/zerogravitystudios/" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Facebook size={20} /></a>
                             <a href="https://www.instagram.com/zerogravityphotography/" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Instagram size={20} /></a>
-                            <a href="https://www.youtube.com/c/ZeroGravityPhotography" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Youtube size={20} /></a>
-                            <a href="https://twitter.com/zerogravityfoto" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Twitter size={20} /></a>
                         </div>
                     </div>
 
@@ -65,9 +63,7 @@ const Footer = () => {
                 <div className="footer-col border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-[10px] sm:text-xs uppercase tracking-widest text-white/40">
                     <p className="text-center md:text-left">&copy; 2025 Suba Studios. All Rights Reserved.</p>
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
-                        <a href="#" className="hover:text-white cursor-pointer transition-colors block py-2 px-4 sm:p-0">Terms and Conditions</a>
-                        <a href="#" className="hover:text-white cursor-pointer transition-colors block py-2 px-4 sm:p-0">Privacy Policy</a>
-                        <a href="#" className="hover:text-white cursor-pointer transition-colors block py-2 px-4 sm:p-0">Careers</a>
+                        {/* Legal links removed as requested */}
                     </div>
                 </div>
             </div>

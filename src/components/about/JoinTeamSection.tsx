@@ -9,7 +9,7 @@ const JoinTeamSection = () => {
   const containerRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLAnchorElement>(null);
 
   useGSAP(() => {
     // Background Parallax
@@ -42,7 +42,7 @@ const JoinTeamSection = () => {
   }, { scope: containerRef });
 
   // Magnetic Button Effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (window.matchMedia('(hover: none)').matches) return;
     const btn = buttonRef.current;
     if (!btn) return;
@@ -96,15 +96,18 @@ const JoinTeamSection = () => {
           </h2>
         </div>
         
-        <button 
+        <a 
           ref={buttonRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
+          href="https://wa.me/918994442768?text=I%20would%20like%20to%20work%20with%20you"
+          target="_blank"
+          rel="noopener noreferrer"
           className="relative inline-flex items-center justify-center px-12 py-5 overflow-hidden rounded-full group bg-white text-black font-sans tracking-widest uppercase text-sm transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]"
         >
           <span className="relative z-10 group-hover:text-white transition-colors duration-500">Apply Now</span>
           <div className="absolute inset-0 bg-[#111111] transform scale-0 rounded-full group-hover:scale-150 transition-transform duration-500 ease-out z-0"></div>
-        </button>
+        </a>
       </div>
     </section>
   );

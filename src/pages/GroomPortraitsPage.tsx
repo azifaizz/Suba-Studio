@@ -64,12 +64,15 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
       ScrollTrigger.create({
         trigger: '.sticky-story-container',
         start: 'top top',
-        end: '+=400%',
+        end: '+=300%',
         pin: true,
-        scrub: 1,
+        scrub: 0.8,
+        anticipatePin: 1,
+        fastScrollEnd: true,
+        invalidateOnRefresh: true,
         animation: gsap.timeline()
           // Scene 1 out
-          .to('.story-text-1', { opacity: 0, y: -50, duration: 1 }, '+=1')
+          .to('.story-text-1', { opacity: 0, y: -50, duration: 1 }, '+=0.8')
           .to('.story-img-1', { y: -100, opacity: 0, duration: 1 }, '<')
           
           // Scene 2 in
@@ -77,7 +80,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
           .fromTo('.story-img-2', { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '<')
           
           // Scene 2 out
-          .to('.story-text-2', { opacity: 0, y: -50, duration: 1 }, '+=1')
+          .to('.story-text-2', { opacity: 0, y: -50, duration: 1 }, '+=0.8')
           .to('.story-img-2', { y: -100, opacity: 0, duration: 1 }, '<')
           
           // Scene 3 in
@@ -85,7 +88,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
           .fromTo('.story-img-3', { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '<')
           
           // Pause at end
-          .to({}, { duration: 1 })
+          .to({}, { duration: 0.5 })
       });
     });
 
@@ -109,7 +112,14 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
       });
     });
 
-    return () => mm.revert();
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      mm.revert();
+    };
   }, []);
 
   return (
@@ -171,9 +181,9 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold font-serif mb-4 md:mb-6 uppercase tracking-tight">The Calm Before</h3>
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">Adjusting the cuffs, fixing the tie, the quiet moments of focus before stepping out.</p>
           </div>
-          <div className="w-full md:w-1/2 h-[40vh] md:h-[55vh] relative story-img-1 mt-8 md:mt-0 md:ml-12 px-4 md:px-0">
-            <div className="w-full h-full cursor-pointer overflow-hidden group rounded-sm relative" onClick={() => openLightbox(content.collageImages[0])}>
-              <img src={content.collageImages[0]} alt="Groom Preparation" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-1 mt-8 md:mt-0 md:ml-12 px-4 md:px-0 flex justify-center items-center">
+            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[0])}>
+              <img src={content.collageImages[0]} alt="Groom Preparation" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
         </div>
@@ -185,9 +195,9 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold font-serif mb-4 md:mb-6 uppercase tracking-tight">Owning the Room</h3>
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">A look that says it all. We capture the raw, unfiltered swagger that comes from feeling your absolute best.</p>
           </div>
-          <div className="w-full md:w-1/2 h-[45vh] md:h-[60vh] relative story-img-2 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0">
-            <div className="w-full md:w-[80%] h-full md:ml-auto cursor-pointer overflow-hidden group rounded-sm relative" onClick={() => openLightbox(content.collageImages[1])}>
-              <img src={content.collageImages[1]} alt="Groom Confidence" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-2 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0 flex justify-center md:justify-end items-center">
+            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[1])}>
+              <img src={content.collageImages[1]} alt="Groom Confidence" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
         </div>
@@ -199,9 +209,9 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <h3 className="text-4xl md:text-5xl lg:text-7xl font-bold font-serif mb-4 md:mb-6 uppercase tracking-tight">Flawless Details</h3>
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">The watch, the shoes, the perfectly tailored suit. Every detail matters in the making of a gentleman.</p>
           </div>
-          <div className="w-full md:w-1/2 h-[45vh] md:h-[55vh] relative story-img-3 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0">
-            <div className="w-full md:w-[90%] h-full cursor-pointer overflow-hidden group rounded-sm relative" onClick={() => openLightbox(content.collageImages[2])}>
-              <img src={content.collageImages[2]} alt="Groom Style Details" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-3 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0 flex justify-center items-center">
+            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[2])}>
+              <img src={content.collageImages[2]} alt="Groom Style Details" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
         </div>

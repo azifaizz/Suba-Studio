@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { handleViewWork } from '@/utils/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +14,8 @@ interface Props {
 const BookYourStory: React.FC<Props> = ({ image }) => {
   const containerRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useGSAP(() => {
     // Parallax background zoom
@@ -56,12 +60,18 @@ const BookYourStory: React.FC<Props> = ({ image }) => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6">
-          <button className="group relative px-10 py-5 bg-[#D4AF37] overflow-hidden rounded-none border border-[#D4AF37]">
+          <button 
+            onClick={() => window.location.href = 'tel:+918994442768'}
+            className="group relative px-10 py-5 bg-[#D4AF37] overflow-hidden rounded-none border border-[#D4AF37]"
+          >
             <div className="absolute inset-0 w-full h-full bg-white transform scale-x-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-x-100" />
             <span className="relative z-10 text-[#111111] uppercase tracking-widest text-xs font-bold transition-colors duration-500">Book Your Story</span>
           </button>
           
-          <button className="group relative px-10 py-5 bg-transparent overflow-hidden rounded-none border border-white/30">
+          <button 
+            onClick={() => handleViewWork(navigate, location)}
+            className="group relative px-10 py-5 bg-transparent overflow-hidden rounded-none border border-white/30"
+          >
             <div className="absolute inset-0 w-full h-full bg-white transform scale-x-0 origin-left transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-x-100" />
             <span className="relative z-10 text-white group-hover:text-[#111111] uppercase tracking-widest text-xs font-bold transition-colors duration-500">View More Galleries</span>
           </button>

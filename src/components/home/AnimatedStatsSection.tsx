@@ -19,7 +19,7 @@ const statItems: StatItem[] = [
     id: 1,
     targetValue: 22,
     suffix: "+",
-    label: "Years Experience",
+    label: "Years of Experience",
     icon: <Award className="w-6 h-6 sm:w-7 sm:h-7 text-amber-400" />,
     description: "Crafting timeless visual stories since our very first frame."
   },
@@ -43,7 +43,7 @@ const statItems: StatItem[] = [
     id: 4,
     targetValue: 56,
     suffix: "+",
-    label: "Professionals",
+    label: "Team Members",
     icon: <Camera className="w-6 h-6 sm:w-7 sm:h-7 text-purple-400" />,
     description: "Master photographers, cinematographers & creative editors."
   }

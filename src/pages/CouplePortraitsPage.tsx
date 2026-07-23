@@ -5,7 +5,7 @@ import Lenis from 'lenis';
 import { SplitTextReveal } from '@/components/ui/split-text-reveal';
 import { LuxuryLightbox } from '@/components/ui/luxury-lightbox';
 import { categoryData } from '@/data/categoryContent';
-import { Camera, Sparkles, ArrowRight, Heart } from 'lucide-react';
+import { ArrowRight, Heart } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,11 +42,6 @@ const EditorialCard = ({ src, title, category, onClick, className = '' }: {
                     </h3>
                 </div>
             )}
-            
-            {/* Gold Accent Corner Bar */}
-            <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Camera size={14} />
-            </div>
         </div>
     );
 };
@@ -75,6 +70,9 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
     const parallaxRef = useRef<HTMLDivElement>(null);
     const storyContainerRef = useRef<HTMLDivElement>(null);
 
+    const storyCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [activeStoryChapter, setActiveStoryChapter] = useState(0);
+
     const openLightbox = (imageSrc: string) => {
         const index = allImages.findIndex(img => img === imageSrc);
         setLightboxIndex(index !== -1 ? index : 0);
@@ -84,41 +82,15 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        // 1. Initialize Lenis Smooth Scrolling Engine
-        const lenis = new Lenis({
-            duration: 1.4,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
-            smoothWheel: true,
-            wheelMultiplier: 0.9,
-        });
-
-        lenis.on('scroll', ScrollTrigger.update);
-
-        const tickerCb = (time: number) => {
-            lenis.raf(time * 1000);
-        };
-        gsap.ticker.add(tickerCb);
-        gsap.ticker.lagSmoothing(0);
-
-        // 2. Responsive GSAP Animations
-        const mm = gsap.matchMedia(containerRef);
+        // 1. Responsive GSAP Animations using global Lenis smooth scroll
+        const mm = gsap.matchMedia();
 
         mm.add("all", () => {
-            // Hero Background Subtle Zoom
+            // Hero Background Parallax Scroll & Subtle Zoom
             gsap.to('.cp-hero-bg', {
-                scale: 1.12,
-                duration: 18,
+                yPercent: 25,
+                scale: 1.15,
                 ease: 'none',
-                repeat: -1,
-                yoyo: true
-            });
-
-            // Parallax scroll on hero content
-            gsap.to('.cp-hero-content', {
-                y: 120,
-                opacity: 0,
                 scrollTrigger: {
                     trigger: heroRef.current,
                     start: 'top top',
@@ -126,54 +98,118 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                     scrub: true
                 }
             });
+
+            // Parallax scroll & fade out on hero content
+            gsap.to('.cp-hero-content', {
+                y: 140,
+                opacity: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // Quote Section Parallax Reveal
+            const quoteElements = gsap.utils.toArray('.cp-quote-reveal') as HTMLElement[];
+            quoteElements.forEach((el) => {
+                gsap.fromTo(el,
+                    { opacity: 0, y: 50, scale: 0.96 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    }
+                );
+            });
         });
 
-        // Pinned Story Section (Desktop / Tablet)
-        mm.add("(min-width: 768px)", () => {
-            if (storyContainerRef.current) {
+        // Sticky Notes Stack Animation (Mobile + Desktop)
+        mm.add(
+            {
+                isMobile: "(max-width: 767px)",
+                isDesktop: "(min-width: 768px)"
+            },
+            (context) => {
+                const { isMobile } = context.conditions as { isMobile: boolean };
+                if (!storyContainerRef.current || storyCardRefs.current.length === 0) return;
+
+                const totalCards = storyScenes.length;
+                const cardScrollDistance = isMobile ? 420 : 650;
+                const scrollDistance = (totalCards - 1) * cardScrollDistance;
+
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: storyContainerRef.current,
-                        start: 'top top',
-                        end: '+=350%',
                         pin: true,
-                        scrub: 1,
+                        start: 'top top',
+                        end: `+=${scrollDistance}px`,
+                        scrub: 0.8,
+                        invalidateOnRefresh: true,
                         anticipatePin: 1,
-                        invalidateOnRefresh: true
+                        fastScrollEnd: true,
+                        onUpdate: (self) => {
+                            const currentIdx = Math.min(
+                                totalCards - 1,
+                                Math.floor(self.progress * totalCards)
+                            );
+                            setActiveStoryChapter(currentIdx);
+                        },
+                    },
+                });
+
+                storyCardRefs.current.forEach((card, index) => {
+                    if (!card) return;
+                    if (index === 0) {
+                        gsap.set(card, { y: '0%', scale: 1, opacity: 1, zIndex: 10 });
+                    } else {
+                        gsap.set(card, { y: '100%', scale: 0.96, opacity: 1, zIndex: index + 10 });
                     }
                 });
 
-                // Scene 1 -> 2
-                tl.to('.cps-text-1', { opacity: 0, y: -40, duration: 1 }, '+=1')
-                  .to('.cps-img-1', { scale: 0.9, opacity: 0, duration: 1 }, '<')
-                  .fromTo('.cps-text-2', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1 }, '<')
-                  .fromTo('.cps-img-2', { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<')
-                  
-                  // Scene 2 -> 3
-                  .to('.cps-text-2', { opacity: 0, y: -40, duration: 1 }, '+=1')
-                  .to('.cps-img-2', { scale: 0.9, opacity: 0, duration: 1 }, '<')
-                  .fromTo('.cps-text-3', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1 }, '<')
-                  .fromTo('.cps-img-3', { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<')
+                for (let i = 1; i < totalCards; i++) {
+                    const prevCard = storyCardRefs.current[i - 1];
+                    const currentCard = storyCardRefs.current[i];
+                    if (!prevCard || !currentCard) continue;
 
-                  // Scene 3 -> 4
-                  .to('.cps-text-3', { opacity: 0, y: -40, duration: 1 }, '+=1')
-                  .to('.cps-img-3', { scale: 0.9, opacity: 0, duration: 1 }, '<')
-                  .fromTo('.cps-text-4', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1 }, '<')
-                  .fromTo('.cps-img-4', { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, '<')
+                    const stepLabel = `step_${i}`;
+                    tl.addLabel(stepLabel);
 
-                  // Pause at final scene before smooth release
-                  .to({}, { duration: 0.8 });
+                    tl.fromTo(
+                        currentCard,
+                        { y: '100%', scale: 0.96 },
+                        { y: '0%', scale: 1, duration: 1, ease: 'power2.out' },
+                        stepLabel
+                    );
+
+                    tl.to(
+                        prevCard,
+                        { scale: 0.92, y: '-5%', opacity: 0, duration: 0.9, ease: 'power1.in' },
+                        `${stepLabel}+=0.1`
+                    );
+                }
             }
+        );
 
-            // Parallax wall staggered scroll
+        // Parallax wall staggered scroll
+        mm.add("(min-width: 768px)", () => {
             const items = gsap.utils.toArray('.cp-parallax-item') as HTMLElement[];
             items.forEach((item, i) => {
-                const depth = (i % 3 + 1) * 30;
+                const depth = i % 3 === 0 ? -90 : i % 3 === 1 ? -140 : -60;
                 gsap.to(item, {
-                    y: -depth,
+                    y: depth,
                     ease: 'none',
                     scrollTrigger: {
-                        trigger: parallaxRef.current,
+                        trigger: item,
                         start: 'top bottom',
                         end: 'bottom top',
                         scrub: 1
@@ -182,9 +218,35 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
             });
         });
 
+        // Mobile-exclusive subtle scroll reveal for gallery
+        mm.add("(max-width: 767px)", () => {
+            const mobileCards = gsap.utils.toArray('.cp-mobile-card') as HTMLElement[];
+            mobileCards.forEach((card) => {
+                gsap.fromTo(card,
+                    { opacity: 0, y: 30, scale: 0.97 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 88%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    }
+                );
+            });
+        });
+
+        // Force refresh ScrollTrigger after initial render to avoid CLS layout shifts
+        const refreshTimer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 200);
+
         return () => {
-            lenis.destroy();
-            gsap.ticker.remove(tickerCb);
+            clearTimeout(refreshTimer);
             mm.revert();
         };
     }, []);
@@ -230,7 +292,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                         <img 
                             src={data.heroImage} 
                             alt="Couple Portrait Hero" 
-                            className="w-full h-full object-cover opacity-60 object-[center_35%]"
+                            className="w-full h-full object-cover opacity-60 object-center md:object-[center_35%]"
                         />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#0D0D0D]" />
@@ -238,11 +300,6 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                 </div>
 
                 <div className="cp-hero-content relative z-10 max-w-5xl text-center px-6 pt-20">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] font-sans tracking-[0.3em] uppercase text-xs font-semibold mb-8 backdrop-blur-md">
-                        <Sparkles size={13} />
-                        <span>Suba Studio Fine Art</span>
-                    </div>
-                    
                     <SplitTextReveal 
                         text="Couple Portraits" 
                         type="words" 
@@ -276,7 +333,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
 
             {/* 2. Editorial Quote Divider 1 */}
             <section className="py-24 md:py-36 bg-[#0D0D0D] border-y border-white/10 relative overflow-hidden">
-                <div className="max-w-4xl mx-auto text-center px-6">
+                <div className="cp-quote-reveal max-w-4xl mx-auto text-center px-6">
                     <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent mx-auto mb-8 opacity-60" />
                     <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl italic font-light text-white/90 leading-relaxed">
                         "The most genuine portraits are captured when two hearts forget the lens is watching."
@@ -285,85 +342,151 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                 </div>
             </section>
 
-            {/* 3. Pinned Cinematic Storytelling Experience */}
-            <section id="story-section" ref={storyContainerRef} className="relative h-screen w-full bg-[#080808] overflow-hidden flex items-center justify-center">
-                
-                {storyScenes.map((scene, i) => (
-                    <div 
-                        key={i}
-                        className={`absolute inset-0 flex flex-col md:flex-row items-center justify-center px-6 md:px-20 lg:px-32 transition-all ${
-                            i === 0 ? 'cps-img-1' : `cps-img-${i+1} opacity-0`
-                        }`}
-                    >
-                        {/* Background Image Layer with Depth Effects */}
-                        <div className="absolute inset-0 z-0 overflow-hidden">
-                            <img 
-                                src={scene.image} 
-                                alt={scene.title} 
-                                className="w-full h-full object-cover opacity-50 filter brightness-90"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-black/90" />
-                        </div>
+            {/* 3. Pinned Cinematic Sticky Card Stack Experience (Pixel-Perfect Homepage Stack!) */}
+            <section 
+                id="story-section" 
+                ref={storyContainerRef} 
+                className="relative w-full h-screen bg-gradient-to-b from-[#080808] via-[#0D0D0D] to-[#080808] overflow-hidden pt-16 sm:pt-24 pb-6 sm:pb-10 flex flex-col justify-center"
+            >
+                {/* Gold Ambient Glow Backdrops */}
+                <div className="absolute top-[15%] left-10 w-[450px] h-[450px] bg-[#D4AF37]/10 rounded-full blur-[140px] pointer-events-none" />
+                <div className="absolute bottom-[10%] right-10 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-                        {/* Foreground Content Card */}
-                        <div className="relative z-10 w-full max-w-6xl flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
-                            
-                            {/* Text Info */}
-                            <div className={`w-full md:w-1/2 text-left ${i === 0 ? 'cps-text-1' : `cps-text-${i+1} opacity-0`}`}>
-                                <span className="text-[#D4AF37] font-sans tracking-[0.3em] uppercase text-xs font-bold mb-3 block">
-                                    Chapter {scene.num}
-                                </span>
-                                <h3 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-none mb-4">
-                                    {scene.title}
-                                </h3>
-                                <p className="text-[#D4AF37] font-serif italic text-lg md:text-xl mb-6">
-                                    {scene.subtitle}
-                                </p>
-                                <p className="text-white/70 text-base md:text-lg font-light max-w-md leading-relaxed">
-                                    {scene.desc}
-                                </p>
+                <div className="container mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1500px] w-full h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-2 md:gap-8 lg:gap-14 relative z-20">
+                    
+                    {/* LEFT COLUMN: Section Title, Paragraph & Chapter Progress */}
+                    <div className="w-full lg:w-[38%] xl:w-[36%] flex flex-col justify-center text-center lg:text-left shrink-0 z-30 py-1 lg:py-6">
+                        <span className="text-[#D4AF37] font-serif font-bold tracking-[0.28em] text-[10px] md:text-sm uppercase mb-1 sm:mb-3 block">
+                            Cinematic Chapters
+                        </span>
+
+                        <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4rem] font-serif font-bold text-white tracking-tight leading-[1.08] mb-1 sm:mb-5">
+                            Love In Every Frame
+                        </h2>
+
+                        <p className="hidden sm:block text-sm sm:text-base text-white/70 font-light leading-relaxed mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+                            Each portrait is a standalone chapter. Turn the scroll wheel to slide through our signature editorial experiences, crafted with cinematic luxury and timeless devotion.
+                        </p>
+
+                        {/* Active Chapter Progress Indicator */}
+                        <div className="hidden sm:flex flex-col gap-2.5 max-w-xs mx-auto lg:mx-0 pt-4 border-t border-white/10">
+                            <div className="flex items-center justify-between font-serif text-xs font-semibold tracking-[0.25em] uppercase text-white/60">
+                                <span>Chapter 0{activeStoryChapter + 1}</span>
+                                <span className="text-[#D4AF37] font-bold">0{storyScenes.length}</span>
                             </div>
-
-                            {/* Clickable Image Preview */}
-                            <div className="w-full md:w-1/2 aspect-[4/5] max-w-md rounded-[24px] overflow-hidden border border-white/15 shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative group cursor-pointer" onClick={() => openLightbox(scene.image)}>
-                                <img 
-                                    src={scene.image} 
-                                    alt={scene.title} 
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden p-0.5">
+                                <div
+                                    className="h-full bg-[#D4AF37] rounded-full transition-all duration-300 ease-out"
+                                    style={{
+                                        width: `${((activeStoryChapter + 1) / storyScenes.length) * 100}%`,
+                                    }}
                                 />
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-center">
-                                    <div className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-md border border-[#D4AF37]/50 text-[#D4AF37] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
-                                        <Camera size={20} />
-                                    </div>
-                                </div>
                             </div>
-
+                            <span className="text-xs font-serif text-white/40 italic mt-0.5">
+                                Viewing: <strong className="text-white not-italic">{storyScenes[activeStoryChapter]?.title}</strong>
+                            </span>
                         </div>
                     </div>
-                ))}
 
+                    {/* RIGHT COLUMN: Sticky Card Stack */}
+                    <div className="w-full lg:w-[58%] xl:w-[56%] h-[68vh] sm:h-[68vh] lg:h-[70vh] min-h-[460px] relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
+                        {storyScenes.map((scene, index) => (
+                            <div
+                                key={index}
+                                ref={(el) => (storyCardRefs.current[index] = el)}
+                                onClick={() => {
+                                    if (window.innerWidth >= 768) openLightbox(scene.image);
+                                }}
+                                className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] bg-[#141414] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:shadow-[0_25px_60px_rgba(212,175,55,0.18)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
+                            >
+                                {/* Left Side Inside Card (48% on desktop) */}
+                                <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 shrink-0 mb-1 sm:mb-0">
+                                    <div>
+                                        {/* Card Header Badge */}
+                                        <div className="flex items-center justify-between mb-1.5 sm:mb-6">
+                                            <span className="font-serif text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#D4AF37] uppercase bg-[#D4AF37]/10 px-3 py-1 rounded-full border border-[#D4AF37]/30">
+                                                0{index + 1} / 0{storyScenes.length}
+                                            </span>
+                                        </div>
+
+                                        {/* Title */}
+                                        <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-white leading-[1.14] mb-1 sm:mb-3 group-hover:text-[#D4AF37] transition-colors duration-300">
+                                            {scene.title}
+                                        </h3>
+
+                                        {/* Subtitle */}
+                                        <p className="text-[#D4AF37] font-serif italic text-xs sm:text-sm mb-1 sm:mb-3">
+                                            {scene.subtitle}
+                                        </p>
+
+                                        {/* Description */}
+                                        <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 sm:line-clamp-4">
+                                            {scene.desc}
+                                        </p>
+                                    </div>
+
+                                    {/* Bottom CTA Indicator */}
+                                    <div className="hidden sm:flex items-center gap-3 text-xs font-bold tracking-[0.18em] text-white/50 uppercase group-hover:text-[#D4AF37] transition-colors duration-300 pt-3 border-t border-white/10 mt-2">
+                                        <span>View Full Detail</span>
+                                        <div className="w-8 h-[1.5px] bg-white/20 group-hover:w-16 group-hover:bg-[#D4AF37] transition-all duration-500" />
+                                    </div>
+                                </div>
+
+                                {/* Right Side Inside Card (52% on desktop): Full-Height Expanded Framed Image on Mobile */}
+                                <div className="w-full sm:w-[52%] flex-1 sm:h-full relative rounded-xl sm:rounded-[22px] overflow-hidden bg-[#0A0A0A] border border-white/10 shrink-0 flex items-center justify-center shadow-lg min-h-[260px] xs:min-h-[300px]">
+                                    <img
+                                        src={scene.image}
+                                        alt={scene.title}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
             </section>
 
             {/* 4. Editorial Parallax Gallery Portfolio */}
-            <section ref={parallaxRef} className="py-32 md:py-48 px-6 md:px-16 bg-[#0D0D0D] relative z-10 border-t border-white/10">
+            <section ref={parallaxRef} className="py-24 md:py-48 px-4 sm:px-6 md:px-16 bg-[#0D0D0D] relative z-10 border-t border-white/10">
                 <div className="max-w-7xl mx-auto">
                     
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-white/10 pb-10">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6 border-b border-white/10 pb-8 md:pb-10">
                         <div>
                             <span className="text-[#D4AF37] font-sans uppercase tracking-[0.25em] text-xs font-semibold block mb-3">
                                 Fine Art Gallery
                             </span>
-                            <h2 className="font-serif text-4xl sm:text-6xl text-white font-bold tracking-tight">
+                            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-white font-bold tracking-tight">
                                 Couple Portrait Collection
                             </h2>
                         </div>
-                        <p className="text-white/60 font-light max-w-md text-sm md:text-base leading-relaxed">
+                        <p className="hidden md:block text-white/60 font-light max-w-md text-sm md:text-base leading-relaxed">
                             Click on any portrait to enter the full-screen cinematic gallery experience with full detail.
                         </p>
                     </div>
 
-                    {/* Multi-Column Staggered Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    {/* MOBILE-ONLY Magazine Flow: Natural Aspect Ratio, No Forced Cropping, Lightbox Disabled */}
+                    <div className="block md:hidden space-y-12">
+                        {allImages.map((img, idx) => (
+                            <div 
+                                key={idx} 
+                                className="cp-mobile-card relative overflow-hidden rounded-[20px] border border-white/15 bg-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
+                            >
+                                <img 
+                                    src={img} 
+                                    alt={`Couple Portrait ${idx + 1}`}
+                                    className="w-full h-auto block object-contain rounded-[20px]"
+                                    loading="lazy"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-30 pointer-events-none rounded-[20px]" />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* DESKTOP/TABLET Multi-Column Staggered Grid (100% Preserved & Identical) */}
+                    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                         {allImages.slice(0, 9).map((img, idx) => {
                             const isTall = idx % 2 === 0;
                             return (
@@ -372,7 +495,9 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                                         src={img} 
                                         title={data.albums[idx % data.albums.length]?.title || `Love Portrait 0${idx + 1}`}
                                         category="Couple Photography"
-                                        onClick={() => openLightbox(img)}
+                                        onClick={() => {
+                                            if (window.innerWidth >= 768) openLightbox(img);
+                                        }}
                                         className={isTall ? 'aspect-[3/4]' : 'aspect-[4/5] md:aspect-[3/4]'}
                                     />
                                 </div>

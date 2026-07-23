@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   Instagram,
   Facebook,
@@ -38,10 +38,10 @@ const portfolioItems = [
 ];
 
 const facts = [
-  { id: 1, number: "22+", label: "Years Experience" },
+  { id: 1, number: "22+", label: "Years of Experience" },
   { id: 2, number: "5000+", label: "Happy Customers" },
   { id: 3, number: "100%", label: "Client Satisfaction" },
-  { id: 4, number: "56+", label: "Professionals" },
+  { id: 4, number: "56+", label: "Team Members" },
 ];
 
 const specializations = [
@@ -61,6 +61,19 @@ const specializations = [
 
 const Index = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.includes('scrollTo=services')) {
+      setTimeout(() => {
+        const element = document.getElementById('services');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+        window.history.replaceState({}, '', '/');
+      }, 300);
+    }
+  }, [location]);
 
   useEffect(() => {
     document.body.style.cursor = 'auto';
@@ -87,7 +100,7 @@ const Index = () => {
             controls={false}
             className="w-full h-full object-cover"
           >
-            <source src="/Mk1.mp4" type="video/mp4" />
+            <source src="/Landscape.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/30" />
         </div>

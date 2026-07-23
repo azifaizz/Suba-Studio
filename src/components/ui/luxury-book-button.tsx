@@ -8,7 +8,7 @@ interface LuxuryBookButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEle
 }
 
 export const LuxuryBookButton = React.forwardRef<HTMLButtonElement, LuxuryBookButtonProps>(
-  ({ className, text = "BOOK YOUR STORY", onClick, ...props }, ref) => {
+  ({ className, text = "BOOK YOUR STORY", onClick = () => window.location.href = 'tel:+918994442768', ...props }, ref) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
