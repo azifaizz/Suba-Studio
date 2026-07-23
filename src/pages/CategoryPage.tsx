@@ -114,14 +114,7 @@ const CategoryPage = () => {
                     </Reveal>
                 </div>
 
-                {isVideoRoute && (
-                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-70 z-20">
-                        <span className="text-[9px] tracking-[0.3em] uppercase text-white font-medium">Scroll</span>
-                        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-[float_2s_ease-in-out_infinite]" />
-                        </div>
-                    </div>
-                )}
+                
             </section>
 
             {/* Content Section */}

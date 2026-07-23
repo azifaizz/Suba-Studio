@@ -32,6 +32,19 @@ const chunkArray = <T,>(arr: T[], size: number) => {
   );
 };
 
+const getCoverImage = (subcat: string) => {
+    switch (subcat) {
+        case 'baby': return '/cover/baby.jpg';
+        case 'christian': return '/cover/christian.JPG';
+        case 'engagement': return '/cover/engagement.JPG';
+        case 'hindu': return '/cover/hindu.jpg';
+        case 'maternity': return '/cover/matrenity.jpg';
+        case 'post-wedding': return '/cover/postwedding.JPG';
+        case 'pre-wedding': return '/cover/prewedding.jpg';
+        default: return null;
+    }
+};
+
 export default function CinematicStoryboardPage({ subcategory }: { subcategory: string }) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
     const mainRef = useRef<HTMLElement>(null);
@@ -186,19 +199,29 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
         <SmoothScroll>
             <div className="bg-[#0a0a0a] min-h-screen text-white font-sans selection:bg-[#D4AF37]/30 selection:text-white overflow-hidden">
                 {/* Intro Section */}
-                <section className="h-[90vh] flex flex-col items-center justify-center text-center px-4 md:px-8 relative z-20 pt-20 md:pt-24">
-                    <p className="text-[#D4AF37] tracking-[0.3em] uppercase text-xs md:text-sm mb-6 font-poppins">{content.tagline}</p>
-                    <h1 className="text-4xl md:text-6xl lg:text-8xl font-playfair mb-6 leading-tight tracking-tight px-4">
-                        {content.title.split(' Photography')[0]} <br className="md:hidden" />
-                        <span className="italic text-white/90">Photography</span>
-                    </h1>
-                    <p className="max-w-2xl mx-auto text-white/60 font-inter text-sm md:text-base leading-relaxed font-light px-4">
-                        {content.description}
-                    </p>
+                <section className="h-[90vh] flex flex-col items-center justify-center text-center relative z-20">
+                    {/* Cover Background */}
+                    {getCoverImage(subcategory) && (
+                        <div className="absolute inset-0 z-0">
+                            <img 
+                                src={getCoverImage(subcategory)!} 
+                                alt={`${subcategory} cover`} 
+                                className="w-full h-full object-cover object-center" 
+                            />
+                            {/* Dark overlay for readability */}
+                            <div className="absolute inset-0 bg-black/40"></div>
+                        </div>
+                    )}
                     
-                    <div className="mt-16 md:mt-24 animate-pulse">
-                        <p className="text-white/30 text-xs tracking-widest uppercase mb-4">Scroll to Begin</p>
-                        <div className="w-[1px] h-16 bg-gradient-to-b from-[#D4AF37]/60 to-transparent mx-auto"></div>
+                    <div className="relative z-10 w-full px-4 md:px-8 pt-20 md:pt-24 flex flex-col items-center justify-center h-full">
+                        <p className="text-[#D4AF37] tracking-[0.3em] uppercase text-xs md:text-sm mb-6 font-poppins drop-shadow-md">{content.tagline}</p>
+                        <h1 className="text-4xl md:text-6xl lg:text-8xl font-playfair mb-6 leading-tight tracking-tight px-4 drop-shadow-lg">
+                            {content.title.split(' Photography')[0]} <br className="md:hidden" />
+                            <span className="italic text-white/90">Photography</span>
+                        </h1>
+                        <p className="max-w-2xl mx-auto text-white/80 font-inter text-sm md:text-base leading-relaxed font-light px-4 drop-shadow-md">
+                            {content.description}
+                        </p>
                     </div>
                 </section>
 
