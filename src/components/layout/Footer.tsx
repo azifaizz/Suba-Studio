@@ -21,8 +21,8 @@ const Footer = () => {
                             Suba Studios is considered to be the best place for visual storytelling and is among the top wedding photography studios in the country.
                         </p>
                         <div className="flex gap-4">
-                            <a href="https://www.facebook.com/zerogravitystudios/" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Facebook size={20} /></a>
-                            <a href="https://www.instagram.com/zerogravityphotography/" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Instagram size={20} /></a>
+                            <a href="https://www.facebook.com/share/18vxDiHPCc/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Facebook size={20} /></a>
+                            <a href="https://www.instagram.com/subaartphotography?igsh=NG50OHl5Nmg2bm8y&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-zg-blue transition-colors touch-target"><Instagram size={20} /></a>
                         </div>
                     </div>
 
