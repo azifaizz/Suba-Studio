@@ -32,35 +32,39 @@ const PhilosophySection = () => {
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    // Stacking cards animation for all screen sizes
     const cards = gsap.utils.toArray('.philosophy-card') as HTMLElement[];
     
     if (cards.length > 0) {
-      cards.forEach((card, i) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: `top top+=${100 + i * 20}px`,
-          endTrigger: containerRef.current,
-          end: 'bottom bottom',
-          pin: true,
-          pinSpacing: false,
-          markers: false,
-        });
-        
-        // Scale down slightly as next cards stack on top
-        if (i < cards.length - 1) {
-          gsap.to(card, {
-            scale: 1 - ((cards.length - i) * 0.02),
-            opacity: 0.5,
-            ease: "none",
-            scrollTrigger: {
-              trigger: cards[i + 1],
-              start: `top top+=${100 + (i + 1) * 20}px`,
-              end: `top top+=${100 + i * 20}px`,
-              scrub: true,
-            }
+      let mm = gsap.matchMedia();
+
+      // Only apply stacking animation on screens md and up (min-width: 768px)
+      mm.add("(min-width: 768px)", () => {
+        cards.forEach((card, i) => {
+          ScrollTrigger.create({
+            trigger: card,
+            start: `top top+=${100 + i * 20}px`,
+            endTrigger: containerRef.current,
+            end: 'bottom bottom',
+            pin: true,
+            pinSpacing: false,
+            markers: false,
           });
-        }
+          
+          // Scale down slightly as next cards stack on top
+          if (i < cards.length - 1) {
+            gsap.to(card, {
+              scale: 1 - ((cards.length - i) * 0.02),
+              opacity: 0.5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: cards[i + 1],
+                start: `top top+=${100 + (i + 1) * 20}px`,
+                end: `top top+=${100 + i * 20}px`,
+                scrub: true,
+              }
+            });
+          }
+        });
       });
     }
   }, { scope: containerRef });
@@ -74,7 +78,7 @@ const PhilosophySection = () => {
           <h2 className="text-5xl md:text-6xl font-serif mt-4 text-[#111111]">The Suba Signature</h2>
         </div>
 
-        <div className="relative pb-[50vh]">
+        <div className="relative md:pb-[50vh]">
           {philosophies.map((phil, i) => (
             <div 
               key={i} 
