@@ -55,7 +55,6 @@ export const categoryData: Record<string, CategoryContent> = {
             { id: 9, title: "", image: "/Christian/4Z5A8479.JPG" },
             { id: 10, title: "", image: "/Christian/4Z5A8531.JPG" },
             { id: 11, title: "", image: "/Christian/4Z5A8557.JPG" },
-            { id: 12, title: "", image: "/Christian/4Z5A8565.JPG" },
         ]
     },
 
