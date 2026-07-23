@@ -21,7 +21,7 @@ const getAspectStyle = (src?: string) => {
   const key2 = `/${filename}`;
   const key3 = `/Bridal/${filename}`;
   
-  const meta = (imageMetadata as any)[key1] || (imageMetadata as any)[key2] || (imageMetadata as any)[key3];
+  const meta = (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key1] || (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key2] || (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key3];
   
   if (meta) {
     return `${meta.width} / ${meta.height}`;
@@ -73,7 +73,7 @@ const FeaturedCollection: React.FC<Props> = ({ albums }) => {
     });
 
     // Subtly scale images inside their containers for a premium feel
-    gsap.utils.toArray('.reveal-img').forEach((img: any) => {
+    gsap.utils.toArray('.reveal-img').forEach((img: unknown) => {
       gsap.fromTo(img, 
         { scale: 1.15, opacity: 0 },
         {

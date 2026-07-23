@@ -10,7 +10,7 @@ import imageMetadata from '@/data/imageMetadata.json';
 gsap.registerPlugin(ScrollTrigger);
 
 const getOrientationAspect = (src: string, defaultClass: string) => {
-    const meta = (imageMetadata as any)[src];
+    const meta = (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[src];
     if (meta?.orientation === 'landscape') {
         return "aspect-[4/3] md:aspect-[3/2]";
     }

@@ -49,6 +49,13 @@ export const categoryData: Record<string, CategoryContent> = {
             { id: 3, title: "", image: "/Christian/4Z5A8733.JPG" },
             { id: 4, title: "", image: "/Christian/4Z5A8776.JPG" },
             { id: 5, title: "", image: "/Christian/4Z5A8768.JPG" },
+            { id: 6, title: "", image: "/Christian/4Z5A8297.JPG" },
+            { id: 7, title: "", image: "/Christian/4Z5A8307.JPG" },
+            { id: 8, title: "", image: "/Christian/4Z5A8321.JPG" },
+            { id: 9, title: "", image: "/Christian/4Z5A8479.JPG" },
+            { id: 10, title: "", image: "/Christian/4Z5A8531.JPG" },
+            { id: 11, title: "", image: "/Christian/4Z5A8557.JPG" },
+            { id: 12, title: "", image: "/Christian/4Z5A8565.JPG" },
         ]
     },
 
@@ -81,6 +88,8 @@ export const categoryData: Record<string, CategoryContent> = {
             { id: 17, title: "", image: "/hindu/17.jpg" },
             { id: 18, title: "", image: "/hindu/18.jpg" },
             { id: 19, title: "", image: "/hindu/19.jpg" },
+            { id: 20, title: "", image: "/hindu/20.jpg" },
+            { id: 21, title: "", image: "/hindu/21.jpg" },
         ]
     },
     "engagement": {

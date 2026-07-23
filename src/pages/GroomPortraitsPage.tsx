@@ -7,7 +7,7 @@ import { categoryData } from '@/data/categoryContent';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const EditorialImage = ({ src, onClick, className = '' }: any) => {
+const EditorialImage = ({ src, onClick, className = '' }: { src: string; onClick: () => void; className?: string }) => {
   return (
     <div 
       className={`cursor-pointer group overflow-hidden rounded-sm relative ${className}`} 
@@ -96,7 +96,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
     mm.add("(min-width: 768px)", () => {
       // Parallax Editorial Wall
       const wallItems = gsap.utils.toArray('.wall-item');
-      wallItems.forEach((item: any, i) => {
+      wallItems.forEach((item: unknown, i) => {
         // More subtle parallax for editorial layout
         const speed = i % 2 === 0 ? 0.05 : -0.05;
         gsap.to(item, {

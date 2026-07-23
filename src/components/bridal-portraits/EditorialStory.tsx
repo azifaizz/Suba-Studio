@@ -23,8 +23,7 @@ const getAspectStyle = (src?: string) => {
   const key1 = src;
   const key2 = `/${filename}`;
   const key3 = `/Bridal/${filename}`;
-  
-  const meta = (imageMetadata as any)[key1] || (imageMetadata as any)[key2] || (imageMetadata as any)[key3];
+  const meta = (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key1] || (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key2] || (imageMetadata as Record<string, { width: number; height: number; orientation?: string }>)[key3];
   
   if (meta) {
     return `${meta.width} / ${meta.height}`;
@@ -83,7 +82,7 @@ const EditorialStory: React.FC<Props> = ({ albums, collageImages }) => {
       gsap.set(texts.slice(1), { opacity: 0, y: 30 });
       gsap.set(visuals.slice(1), { opacity: 0, y: 100 });
       // Scale down images slightly for initial state
-      visuals.forEach((visual: any, i: number) => {
+      visuals.forEach((visual: HTMLElement, i: number) => {
           if (i > 0) {
               const imgs = visual.querySelectorAll('img');
               gsap.set(imgs, { scale: 0.95 });
@@ -109,7 +108,7 @@ const EditorialStory: React.FC<Props> = ({ albums, collageImages }) => {
 
       // Subtle parallax on the images themselves as they scroll within the pinned section
       // This happens independent of the crossfade timeline
-      visuals.forEach((visual: any) => {
+      visuals.forEach((visual: HTMLElement) => {
         const detailImg = visual.querySelector('.detail-img-container');
         if (detailImg) {
           gsap.to(detailImg, {
@@ -131,7 +130,7 @@ const EditorialStory: React.FC<Props> = ({ albums, collageImages }) => {
       // Instead, we just fade them in naturally as the user scrolls down.
       const visuals = gsap.utils.toArray('.showcase-visual-mobile');
       
-      visuals.forEach((visual: any) => {
+      visuals.forEach((visual: HTMLElement) => {
         gsap.fromTo(visual, 
           { opacity: 0, y: 50 },
           {

@@ -50,7 +50,7 @@ const PhilosophySection = () => {
     const cards = gsap.utils.toArray('.philosophy-card') as HTMLElement[];
     
     if (cards.length > 0) {
-      let mm = gsap.matchMedia();
+      const mm = gsap.matchMedia();
 
       // Only apply stacking animation on screens md and up (min-width: 768px)
       mm.add("(min-width: 768px)", () => {
