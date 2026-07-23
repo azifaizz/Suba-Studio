@@ -40,7 +40,10 @@ const AwardsSection = () => {
       const wrapper = scrollWrapperRef.current;
       if (!wrapper) return;
 
-      const totalWidth = wrapper.scrollWidth - window.innerWidth + 200; // Extra padding
+      // Mathematically correct finite scroll
+      // We want to translate exactly enough so the right edge of the wrapper 
+      // (which includes the px-24 right padding) touches the right edge of the viewport.
+      const totalWidth = Math.max(0, wrapper.scrollWidth - window.innerWidth);
 
       gsap.to(wrapper, {
         x: -totalWidth,
@@ -74,14 +77,14 @@ const AwardsSection = () => {
 
   return (
     <section ref={containerRef} className="py-16 lg:py-0 lg:h-screen bg-white flex flex-col justify-center overflow-hidden">
-      <div className="px-6 lg:px-24 mb-12 lg:mb-20 shrink-0">
-        <h2 className="text-5xl md:text-7xl font-serif text-[#111111]">Awards & <br/><span className="italic text-[#2B2B2B]">Honours</span></h2>
+      <div className="px-6 lg:px-24 mb-8 shrink-0">
+        <h2 className="text-5xl md:text-7xl font-serif text-[#111111]">Awards & <span className="italic text-[#2B2B2B]">Honours</span></h2>
       </div>
 
-      <div className="flex-1 w-full relative">
+      <div className="w-full relative">
         <div 
           ref={scrollWrapperRef} 
-          className="flex flex-col lg:flex-row gap-8 px-6 lg:px-24 lg:absolute lg:top-0 lg:left-0 lg:h-full lg:items-center"
+          className="flex flex-col lg:flex-row gap-8 px-6 lg:px-24"
         >
           {awards.map((award, i) => (
             <div 

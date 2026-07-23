@@ -75,9 +75,9 @@ const TrustSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-16 lg:py-32 bg-[#ECECEC] overflow-hidden relative">
+    <section ref={containerRef} className="pt-16 pb-16 lg:pt-20 lg:pb-32 bg-[#ECECEC] overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-24">
+        <div className="text-center mb-16 lg:mb-20">
           <h2 className="text-4xl md:text-6xl font-serif text-[#111111]">Why People Trust Us</h2>
         </div>
 
@@ -87,14 +87,24 @@ const TrustSection = () => {
               key={i}
               className="trust-card relative flex flex-col items-center text-center group"
             >
-              {/* Background Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
+              {/* Refined Background Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-white rounded-full blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-1000 pointer-events-none z-0"></div>
               
-              <div className="relative z-10 text-5xl md:text-7xl font-serif font-light text-[#111111] mb-4">
-                <Counter end={stat.num} />
+              {/* Premium Geometric Numbers */}
+              <div className="relative z-10 text-6xl md:text-8xl font-poppins font-bold tracking-tighter mb-4 transition-transform duration-700 group-hover:scale-105">
+                <span className="text-[#111111] relative overflow-hidden group">
+                  <Counter end={stat.num} />
+                  {/* Delicate shine animation on hover */}
+                  <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 group-hover:left-[200%] transition-all duration-1000 ease-in-out z-20 pointer-events-none"></div>
+                </span>
                 <span className="text-[#D4AF37]">{stat.suffix}</span>
+                
+                {/* Thin gold underline */}
+                <div className="w-12 h-[2px] bg-[#D4AF37] mx-auto mt-4 opacity-60 group-hover:w-20 transition-all duration-500"></div>
               </div>
-              <div className="relative z-10 text-sm md:text-base font-sans tracking-widest uppercase text-[#2B2B2B]">
+
+              {/* Refined Labels */}
+              <div className="relative z-10 text-xs md:text-sm font-sans tracking-[0.2em] uppercase text-[#666666] font-medium">
                 {stat.label}
               </div>
             </div>

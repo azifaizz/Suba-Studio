@@ -162,7 +162,7 @@ const EditorialStory: React.FC<Props> = ({ albums }) => {
           <div className="w-[40%] h-full relative flex items-center">
             {categories.map((cat, i) => (
               <div key={i} className="showcase-text absolute w-full pr-16 flex flex-col justify-center">
-                <h4 className="text-sm font-sans tracking-widest uppercase text-[#D4AF37] mb-6">Chapter {i + 1}</h4>
+                {/* Chapter heading removed as requested */}
                 <h2 className="text-5xl lg:text-7xl font-serif text-[#1B1B1B] leading-tight mb-8">
                   {cat.title}
                 </h2>
@@ -209,7 +209,7 @@ const EditorialStory: React.FC<Props> = ({ albums }) => {
       <div className="md:hidden w-full px-6 py-24 space-y-32">
         {categories.map((cat, i) => (
           <div key={i} className="showcase-visual-mobile flex flex-col items-start w-full">
-            <h4 className="text-xs font-sans tracking-widest uppercase text-[#D4AF37] mb-4">Chapter {i + 1}</h4>
+            {/* Chapter heading removed as requested */}
             <h2 className="text-4xl font-serif text-[#1B1B1B] mb-6">{cat.title}</h2>
             <p className="text-gray-600 font-sans font-light text-base leading-relaxed mb-12">
               {cat.description}

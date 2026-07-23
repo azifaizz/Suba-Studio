@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LuxuryBookButton } from '@/components/ui/luxury-book-button';
-import { Menu, X, Camera, ChevronDown } from 'lucide-react';
+import { Menu, X, Camera, ChevronDown, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 
@@ -64,6 +64,14 @@ const Navbar = () => {
     const logoMobRef = useRef<HTMLDivElement>(null);
 
     const isHome = location.pathname === '/';
+
+    const handleBack = () => {
+        if (window.history.state && window.history.state.idx > 0) {
+            navigate(-1);
+        } else {
+            navigate('/');
+        }
+    };
 
     // Body scroll locking when mobile menu drawer is open
     useEffect(() => {
@@ -299,6 +307,19 @@ const Navbar = () => {
                     
                     {/* Left Section (Desktop Split vs Scrolled Logo Slot) */}
                     <div className={`hidden lg:flex items-center justify-start z-40 ${isSplitLayout ? 'flex-1' : 'shrink-0'}`}>
+                        {!isHome && (
+                            <button
+                                onClick={handleBack}
+                                className={`mr-2 group flex items-center justify-center p-2 rounded-full transition-all duration-300 active:scale-95 touch-target ${
+                                    isNavbarScrolled
+                                        ? 'text-gray-600 hover:text-black hover:bg-gray-100/80' 
+                                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                                }`}
+                                aria-label="Go back"
+                            >
+                                <ArrowLeft size={18} strokeWidth={2.5} className="group-hover:-translate-x-0.5 transition-transform duration-300" />
+                            </button>
+                        )}
                         {isSplitLayout ? (
                             <div className="flex items-center gap-0.5 xl:gap-1.5">
                                 {leftNavItems.map(renderDesktopNavItem)}
@@ -356,12 +377,25 @@ const Navbar = () => {
 
                     {/* Mobile & Tablet Dedicated Continuous Logo (< 1024px / lg:hidden) */}
                     <div className="flex items-center justify-start z-40 shrink-0 lg:hidden">
+                        {!isHome && (
+                            <button
+                                onClick={handleBack}
+                                className={`mr-1 -ml-1 group flex items-center justify-center p-2 rounded-full transition-all duration-300 active:scale-95 touch-target ${
+                                    isNavbarScrolled || isMobileMenuOpen
+                                        ? 'text-gray-600 hover:text-black hover:bg-gray-100/80' 
+                                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                                }`}
+                                aria-label="Go back"
+                            >
+                                <ArrowLeft size={18} strokeWidth={2.5} className="group-hover:-translate-x-0.5 transition-transform duration-300" />
+                            </button>
+                        )}
                         <motion.div
                             ref={logoMobRef}
                             onClick={() => handleHomeClick()}
                             animate={{
-                                x: isSplitLayout ? mobCenterDelta : 0,
-                                scale: isSplitLayout ? 1 : 0.88,
+                                x: isSplitLayout && isHome ? mobCenterDelta : 0,
+                                scale: isSplitLayout && isHome ? 1 : 0.88,
                             }}
                             transition={{
                                 duration: 0.42,

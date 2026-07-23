@@ -78,15 +78,15 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full py-24 md:py-40 lg:py-56 bg-[#FAF9F7] overflow-hidden">
+    <section ref={containerRef} className="relative w-full pt-16 md:pt-24 lg:pt-32 pb-24 md:pb-40 lg:pb-56 bg-[#FAF9F7] overflow-hidden">
       <div className="max-w-[100rem] mx-auto px-6 md:px-12">
         
         {/* Top Typography - Center aligned for a strong magazine opening */}
-        <div className="flex flex-col items-center justify-center relative z-20 mb-24 md:mb-40 text-center">
-          <h2 className="intro-title text-[#1B1B1B] font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight uppercase mb-8">
-            <span className="block overflow-hidden"><span className="block">Grace</span></span>
-            <span className="block overflow-hidden"><span className="block text-[#D4AF37] italic font-light normal-case">in Every</span></span>
-            <span className="block overflow-hidden"><span className="block">Frame.</span></span>
+        <div className="flex flex-col items-center justify-center relative z-20 mb-16 md:mb-24 text-center">
+          <h2 className="intro-title text-[#1B1B1B] font-serif text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7rem] leading-[1.1] tracking-tight uppercase mb-8 flex flex-wrap justify-center gap-x-3 md:gap-x-6">
+            <span className="inline-block overflow-hidden pb-2 md:pb-4"><span className="inline-block">GRACE</span></span>
+            <span className="inline-block overflow-hidden pb-2 md:pb-4"><span className="inline-block text-[#D4AF37] italic font-light normal-case">in Every</span></span>
+            <span className="inline-block overflow-hidden pb-2 md:pb-4"><span className="inline-block">FRAME.</span></span>
           </h2>
           <p className="text-gray-600 font-sans font-light text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
             We don't just take pictures. We craft editorial fashion stories where you are the muse. Every gown, every glance, and every quiet breath is documented with the timeless elegance of a high-end luxury magazine.

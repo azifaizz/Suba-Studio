@@ -61,7 +61,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-col border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-[10px] sm:text-xs uppercase tracking-widest text-white/40">
-                    <p className="text-center md:text-left">&copy; 2025 Suba Studios. All Rights Reserved.</p>
+                    <p className="text-center md:text-left">&copy; 2026 Suba Studios. All Rights Reserved.</p>
                     <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
                         {/* Legal links removed as requested */}
                     </div>

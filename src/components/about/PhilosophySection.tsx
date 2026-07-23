@@ -25,6 +25,21 @@ const philosophies = [
     title: "Perfection",
     desc: "From the grandest landscapes to the smallest details, we have developed our techniques to absolute perfection.",
     number: "04"
+  },
+  {
+    title: "Authenticity",
+    desc: "Capturing genuine emotions, unscripted moments, and heartfelt connections exactly as they unfold, preserving the true essence of every celebration.",
+    number: "05"
+  },
+  {
+    title: "Timelessness",
+    desc: "Crafting elegant photographs that transcend trends, allowing every memory to remain beautiful, meaningful, and cherished for generations.",
+    number: "06"
+  },
+  {
+    title: "Elegance",
+    desc: "Blending refined composition, graceful light, and artistic detail to create imagery that reflects sophistication, beauty, and timeless luxury.",
+    number: "07"
   }
 ];
 
@@ -75,7 +90,7 @@ const PhilosophySection = () => {
         
         <div className="mb-24 text-center">
           <span className="text-sm tracking-widest uppercase text-[#2B2B2B] font-sans">Our Philosophy</span>
-          <h2 className="text-5xl md:text-6xl font-serif mt-4 text-[#111111]">The Suba Signature</h2>
+          <h2 className="text-5xl md:text-6xl font-serif mt-4 text-[#111111]">Suba Signatures</h2>
         </div>
 
         <div className="relative md:pb-[50vh]">

@@ -29,20 +29,6 @@ const FounderShowcaseSection = () => {
       }
     );
 
-    gsap.fromTo(imageRef.current,
-      { yPercent: -5 },
-      {
-        yPercent: 5,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        }
-      }
-    );
-
     // Floating movement
     gsap.to(imageWrapperRef.current, {
       y: -10,
@@ -91,21 +77,21 @@ const FounderShowcaseSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative py-16 md:py-24 lg:py-48 overflow-hidden bg-[#FAFAF8] text-[#111111]">
-      {/* Subtle paper grain overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }}></div>
+    <section ref={containerRef} className="relative py-16 md:py-24 lg:py-40 overflow-hidden bg-black text-white">
+      {/* Subtle paper grain overlay for matte texture */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cream-paper.png")' }}></div>
 
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-16 flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24 relative z-10">
         
         {/* Left: Founder Portrait */}
         <div className="w-full lg:w-1/2 flex justify-center">
-          <div ref={imageWrapperRef} className="w-full max-w-2xl relative overflow-hidden rounded-sm shadow-2xl shadow-black/5">
+          <div ref={imageWrapperRef} className="w-full max-w-2xl relative overflow-visible rounded-sm shadow-2xl shadow-black/40">
             <img 
               ref={imageRef}
               src="/suba.jpg" 
               alt="S.Subash - Founder" 
               loading="lazy"
-              className="w-full h-auto block transform origin-center scale-[1.05]"
+              className="w-full h-auto block transform origin-center"
             />
           </div>
         </div>
@@ -119,36 +105,31 @@ const FounderShowcaseSection = () => {
           </div>
           
           <div className="overflow-hidden mb-2">
-            <h2 className="reveal-line block text-5xl md:text-6xl lg:text-7xl font-serif font-light leading-tight">
+            <h2 className="reveal-line block text-5xl md:text-6xl lg:text-7xl font-serif font-light leading-tight text-white">
               S.Subash
             </h2>
           </div>
 
           <div className="overflow-hidden mb-10">
-            <h3 className="reveal-line block text-[#2B2B2B]/70 font-sans tracking-widest uppercase text-xs md:text-sm">
+            <h3 className="reveal-line block text-white/70 font-sans tracking-widest uppercase text-xs md:text-sm">
               Founder • Managing Director • Lead Photographer
             </h3>
           </div>
 
           <div className="w-16 h-[1px] bg-[#D4AF37] mb-10 opacity-70"></div>
           
-          <div className="flex flex-col gap-8 text-[#2B2B2B]/80 font-sans font-light text-base md:text-lg leading-relaxed max-w-lg mb-12">
+          <div className="flex flex-col gap-8 text-white/80 font-sans font-light text-base md:text-lg leading-relaxed max-w-lg mb-12">
             <div className="overflow-hidden">
               <p className="reveal-line block">
                 Establishing a sanctuary for visual storytelling, S.Subash's focus remains singular: to discover the soul within the frame. His visionary approach continues to set the benchmark for luxury wedding photography and cinematic elegance across the nation.
               </p>
             </div>
-            <div className="overflow-hidden">
-              <a href="mailto:suba@subhastudios.com" className="reveal-line inline-block text-[#111111] hover:text-[#D4AF37] transition-colors duration-500 border-b border-[#111111]/20 hover:border-[#D4AF37] pb-1">
-                suba@subhastudios.com
-              </a>
-            </div>
           </div>
 
           {/* Quote */}
-          <div className="relative pl-8 md:pl-12 border-l border-[#D4AF37]/30 mt-8 lg:mt-16">
-            <span className="absolute -left-2 -top-6 text-6xl md:text-8xl text-[#D4AF37]/20 font-serif leading-none">"</span>
-            <p ref={quoteRef} className="italic text-[#111111] font-serif text-2xl md:text-3xl leading-relaxed">
+          <div className="relative pl-8 md:pl-12 border-l border-[#D4AF37]/40 mt-2 lg:mt-6">
+            <span className="absolute -left-2 -top-6 text-6xl md:text-8xl text-[#D4AF37]/30 font-serif leading-none">"</span>
+            <p ref={quoteRef} className="italic text-white font-serif text-2xl md:text-3xl leading-relaxed">
               A Wedding Photo is not one that just captures a fleeting moment in time.<br/>
               It is a window that lets you relive your most beautiful memories forever.
             </p>

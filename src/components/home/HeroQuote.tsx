@@ -172,7 +172,7 @@ export const HeroQuote: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-32 sm:pb-40 px-4 sm:px-6 md:px-12 pointer-events-none select-none overflow-hidden"
+      className="absolute inset-0 z-10 flex flex-col items-start justify-end pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-32 px-6 sm:px-12 md:px-20 pointer-events-none select-none overflow-hidden"
     >
       {/* Soft Dark Overlay for Readability over Hero Video */}
       <div
@@ -181,21 +181,21 @@ export const HeroQuote: React.FC = () => {
       />
 
       {/* Parallax & Scroll Wrapper */}
-      <div ref={quoteWrapperRef} className="relative z-10 w-full max-w-7xl mx-auto text-center">
+      <div ref={quoteWrapperRef} className="relative z-10 w-full max-w-7xl text-left">
         {/* Mouse Parallax Inner Container */}
-        <div ref={quoteRef} className="flex justify-center items-center overflow-hidden py-1 px-2">
+        <div ref={quoteRef} className="flex justify-start items-start overflow-hidden px-2">
           
-          <div className="flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3 md:gap-x-4">
+          <div className="flex flex-col justify-start items-start gap-0">
             {quoteWords.map((word, wordIndex) => (
               <span
                 key={wordIndex}
-                className="inline-block overflow-hidden py-1"
+                className="inline-block overflow-hidden"
               >
                 <span
-                  className={`word-inner inline-block origin-bottom font-poppins font-medium tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] leading-snug text-[10px] sm:text-xs md:text-sm lg:text-[15px] transition-colors ${
+                  className={`word-inner inline-block origin-bottom font-poppins font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] leading-[0.9] text-[20px] sm:text-[24px] md:text-[32px] lg:text-[40px] transition-colors text-transparent [-webkit-text-stroke-width:1px] md:[-webkit-text-stroke-width:1.5px] ${
                     word.isAccent
-                      ? 'text-[#D4AF37] drop-shadow-[0_2px_12px_rgba(212,175,55,0.45)]'
-                      : 'text-white/95 drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]'
+                      ? '[-webkit-text-stroke-color:#D4AF37] drop-shadow-[0_2px_12px_rgba(212,175,55,0.4)]'
+                      : '[-webkit-text-stroke-color:rgba(255,255,255,0.95)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]'
                   }`}
                 >
                   {word.text}
