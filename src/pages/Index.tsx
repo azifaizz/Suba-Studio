@@ -90,7 +90,7 @@ const Index = () => {
     <div className="min-h-screen bg-white text-black font-sans">
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center overflow-hidden">
+      <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 flex items-center justify-center bg-black">
           <video
             autoPlay
@@ -105,6 +105,7 @@ const Index = () => {
           </video>
           <div className="absolute inset-0 bg-black/30" />
         </div>
+        
         <HeroQuote />
       </section>
 
@@ -113,9 +114,8 @@ const Index = () => {
         <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
           <div className="w-full md:w-[30%]">
             <Reveal>
-              <div className="relative group max-w-xs mx-auto md:max-w-none aspect-[4/5]">
-                <div className="absolute inset-0 bg-zg-blue/10 transform group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500 rounded-lg" />
-                <img src="/muhurtham.jpg" alt="Suba Studios Story" className="relative w-full h-full object-cover rounded-lg shadow-2xl transition-all duration-700" />
+              <div className="relative group max-w-xs mx-auto md:max-w-none flex items-center justify-center p-4">
+                <img src="/LOGO.png" alt="Suba Studios Logo" className="relative w-full h-auto object-contain" />
               </div>
             </Reveal>
           </div>
