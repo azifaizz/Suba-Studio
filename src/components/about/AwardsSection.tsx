@@ -76,7 +76,7 @@ const AwardsSection = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-16 lg:py-0 lg:h-screen bg-white flex flex-col justify-center overflow-hidden">
+    <section ref={containerRef} className="py-16 lg:py-0 lg:h-screen bg-white flex flex-col justify-center overflow-hidden relative z-20">
       <div className="px-6 lg:px-24 mb-8 shrink-0">
         <h2 className="text-5xl md:text-7xl font-serif text-[#111111]">Awards & <span className="italic text-[#2B2B2B]">Honours</span></h2>
       </div>

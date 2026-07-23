@@ -50,16 +50,13 @@ const PhilosophySection = () => {
     const cards = gsap.utils.toArray('.philosophy-card') as HTMLElement[];
     
     if (cards.length > 0) {
-      const mm = gsap.matchMedia();
-
-      // Only apply stacking animation on screens md and up (min-width: 768px)
-      mm.add("(min-width: 768px)", () => {
-        cards.forEach((card, i) => {
+      // Apply stacking animation on all screen sizes
+      cards.forEach((card, i) => {
           ScrollTrigger.create({
             trigger: card,
             start: `top top+=${100 + i * 20}px`,
             endTrigger: containerRef.current,
-            end: 'bottom bottom',
+            end: 'bottom top',
             pin: true,
             pinSpacing: false,
             markers: false,
@@ -73,14 +70,13 @@ const PhilosophySection = () => {
               ease: "none",
               scrollTrigger: {
                 trigger: cards[i + 1],
-                start: `top top+=${100 + (i + 1) * 20}px`,
+                start: "top 80%",
                 end: `top top+=${100 + i * 20}px`,
                 scrub: true,
               }
             });
           }
         });
-      });
     }
   }, { scope: containerRef });
 
@@ -93,7 +89,7 @@ const PhilosophySection = () => {
           <h2 className="text-5xl md:text-6xl font-serif mt-4 text-[#111111]">Suba Signatures</h2>
         </div>
 
-        <div className="relative md:pb-[50vh]">
+        <div className="relative pb-12 md:pb-24">
           {philosophies.map((phil, i) => (
             <div 
               key={i} 
