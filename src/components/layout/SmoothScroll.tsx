@@ -2,8 +2,11 @@ import { ReactNode, useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+
   useEffect(() => {
     // Prevent initializing multiple instances on hot reload
     const lenis = new Lenis({
@@ -35,6 +38,24 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       delete window.lenis;
     };
   }, []);
+
+  // Global Scroll-to-Top on Route Change
+  useEffect(() => {
+    // Instantly scroll to the very top pixel
+    window.scrollTo(0, 0);
+    
+    // If Lenis is active, force it to the top immediately without animation
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { immediate: true });
+    }
+    
+    // Refresh ScrollTrigger calculations after a tiny delay to ensure the new DOM is painted
+    const timeoutId = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 50);
+
+    return () => clearTimeout(timeoutId);
+  }, [pathname]);
 
   return <>{children}</>;
 }
