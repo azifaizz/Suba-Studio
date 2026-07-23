@@ -41,36 +41,6 @@ const JoinTeamSection = () => {
 
   }, { scope: containerRef });
 
-  // Magnetic Button Effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (window.matchMedia('(hover: none)').matches) return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-    
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    gsap.to(btn, {
-      x: x * 0.3,
-      y: y * 0.3,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (window.matchMedia('(hover: none)').matches) return;
-    const btn = buttonRef.current;
-    if (!btn) return;
-    
-    gsap.to(btn, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: "elastic.out(1, 0.3)"
-    });
-  };
 
   return (
     <section ref={containerRef} className="relative min-h-[100dvh] lg:h-screen flex items-center justify-center overflow-hidden">
@@ -78,12 +48,12 @@ const JoinTeamSection = () => {
       <div className="absolute inset-0 z-0">
         <img 
           ref={bgRef}
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" 
-          alt="Team Working" 
+          src="/our_story_down.jpg" 
+          alt="Careers Background" 
           className="w-full h-[120%] object-cover object-center transform -translate-y-[10%]"
         />
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -98,11 +68,7 @@ const JoinTeamSection = () => {
         
         <a 
           ref={buttonRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          href="https://wa.me/918994442768?text=I%20would%20like%20to%20work%20with%20you"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mailto:subastudio5484@gmail.com"
           className="relative inline-flex items-center justify-center px-12 py-5 overflow-hidden rounded-full group bg-white text-black font-sans tracking-widest uppercase text-sm transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]"
         >
           <span className="relative z-10 group-hover:text-white transition-colors duration-500">Apply Now</span>

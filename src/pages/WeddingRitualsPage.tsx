@@ -150,6 +150,7 @@ const WeddingRitualsPage: React.FC<WeddingRitualsPageProps> = ({ subcategory }) 
                     <div className="absolute inset-0 bg-[#c97a34]/10 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
                     <AdaptiveImage 
                       src={chapter.img} 
+                      alt={chapter.title}
                       imageClassName="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" 
                     />
                   </div>

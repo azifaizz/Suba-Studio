@@ -263,6 +263,7 @@ const BridalPortraitsPage: React.FC<BridalPortraitsPageProps> = () => {
             clearTimeout(refreshTimer);
             mm.revert();
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const storyScenes = [

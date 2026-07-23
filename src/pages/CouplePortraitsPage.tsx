@@ -250,6 +250,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
             clearTimeout(refreshTimer);
             mm.revert();
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const storyScenes = [
@@ -487,6 +488,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                                         src={img} 
                                         title={data.albums[idx % data.albums.length]?.title || `Love Portrait 0${idx + 1}`}
                                         category="Couple Photography"
+                                        onClick={() => openLightbox(img)}
                                         className={isTall ? 'aspect-[3/4]' : 'aspect-[3/2]'}
                                     />
                                 </div>
@@ -532,7 +534,7 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                             Call Us: +91 89944 42768
                         </button>
                         <button 
-                            onClick={() => window.location.href = 'mailto:info@subastudios.com'}
+                            onClick={() => window.location.href = 'mailto:subastudio5484@gmail.com'}
                             className="px-10 py-4 rounded-full bg-white/5 border border-white/20 text-white font-bold uppercase text-xs tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-400"
                         >
                             Send Inquiry

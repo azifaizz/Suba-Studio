@@ -54,7 +54,7 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center gap-4">
                                 <Mail className="text-zg-blue shrink-0" size={20} />
-                                <span>hello@subastudios.com</span>
+                                <a href="mailto:subastudio5484@gmail.com" className="hover:text-zg-blue transition-colors">subastudio5484@gmail.com</a>
                             </li>
                         </ul>
                     </div>

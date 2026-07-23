@@ -50,6 +50,17 @@ const HeroSection = () => {
 
   return (
     <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-black text-white flex items-center justify-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/our_story_cover.jpg" 
+          alt="Our Story Background" 
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/70"></div>
+      </div>
+
       {/* Content */}
       <div ref={textRef} className="relative z-10 flex flex-col items-center justify-center px-6 text-center mt-20">
         <h1 

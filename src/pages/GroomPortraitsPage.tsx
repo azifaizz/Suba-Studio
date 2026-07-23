@@ -95,8 +95,8 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
     // Apply only to desktop/tablet
     mm.add("(min-width: 768px)", () => {
       // Parallax Editorial Wall
-      const wallItems = gsap.utils.toArray('.wall-item');
-      wallItems.forEach((item: unknown, i) => {
+      const wallItems = gsap.utils.toArray('.wall-item') as HTMLElement[];
+      wallItems.forEach((item, i) => {
         // More subtle parallax for editorial layout
         const speed = i % 2 === 0 ? 0.05 : -0.05;
         gsap.to(item, {
@@ -230,7 +230,8 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             return (
               <EditorialImage 
                 key={idx}
-                src={album.image} 
+                src={album.image}
+                onClick={() => openLightbox(album.image)}
                 className={`w-full ${isLandscape ? 'aspect-[3/2] sm:col-span-2 md:col-span-3' : 'aspect-[3/4]'} wall-item`}
               />
             );
