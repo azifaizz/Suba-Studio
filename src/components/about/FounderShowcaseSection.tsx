@@ -103,7 +103,7 @@ const FounderShowcaseSection = () => {
             <img 
               ref={imageRef}
               src="/suba.jpg" 
-              alt="Subash - Founder" 
+              alt="S.Subash - Founder" 
               loading="lazy"
               className="w-full h-auto block transform origin-center scale-[1.05]"
             />
@@ -120,7 +120,7 @@ const FounderShowcaseSection = () => {
           
           <div className="overflow-hidden mb-2">
             <h2 className="reveal-line block text-5xl md:text-6xl lg:text-7xl font-serif font-light leading-tight">
-              Subash
+              S.Subash
             </h2>
           </div>
 
@@ -135,7 +135,7 @@ const FounderShowcaseSection = () => {
           <div className="flex flex-col gap-8 text-[#2B2B2B]/80 font-sans font-light text-base md:text-lg leading-relaxed max-w-lg mb-12">
             <div className="overflow-hidden">
               <p className="reveal-line block">
-                Establishing a sanctuary for visual storytelling, Subash's focus remains singular: to discover the soul within the frame. His visionary approach continues to set the benchmark for luxury wedding photography and cinematic elegance across the nation.
+                Establishing a sanctuary for visual storytelling, S.Subash's focus remains singular: to discover the soul within the frame. His visionary approach continues to set the benchmark for luxury wedding photography and cinematic elegance across the nation.
               </p>
             </div>
             <div className="overflow-hidden">
