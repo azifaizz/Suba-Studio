@@ -86,8 +86,7 @@ const CandidMomentsPage: React.FC<CandidMomentsPageProps> = ({ subcategory }) =>
           {uniqueImages.slice(1).map((img, idx) => (
             <div 
               key={idx} 
-              className="break-inside-avoid rounded-[20px] overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" 
-              onClick={() => openLightbox(img)}
+              className="w-full break-inside-avoid mb-6 sm:mb-8 rounded-[16px] sm:rounded-[24px] overflow-hidden group relative shadow-2xl"
             >
               <AdaptiveImage src={img} imageClassName="w-full h-auto object-cover" />
             </div>

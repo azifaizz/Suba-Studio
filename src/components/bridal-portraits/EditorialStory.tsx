@@ -32,7 +32,7 @@ const getAspectStyle = (src?: string) => {
   return '4 / 5';
 };
 
-const EditorialStory: React.FC<Props> = ({ albums }) => {
+const EditorialStory: React.FC<Props> = ({ albums, collageImages }) => {
   const containerRef = useRef<HTMLElement>(null);
   
   const categories = [
@@ -178,25 +178,88 @@ const EditorialStory: React.FC<Props> = ({ albums }) => {
             {categories.map((cat, i) => (
               <div key={i} className="showcase-visual absolute w-full h-full flex items-center justify-center">
                 
-                {/* Main Large Photograph */}
-                <div 
-                  className="main-img-container w-[75%] lg:w-[65%] shadow-2xl relative z-10 overflow-hidden"
-                  style={{ aspectRatio: getAspectStyle(cat.mainImage) }}
-                >
-                  <img src={cat.mainImage} alt={cat.title} className="w-full h-full object-cover" />
-                </div>
+                {/* 1. THE DRESS - Vertical editorial composition */}
+                {i === 0 && (
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Main Hero Image */}
+                    <div 
+                      className="main-img-container shadow-2xl relative z-20 w-[60%] xl:w-[50%] overflow-hidden border-8 border-white"
+                      style={{ aspectRatio: getAspectStyle(cat.mainImage) }}
+                    >
+                      <img src={cat.mainImage} alt={cat.title} className="w-full h-full object-cover" />
+                    </div>
+                    {/* Supporting Detail 1 (Top Left) */}
+                    <div 
+                      className="detail-img-container absolute z-10 w-[30%] xl:w-[25%] top-16 md:top-24 left-[5%] xl:left-[10%] shadow-xl border-4 border-[#FAF9F7] overflow-hidden rotate-[-1deg]"
+                      style={{ aspectRatio: getAspectStyle(cat.detailImage) }}
+                    >
+                      <img src={cat.detailImage} alt={`${cat.title} Details`} className="w-full h-full object-cover" />
+                    </div>
+                    {/* Supporting Detail 2 (Bottom Right) */}
+                    <div 
+                      className="detail-img-container absolute z-30 w-[35%] xl:w-[28%] bottom-16 md:bottom-24 right-[5%] xl:right-[10%] shadow-2xl border-4 md:border-8 border-[#FAF9F7] overflow-hidden rotate-[1deg]"
+                      style={{ aspectRatio: getAspectStyle(collageImages?.[2] || albums[3]?.image) }}
+                    >
+                      <img src={collageImages?.[2] || albums[3]?.image} alt={`${cat.title} Details 2`} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                )}
 
-                {/* Supporting Detail Photograph - Offset based on index for variety */}
-                <div 
-                  className={`detail-img-container absolute z-20 shadow-xl border-8 border-[#FAF9F7] overflow-hidden w-[40%] lg:w-[35%]
-                    ${i === 0 ? 'bottom-8 left-4 lg:left-8' : ''}
-                    ${i === 1 ? 'top-16 -right-12 lg:-right-16' : ''}
-                    ${i === 2 ? 'bottom-16 right-8 lg:right-12' : ''}
-                  `}
-                  style={{ aspectRatio: getAspectStyle(cat.detailImage) }}
-                >
-                  <img src={cat.detailImage} alt={`${cat.title} Details`} className="w-full h-full object-cover" />
-                </div>
+                {/* 2. THE JEWELLERY - Floating photo stack */}
+                {i === 1 && (
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Back Image */}
+                    <div 
+                      className="detail-img-container absolute z-10 w-[35%] xl:w-[30%] top-1/2 -translate-y-[55%] left-[5%] xl:left-[10%] shadow-lg border-8 border-white overflow-hidden rotate-[-2deg]"
+                      style={{ aspectRatio: getAspectStyle(cat.detailImage) }}
+                    >
+                      <img src={cat.detailImage} alt={`${cat.title} Details`} className="w-full h-full object-cover" />
+                    </div>
+                    {/* Middle Image (Main) */}
+                    <div 
+                      className="main-img-container absolute z-20 w-[45%] xl:w-[38%] top-1/2 -translate-y-1/2 left-[32%] xl:left-[35%] shadow-2xl border-8 border-[#FAF9F7] overflow-hidden rotate-[1deg]"
+                      style={{ aspectRatio: getAspectStyle(cat.mainImage) }}
+                    >
+                      <img src={cat.mainImage} alt={cat.title} className="w-full h-full object-cover" />
+                    </div>
+                    {/* Front Image */}
+                    <div 
+                      className="detail-img-container absolute z-30 w-[35%] xl:w-[28%] top-1/2 -translate-y-[45%] right-[5%] xl:right-[10%] shadow-2xl border-4 md:border-8 border-white overflow-hidden rotate-[3deg]"
+                      style={{ aspectRatio: getAspectStyle(collageImages?.[4] || albums[1]?.image) }}
+                    >
+                      <img src={collageImages?.[4] || albums[1]?.image} alt={`${cat.title} Details 3`} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                )}
+
+                {/* 3. THE EXPRESSIONS - Dynamic asymmetrical collage */}
+                {i === 2 && (
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Left Tall Portrait */}
+                    <div 
+                      className="main-img-container absolute z-10 w-[45%] xl:w-[38%] left-[5%] xl:left-[10%] top-1/2 -translate-y-1/2 shadow-2xl border-8 border-[#FAF9F7] overflow-hidden"
+                      style={{ aspectRatio: getAspectStyle(cat.mainImage) }}
+                    >
+                      <img src={cat.mainImage} alt={cat.title} className="w-full h-full object-cover" />
+                    </div>
+                    
+                    {/* Right Top Offset */}
+                    <div 
+                      className="detail-img-container absolute z-20 w-[35%] xl:w-[30%] top-20 md:top-24 right-[8%] xl:right-[12%] shadow-xl border-4 border-white overflow-hidden"
+                      style={{ aspectRatio: getAspectStyle(cat.detailImage) }}
+                    >
+                      <img src={cat.detailImage} alt={`${cat.title} Details`} className="w-full h-full object-cover" />
+                    </div>
+
+                    {/* Right Bottom Offset (overlapping both) */}
+                    <div 
+                      className="detail-img-container absolute z-30 w-[40%] xl:w-[35%] bottom-20 md:bottom-24 right-[25%] xl:right-[30%] shadow-2xl border-8 border-white overflow-hidden"
+                      style={{ aspectRatio: getAspectStyle(collageImages?.[5] || albums[0]?.image) }}
+                    >
+                      <img src={collageImages?.[5] || albums[0]?.image} alt={`${cat.title} Details 3`} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                )}
 
               </div>
             ))}

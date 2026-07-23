@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import imageMetadata from '@/data/imageMetadata.json';
 import {
   Camera,
   Image as ImageIcon,
@@ -227,52 +228,50 @@ export const StickyServicesScroll: React.FC = () => {
 
         {/* RIGHT COLUMN: Breathable, Crisp Sticky Card Stack with Adaptive Smart Image Presentation */}
         <div className="w-full lg:w-[58%] xl:w-[56%] h-[55vh] sm:h-[68vh] lg:h-[70vh] min-h-[380px] sm:min-h-[430px] relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
-          {servicesData.map((service, index) => (
-            <div
-              key={service.id}
-              ref={(el) => (cardRefs.current[index] = el)}
-              onClick={() => navigate(service.link)}
-              className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] sm:max-h-[620px] bg-white rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.14)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
-            >
-              {/* Left Side Inside Card (48% on Desktop): Icon, Chapter Pill, Title, Description */}
-              <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 sm:h-full shrink-0">
-                <div>
-                  {/* Card Header: Icon + Chapter Pill */}
-                  <div className="flex items-center justify-between mb-2 sm:mb-6">
-                    <div className="p-2 sm:p-3.5 bg-zg-blue/10 rounded-xl sm:rounded-2xl border border-zg-blue/20 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                      {service.icon}
+          {servicesData.map((service, index) => {
+            const meta = imageMetadata[service.image as keyof typeof imageMetadata] || imageMetadata[service.image.replace(/^\//, '') as keyof typeof imageMetadata];
+            const isLandscape = meta ? meta.aspectRatio > 1.2 : false;
+            
+            return (
+              <div
+                key={service.id}
+                ref={(el) => (cardRefs.current[index] = el)}
+                onClick={() => navigate(service.link)}
+                className={`absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] sm:max-h-[620px] bg-white rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-gray-100 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.06),_0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-[0_24px_60px_-10px_rgba(0,0,0,0.14)] transition-shadow duration-500 cursor-pointer group flex justify-between gap-3 sm:gap-8 overflow-hidden ${isLandscape ? 'flex-col' : 'flex-col sm:flex-row'}`}
+              >
+                {/* Text Side */}
+                <div className={`w-full flex flex-col justify-between z-10 shrink-0 ${isLandscape ? 'sm:w-full sm:h-auto' : 'sm:w-[48%] sm:h-full'}`}>
+                  <div>
+                    {/* Card Header: Icon */}
+                    <div className="flex items-center justify-between mb-2 sm:mb-6">
+                      <div className="p-2 sm:p-3.5 bg-zg-blue/10 rounded-xl sm:rounded-2xl border border-zg-blue/20 shadow-sm group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 w-fit">
+                        {service.icon}
+                      </div>
                     </div>
-                    <span className="font-serif text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-gray-400 uppercase bg-gray-100/80 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full border border-gray-200/60">
-                      0{index + 1} / 0{servicesData.length}
-                    </span>
+
+                    {/* Service Title */}
+                    <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-gray-950 leading-[1.14] mb-1 sm:mb-3 group-hover:text-zg-blue transition-colors duration-300">
+                      {service.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-[11px] sm:text-sm text-gray-600 font-normal leading-relaxed line-clamp-2 sm:line-clamp-4">
+                      {service.description}
+                    </p>
                   </div>
-
-                  {/* Service Title */}
-                  <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-gray-950 leading-[1.14] mb-1 sm:mb-3 group-hover:text-zg-blue transition-colors duration-300">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-[11px] sm:text-sm text-gray-600 font-normal leading-relaxed line-clamp-2 sm:line-clamp-4">
-                    {service.description}
-                  </p>
                 </div>
 
-                {/* Bottom CTA Indicator */}
-                <div className="hidden sm:flex items-center gap-3 text-xs font-bold tracking-[0.18em] text-gray-400 uppercase group-hover:text-zg-blue transition-colors duration-300 pt-3 border-t border-gray-100 mt-2">
-                  <span>Explore Gallery</span>
-                  <div className="w-8 h-[1.5px] bg-gray-300 group-hover:w-16 group-hover:bg-zg-blue transition-all duration-500" />
+                {/* Image Side */}
+                <div className={`w-full relative shrink-0 ${isLandscape ? 'sm:w-full flex-1' : 'sm:w-[52%] h-full'}`}>
+                  <SmartCardImage
+                    src={service.image}
+                    alt={service.title}
+                    link={service.link}
+                  />
                 </div>
               </div>
-
-              {/* Right Side Inside Card (52% on Desktop): Smart Adaptive Photography Presentation */}
-              <SmartCardImage
-                src={service.image}
-                alt={service.title}
-                link={service.link}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

@@ -145,8 +145,7 @@ const WeddingRitualsPage: React.FC<WeddingRitualsPageProps> = ({ subcategory }) 
                 {/* Cinematic Image */}
                 <div className="w-full md:w-2/3 h-[50vh] md:h-[70vh] order-1 md:order-2">
                   <div 
-                    className="w-full h-full overflow-hidden rounded-sm cursor-pointer shadow-2xl relative group"
-                    onClick={() => openLightbox(chapter.img)}
+                    className="w-full h-full overflow-hidden rounded-sm shadow-2xl relative group"
                   >
                     <div className="absolute inset-0 bg-[#c97a34]/10 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0" />
                     <AdaptiveImage 

@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { AdaptiveImage } from '@/components/ui/adaptive-image';
+import imageMetadata from '@/data/imageMetadata.json';
 import { SplitTextReveal } from '@/components/ui/split-text-reveal';
 import { LuxuryLightbox } from '@/components/ui/luxury-lightbox';
 import { categoryData } from '@/data/categoryContent';
@@ -18,8 +20,7 @@ const EditorialCard = ({ src, title, category, onClick, className = '' }: {
 }) => {
     return (
         <div 
-            onClick={onClick}
-            className={`group cursor-pointer overflow-hidden rounded-[16px] relative shadow-xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] ${className}`}
+            className={`group overflow-hidden rounded-[16px] relative shadow-xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_50px_rgba(212,175,55,0.2)] ${className}`}
         >
             <img 
                 src={src} 
@@ -390,60 +391,51 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
 
                     {/* RIGHT COLUMN: Sticky Card Stack */}
                     <div className="w-full lg:w-[58%] xl:w-[56%] h-[68vh] sm:h-[68vh] lg:h-[70vh] min-h-[460px] relative flex items-center justify-center overflow-visible lg:pr-6 xl:pr-10">
-                        {storyScenes.map((scene, index) => (
-                            <div
-                                key={index}
-                                ref={(el) => (storyCardRefs.current[index] = el)}
-                                onClick={() => {
-                                    if (window.innerWidth >= 768) openLightbox(scene.image);
-                                }}
-                                className="absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] bg-[#141414] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] hover:shadow-[0_25px_60px_rgba(212,175,55,0.18)] transition-shadow duration-500 cursor-pointer group flex flex-col sm:flex-row justify-between gap-3 sm:gap-8 overflow-hidden"
-                            >
-                                {/* Left Side Inside Card (48% on desktop) */}
-                                <div className="w-full sm:w-[48%] flex flex-col justify-between z-10 shrink-0 mb-1 sm:mb-0">
-                                    <div>
-                                        {/* Card Header Badge */}
-                                        <div className="flex items-center justify-between mb-1.5 sm:mb-6">
-                                            <span className="font-serif text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#D4AF37] uppercase bg-[#D4AF37]/10 px-3 py-1 rounded-full border border-[#D4AF37]/30">
-                                                0{index + 1} / 0{storyScenes.length}
-                                            </span>
+                        {storyScenes.map((scene, index) => {
+                            const meta = imageMetadata[scene.image as keyof typeof imageMetadata] || imageMetadata[scene.image.replace(/^\//, '') as keyof typeof imageMetadata];
+                            const isLandscape = meta ? meta.aspectRatio > 1.2 : false; // Use 1.2 to ensure only truly wide images flip to column layout
+
+                            return (
+                                <div
+                                    key={index}
+                                    ref={(el) => (storyCardRefs.current[index] = el)}
+                                    className={`absolute inset-0 m-auto w-full max-w-[680px] h-full max-h-[620px] bg-[#141414] rounded-[24px] sm:rounded-[32px] lg:rounded-[36px] p-4 sm:p-8 lg:p-10 border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] transition-shadow duration-500 group flex justify-between overflow-hidden gap-3 sm:gap-8 ${isLandscape ? 'flex-col' : 'flex-col sm:flex-row'}`}
+                                >
+                                    {/* Text Side */}
+                                    <div className={`w-full flex flex-col justify-between z-10 shrink-0 mb-1 sm:mb-0 ${isLandscape ? 'sm:w-full' : 'sm:w-[48%]'}`}>
+                                        <div>
+                                            {/* Card Header Badge Removed */}
+
+                                            {/* Title */}
+                                            <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-white leading-[1.14] mb-1 sm:mb-3 group-hover:text-[#D4AF37] transition-colors duration-300">
+                                                {scene.title}
+                                            </h3>
+
+                                            {/* Subtitle */}
+                                            <p className="text-[#D4AF37] font-serif italic text-xs sm:text-sm mb-1 sm:mb-3">
+                                                {scene.subtitle}
+                                            </p>
+
+                                            {/* Description */}
+                                            <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 sm:line-clamp-4">
+                                                {scene.desc}
+                                            </p>
                                         </div>
-
-                                        {/* Title */}
-                                        <h3 className="text-lg sm:text-3xl lg:text-[2.2rem] font-serif font-bold text-white leading-[1.14] mb-1 sm:mb-3 group-hover:text-[#D4AF37] transition-colors duration-300">
-                                            {scene.title}
-                                        </h3>
-
-                                        {/* Subtitle */}
-                                        <p className="text-[#D4AF37] font-serif italic text-xs sm:text-sm mb-1 sm:mb-3">
-                                            {scene.subtitle}
-                                        </p>
-
-                                        {/* Description */}
-                                        <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 sm:line-clamp-4">
-                                            {scene.desc}
-                                        </p>
                                     </div>
-
-                                    {/* Bottom CTA Indicator */}
-                                    <div className="hidden sm:flex items-center gap-3 text-xs font-bold tracking-[0.18em] text-white/50 uppercase group-hover:text-[#D4AF37] transition-colors duration-300 pt-3 border-t border-white/10 mt-2">
-                                        <span>View Full Detail</span>
-                                        <div className="w-8 h-[1.5px] bg-white/20 group-hover:w-16 group-hover:bg-[#D4AF37] transition-all duration-500" />
+                                    
+                                    {/* Image Side */}
+                                    <div className={`w-full flex-1 relative rounded-xl sm:rounded-[22px] overflow-hidden bg-[#0A0A0A] border border-white/10 shrink-0 flex items-center justify-center shadow-lg min-h-[220px] xs:min-h-[260px] p-2 ${isLandscape ? 'sm:w-full sm:h-auto' : 'sm:w-[52%] sm:h-full'}`}>
+                                        <img
+                                            src={scene.image}
+                                            alt={scene.title}
+                                            loading="lazy"
+                                            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
                                     </div>
                                 </div>
-
-                                {/* Right Side Inside Card (52% on desktop): Full-Height Expanded Framed Image on Mobile */}
-                                <div className="w-full sm:w-[52%] flex-1 sm:h-full relative rounded-xl sm:rounded-[22px] overflow-hidden bg-[#0A0A0A] border border-white/10 shrink-0 flex items-center justify-center shadow-lg min-h-[260px] xs:min-h-[300px]">
-                                    <img
-                                        src={scene.image}
-                                        alt={scene.title}
-                                        loading="lazy"
-                                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-50 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none" />
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
                 </div>
@@ -462,9 +454,6 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                                 Couple Portrait Collection
                             </h2>
                         </div>
-                        <p className="hidden md:block text-white/60 font-light max-w-md text-sm md:text-base leading-relaxed">
-                            Click on any portrait to enter the full-screen cinematic gallery experience with full detail.
-                        </p>
                     </div>
 
                     {/* MOBILE-ONLY Magazine Flow: Natural Aspect Ratio, No Forced Cropping, Lightbox Disabled */}
@@ -488,17 +477,17 @@ const CouplePortraitsPage: React.FC<CouplePortraitsPageProps> = () => {
                     {/* DESKTOP/TABLET Multi-Column Staggered Grid (100% Preserved & Identical) */}
                     <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                         {allImages.slice(0, 9).map((img, idx) => {
-                            const isTall = idx % 2 === 0;
+                            const meta = imageMetadata[img as keyof typeof imageMetadata] || imageMetadata[img.replace(/^\//, '') as keyof typeof imageMetadata];
+                            const isLandscape = meta ? meta.aspectRatio > 1.2 : false;
+                            const isTall = !isLandscape;
+                            
                             return (
-                                <div key={idx} className="cp-parallax-item">
+                                <div key={idx} className={`cp-parallax-item ${isLandscape ? 'md:col-span-2 lg:col-span-2' : ''}`}>
                                     <EditorialCard 
                                         src={img} 
                                         title={data.albums[idx % data.albums.length]?.title || `Love Portrait 0${idx + 1}`}
                                         category="Couple Photography"
-                                        onClick={() => {
-                                            if (window.innerWidth >= 768) openLightbox(img);
-                                        }}
-                                        className={isTall ? 'aspect-[3/4]' : 'aspect-[4/5] md:aspect-[3/4]'}
+                                        className={isTall ? 'aspect-[3/4]' : 'aspect-[3/2]'}
                                     />
                                 </div>
                             );

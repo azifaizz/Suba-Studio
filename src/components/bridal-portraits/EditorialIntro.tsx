@@ -97,7 +97,8 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
         <div className="relative w-full flex flex-col items-center">
           
           {/* 1. Hero Image - Landscape, very large, slightly offset right */}
-          <div className="w-full md:w-[80%] lg:w-[70%] ml-auto mr-0 md:mr-[5%] relative z-10 mb-16 md:mb-24">
+          {/* 1. Hero Image - Landscape, very large, slightly offset right */}
+          <div className="w-full md:w-[80%] lg:w-[70%] ml-auto mr-0 md:mr-[5%] relative z-10 mb-12 md:mb-12">
             <div 
               className="intro-img-1 w-full rounded-[2px] overflow-hidden shadow-2xl relative"
               style={{ aspectRatio: getAspectStyle(safeImg(0)) }}
@@ -107,7 +108,7 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
           </div>
 
           {/* 2. Supporting Portrait & Quote Card - Portrait pulled left, overlapping bottom of Hero */}
-          <div className="w-full md:w-[90%] flex flex-col md:flex-row justify-between items-start md:-mt-[15%] relative z-20 mb-24 md:mb-32">
+          <div className="w-full md:w-[90%] flex flex-col md:flex-row justify-between items-start md:-mt-16 relative z-20 mb-16 md:mb-20">
             <div 
               className="intro-img-2 w-full md:w-[45%] lg:w-[40%] rounded-[2px] overflow-hidden shadow-xl relative border-4 md:border-8 border-[#FAF9F7]"
               style={{ aspectRatio: getAspectStyle(safeImg(1)) }}
@@ -116,7 +117,7 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
             </div>
             
             {/* Quote in negative space on the right */}
-            <div className="intro-quote w-full md:w-[45%] mt-12 md:mt-48 px-4 md:px-0 lg:pr-12">
+            <div className="intro-quote w-full md:w-[45%] mt-8 md:mt-16 px-4 md:px-0 lg:pr-12">
               <p className="font-serif italic text-3xl md:text-4xl lg:text-5xl text-[#1B1B1B] leading-tight text-center md:text-left">
                 "Beauty begins the moment confidence meets timeless elegance."
               </p>
@@ -124,10 +125,10 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
           </div>
 
           {/* 3. Detail Image (Portrait) & 4. Supporting Landscape */}
-          <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between relative z-10 mb-24 md:mb-40 gap-8 md:gap-0">
+          <div className="w-full flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between relative z-10 mb-16 md:mb-24 gap-8 md:gap-6">
             
             {/* Detail Image - Portrait, floating left/center */}
-            <div className="w-[80%] md:w-[40%] lg:w-[35%] ml-auto md:ml-[5%] relative z-10 mb-12 md:mb-0 md:mt-32">
+            <div className="w-[80%] md:w-[40%] lg:w-[35%] ml-auto md:ml-[5%] relative z-10 mb-8 md:mb-0 md:mt-12">
               <div 
                 className="intro-img-3 w-full rounded-[2px] overflow-hidden shadow-2xl relative"
                 style={{ aspectRatio: getAspectStyle(safeImg(2)) }}
@@ -136,8 +137,8 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
               </div>
             </div>
 
-            {/* Supporting Landscape - Large landscape offset to the right */}
-            <div className="w-full md:w-[55%] lg:w-[50%] mr-auto md:mr-[2%] relative z-20">
+            {/* Supporting Landscape - Large landscape offset to the right, pulled UP to fill the empty space below the quote */}
+            <div className="w-full md:w-[55%] lg:w-[50%] mr-auto md:mr-[2%] relative z-20 md:-mt-72 lg:-mt-96">
               <div 
                 className="intro-img-4 w-full rounded-[2px] overflow-hidden shadow-xl relative border-4 md:border-8 border-[#FAF9F7]"
                 style={{ aspectRatio: getAspectStyle(safeImg(3)) }}
@@ -149,10 +150,10 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
           </div>
 
           {/* 5. Portrait Accent & 6. Detail Portrait */}
-          <div className="w-full flex flex-col md:flex-row items-end justify-start relative z-30 gap-8 md:gap-0">
+          <div className="w-full flex flex-col md:flex-row items-end justify-start relative z-30 gap-8 md:gap-6">
             
             {/* Portrait Accent - Pulled left */}
-            <div className="w-full md:w-[50%] lg:w-[45%] relative z-10 mb-12 md:mb-0 ml-[5%]">
+            <div className="w-full md:w-[50%] lg:w-[45%] relative z-10 mb-8 md:mb-0 ml-[5%]">
               <div 
                 className="intro-img-5 w-full rounded-[2px] overflow-hidden shadow-xl relative"
                 style={{ aspectRatio: getAspectStyle(safeImg(4)) }}
@@ -162,7 +163,7 @@ const EditorialIntro: React.FC<Props> = ({ images = [] }) => {
             </div>
 
             {/* Detail Portrait - Smaller, overlapping the Accent slightly on the right */}
-            <div className="w-[85%] md:w-[40%] lg:w-[35%] ml-auto md:-ml-[10%] md:-mb-[15%] relative z-20 border-4 md:border-8 border-[#FAF9F7]">
+            <div className="w-[85%] md:w-[40%] lg:w-[35%] ml-auto md:-ml-[5%] md:-mb-12 relative z-20 border-4 md:border-8 border-[#FAF9F7]">
               <div 
                 className="intro-img-6 w-full rounded-[2px] overflow-hidden shadow-2xl relative"
                 style={{ aspectRatio: getAspectStyle(safeImg(5)) }}

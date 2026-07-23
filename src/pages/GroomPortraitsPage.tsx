@@ -182,7 +182,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">Adjusting the cuffs, fixing the tie, the quiet moments of focus before stepping out.</p>
           </div>
           <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-1 mt-8 md:mt-0 md:ml-12 px-4 md:px-0 flex justify-center items-center">
-            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[0])}>
+            <div className="w-fit h-fit max-w-full max-h-full overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl">
               <img src={content.collageImages[0]} alt="Groom Preparation" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
@@ -196,7 +196,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">A look that says it all. We capture the raw, unfiltered swagger that comes from feeling your absolute best.</p>
           </div>
           <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-2 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0 flex justify-center md:justify-end items-center">
-            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[1])}>
+            <div className="w-fit h-fit max-w-full max-h-full overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl">
               <img src={content.collageImages[1]} alt="Groom Confidence" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
@@ -210,7 +210,7 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
             <p className="text-base md:text-xl text-white/60 font-light leading-relaxed">The watch, the shoes, the perfectly tailored suit. Every detail matters in the making of a gentleman.</p>
           </div>
           <div className="w-full md:w-1/2 h-[45vh] md:h-[65vh] relative story-img-3 mt-8 md:mt-0 md:ml-12 opacity-0 pointer-events-auto px-4 md:px-0 flex justify-center items-center">
-            <div className="w-fit h-fit max-w-full max-h-full cursor-pointer overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl" onClick={() => openLightbox(content.collageImages[2])}>
+            <div className="w-fit h-fit max-w-full max-h-full overflow-hidden group rounded-xl relative border border-white/10 shadow-2xl">
               <img src={content.collageImages[2]} alt="Groom Style Details" className="w-auto h-auto max-w-full max-h-[45vh] md:max-h-[65vh] object-cover transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl block" />
             </div>
           </div>
@@ -232,7 +232,6 @@ const GroomPortraitsPage: React.FC<GroomPortraitsPageProps> = ({ subcategory }) 
                 key={idx}
                 src={album.image} 
                 className={`w-full ${isLandscape ? 'aspect-[3/2] sm:col-span-2 md:col-span-3' : 'aspect-[3/4]'} wall-item`}
-                onClick={() => openLightbox(album.image)} 
               />
             );
           })}

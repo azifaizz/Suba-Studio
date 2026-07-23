@@ -1084,5 +1084,83 @@
         "height": 1920,
         "aspectRatio": 0.6666666666666666,
         "orientation": "portrait"
+    },
+    "/Bridal/2.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bridal/19.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/8.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/1.jpg": {
+        "width": 1920,
+        "height": 1200,
+        "aspectRatio": 1.6,
+        "orientation": "landscape"
+    },
+    "/Bridal/10.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/14.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bridal/15.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/16.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bridal/18.JPG": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bridal/20.jpg": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/3.jpg": {
+        "width": 1920,
+        "height": 1280,
+        "aspectRatio": 1.5,
+        "orientation": "landscape"
+    },
+    "/Bridal/4.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
+    },
+    "/Bridal/5.JPG": {
+        "width": 1280,
+        "height": 1920,
+        "aspectRatio": 0.6667,
+        "orientation": "portrait"
     }
 }
