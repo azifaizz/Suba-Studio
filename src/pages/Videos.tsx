@@ -63,13 +63,14 @@ const MinimalVideoCard: React.FC<SingleVideoPlayerProps> = ({ video, activeVideo
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full max-w-4xl mx-auto mb-24 md:mb-36 text-center"
+            className="w-full h-full flex flex-col"
         >
-            {/* 16:9 Responsive Video Player */}
-            <div
-                onClick={togglePlay}
-                className="relative w-full aspect-video bg-black rounded-[16px] md:rounded-[24px] overflow-hidden cursor-pointer group shadow-sm hover:shadow-md transition-shadow"
-            >
+            <div className="bg-white rounded-[24px] p-4 md:p-5 lg:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 flex-1 flex flex-col border border-gray-50/80">
+                {/* 16:9 Responsive Video Player */}
+                <div
+                    onClick={togglePlay}
+                    className="relative w-full aspect-video bg-black rounded-[16px] overflow-hidden cursor-pointer group"
+                >
                 <video
                     ref={videoRef}
                     src={video.url}
@@ -126,13 +127,14 @@ const MinimalVideoCard: React.FC<SingleVideoPlayerProps> = ({ video, activeVideo
             </div>
 
             {/* Minimal Info: Couple Name & Short Caption ONLY */}
-            <div className="mt-6 md:mt-8 px-4">
-                <h2 className="text-3xl md:text-4xl font-serif font-normal text-gray-900 tracking-tight mb-2">
+            <div className="mt-6 md:mt-8 px-2 flex-1 flex flex-col items-center justify-center text-center">
+                <h2 className="text-2xl md:text-3xl font-serif font-normal text-gray-900 tracking-tight mb-3">
                     {video.coupleName}
                 </h2>
-                <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed max-w-lg mx-auto">
+                <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed max-w-sm mx-auto">
                     "{video.caption}"
                 </p>
+            </div>
             </div>
         </motion.div>
     );
@@ -167,9 +169,9 @@ const Videos: React.FC = () => {
                 </motion.div>
             </section>
 
-            {/* Pure Vertical Video List */}
-            <section className="container mx-auto px-4 md:px-6">
-                <div className="flex flex-col items-center">
+            {/* Two-Column Editorial Grid */}
+            <section className="container mx-auto px-4 md:px-8 max-w-[1600px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
                     {CLEAN_VIDEOS.map((video) => (
                         <MinimalVideoCard
                             key={video.id}

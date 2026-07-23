@@ -53,7 +53,7 @@ const CandidMomentsPage: React.FC<CandidMomentsPageProps> = ({ subcategory }) =>
   return (
     <div ref={containerRef} className="bg-[#f9f9f9] min-h-screen text-gray-900 overflow-hidden selection:bg-black selection:text-white">
       {/* Hero Section */}
-      <section className="relative h-[90vh] w-full p-4 md:p-8">
+      <section className="relative min-h-screen w-full p-4 md:p-8">
         <div className="w-full h-full rounded-3xl overflow-hidden relative">
           <img 
             src={uniqueImages[0]} 

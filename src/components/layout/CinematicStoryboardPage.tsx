@@ -199,7 +199,7 @@ export default function CinematicStoryboardPage({ subcategory }: { subcategory: 
         <SmoothScroll>
             <div className="bg-[#0a0a0a] min-h-screen text-white font-sans selection:bg-[#D4AF37]/30 selection:text-white overflow-hidden">
                 {/* Intro Section */}
-                <section className="h-[90vh] flex flex-col items-center justify-center text-center relative z-20">
+                <section className="min-h-screen flex flex-col items-center justify-center text-center relative z-20">
                     {/* Cover Background */}
                     {getCoverImage(subcategory) && (
                         <div className="absolute inset-0 z-0">
